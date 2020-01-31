@@ -1,23 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-
-function Home(props){
-    return(
+function Home(props) {
+    return (
         <div className="container">
-            <div className="row">
-                
-                <div className="col-md m-1">
-                    <p>Hello there</p>
-                </div>
-                <div className="col-md m-1">
-                    <p>Hello there</p>
-                </div>
-                <div className="col-md m-1">
-                    <p>Hello there</p>
-                </div>
-            </div>
+            <h4>Home</h4>
         </div>
-    )
+    );
 }
 
-export default Home;
+export default Home;   

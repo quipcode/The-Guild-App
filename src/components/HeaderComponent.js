@@ -1,5 +1,9 @@
+// import React, { Component } from 'react';
+// import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Button } from 'reactstrap';
+// import { NavLink } from 'react-router-dom';
+
 import React, { Component } from 'react';
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron } from 'reactstrap';
+import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component{
@@ -11,11 +15,15 @@ class Header extends Component{
             isNavOpen: false
         } 
     }
-    toggleNav(){
-        this.setState({isNavOpen: !this.state.isNavOpen})
+    toggleNav() {
+        this.setState({
+            isNavOpen: !this.state.isNavOpen
+        });
     }
-    render(){
-        return(
+     
+    
+    render() {
+        return (
             <React.Fragment>
                 <Jumbotron fluid>
                     <div className="container">
@@ -29,39 +37,70 @@ class Header extends Component{
                 </Jumbotron>
                 <Navbar dark sticky="top" expand="md">
                     <div className="container">
-                        <NavbarBrand className="mr-auto" href="/"><img src="https://uploads-ssl.webflow.com/5b7529a016d8f25106c56acf/5ce7b9a105884e8a38d205e9_5c9c9e66e3044d4f70568c1e_client%20aaksen.png" height="30" width="30" alt="NuCamp Logo" /></NavbarBrand>
-                        {/* <NavbarBrand className="mr-auto" href="/"><img src="/assets/images/logo.png" height="30" width="30" alt="NuCamp Logo" /></NavbarBrand> */}
-                        <NavbarToggler onClick={this.toggleNav} />
+                        <NavbarBrand className="mr auto" href="/">
+                            <img src="assets/images/transparent_shield.png" height="30" width="30" alt="Guild App Logo" />
+                        </NavbarBrand>
+                            <NavbarToggler onClick={this.toggleNav} />
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
+                                {/* <NavItem>
+                                    <NavLink>
+                                        <i/>Home
+                                    </NavLink>
+                                </NavItem> */}
                                 <NavItem>
                                     <NavLink className="nav-link" to="/home">
                                         <i className="fa fa-home fa-lg" /> Home
                                     </NavLink>
                                 </NavItem>
-                                <NavItem>
-                                    <NavLink className="nav-link" to="/directory">
-                                        <i className="fa fa-list fa-lg" /> Directory
-                                    </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink className="nav-link" to="/aboutus">
-                                        <i className="fa fa-info fa-lg" /> About
-                                    </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink className="nav-link" to="/contactus">
-                                        <i className="fa fa-address-card fa-lg" /> Contact Us
-                                    </NavLink>
-                                </NavItem>
+                                <p>Hello there</p>
                             </Nav>
+                            <span className="navbar-text-ml-auto">
+                                <Button outline onClick={this.toggleModal}>
+                                    {/* <i className="fa fa-sign-in fa-lg">Login</i> */}
+                                    <i class="fa fa-sign-in fa-lg"> Log On</i>
+                                </Button>
+                            </span>
+                            <span className="navbar-text-ml-auto">
+                                <Button outline onClick={this.toggleModal}>
+                                    {/* <i className="fa fa-sign-in fa-lg">Login</i> */}
+                                    Log Off <i class="fa fa-sign-out fa-lg"></i>
+                                </Button>
+                            </span>
                         </Collapse>
+                        
                     </div>
                 </Navbar>
+                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                    <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+                    <ModalBody>
+                        <Form onSubmit={this.handleLogin}>
+                            <FormGroup>
+                                <Label htmlFor="username">Username</Label>
+                                <Input type="text" id="username" name="username" innerRef={input => this.username = input} />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="password">Password</Label>
+                                <Input type="password" id="password" name="password" innerRef={input => this.password = input} />
+                            </FormGroup>
+                            <FormGroup check>
+                                <Label check>
+                                    <Input type="checkbox" name="remember"
+                                        innerRef={input => this.remember = input} />
+                                    Remember me
+                                </Label>
+                            </FormGroup>
+                            <Button type="Submit" value="submit" color="primary">Login</Button>
+                        </Form>
+                    </ModalBody>
+                </Modal>
 
             </React.Fragment>
+
         )
     }
+    
+    
 }
 
 

@@ -1,3 +1,9 @@
+Shielded guild is from: https://www.123rf.com/photo_69504495_stock-vector-rounded-global-shield-rubber-seal-stamp-watermark-icon-symbol-inside-circle-with-grunge-design-and-d.html
+
+Navbar is from: https://codepen.io/takaneichinose/pen/abovwoB/
+Navbar w/ search is from: https://codepen.io/nsieber/pen/KrRVQd
+basic bootstrap navbar is from https://codepen.io/Terron23/pen/EoyaeE
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

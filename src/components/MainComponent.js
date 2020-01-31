@@ -4,15 +4,18 @@ import Home from './HomeComponent'
 import MyGuilds from './MyGuildsComponent'
 import Bio from './BioComponent'
 import Header from './HeaderComponent'
+import CpcNavigation from './NavbarComponent'
 
 class Main extends Component{
     constructor(props){
         super(props);
         this.state = {
-
+            // campsites: CAMPSITES
+           
         }
     }
 
+   
     render(){
         const HomePage = () => {
             return (
@@ -35,10 +38,12 @@ class Main extends Component{
         return (
             <div>
                 <Header />
+                <CpcNavigation  />
                 <Switch>
-                    <Route path='./home' component={HomePage}/>
-                    <Route path='./bio' component={BioPage}/>
-                    <Route path='./myguilds' component={MyGuildsPage}/>
+                    <Route path='/home' component={HomePage}/>
+                    <Route path='/bio' component={BioPage}/>
+                    <Route path='/myguilds' component={MyGuildsPage}/>
+                    <Redirect to='/home' />
                 </Switch>
             </div>
         )
