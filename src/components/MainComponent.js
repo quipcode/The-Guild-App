@@ -5,6 +5,7 @@ import MyGuilds from './MyGuildsComponent'
 import Bio from './BioComponent'
 import Header from './HeaderComponent'
 import NavbarReactBootstrap from './NavbarComponent'
+import UserProfile from './UserProfilePage'
 
 class Main extends Component{
     constructor(props){
@@ -35,6 +36,12 @@ class Main extends Component{
             )
         }
 
+        const UserProfPage = () => {
+            return(
+                <UserProfile/>
+            )
+        }
+
         return (
             <div>
                 <Header />
@@ -44,6 +51,7 @@ class Main extends Component{
                     <Route path='/home' component={HomePage}/>
                     <Route path='/bio' component={BioPage}/>
                     <Route path='/myguilds' component={MyGuildsPage}/>
+                    <Route path='/myprofile' component={UserProfPage} />
                     <Redirect to='/home' />
                 </Switch>
             </div>

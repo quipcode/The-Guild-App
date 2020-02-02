@@ -7,6 +7,10 @@ basic bootstrap navbar is from https://codepen.io/Terron23/pen/EoyaeE
 bootstrap navbar image w/ dropdown:https://codepen.io/quipcode/pen/KKwOzzm?editors=1100 
 my idealized version: https://codepen.io/quipcode/pen/KKwOzzm?editors=1100
 
+
+profile page template idea from: https://bootsnipp.com/snippets/K0ZmK
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
