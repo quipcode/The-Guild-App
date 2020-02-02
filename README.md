@@ -1,8 +1,11 @@
 Shielded guild is from: https://www.123rf.com/photo_69504495_stock-vector-rounded-global-shield-rubber-seal-stamp-watermark-icon-symbol-inside-circle-with-grunge-design-and-d.html
+secure_mail from: https://www.123rf.com/photo_81578250_stock-vector-email-security-glyph-icon-silhouette-symbol-sms-message-inside-protection-shield-spam-protection-neg.html?fromid=TXVFM1pUMGJFQkhhY3E0Vzd0MUZsZz09
 
 Navbar is from: https://codepen.io/takaneichinose/pen/abovwoB/
 Navbar w/ search is from: https://codepen.io/nsieber/pen/KrRVQd
 basic bootstrap navbar is from https://codepen.io/Terron23/pen/EoyaeE
+bootstrap navbar image w/ dropdown:https://codepen.io/quipcode/pen/KKwOzzm?editors=1100 
+my idealized version: https://codepen.io/quipcode/pen/KKwOzzm?editors=1100
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

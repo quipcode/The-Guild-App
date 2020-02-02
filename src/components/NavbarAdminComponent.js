@@ -1,42 +1,42 @@
 // TODO: Activate caret active animation
 import React, { Component } from 'react';
-import {TweenLite, Bounce, Elastic} from 'gsap';
-import{Navbar, Nav, NavDropdown,Form, FormControl, Button, MenuItem} from 'react-bootstrap';
+import { TweenLite, Bounce, Elastic } from 'gsap';
+import { Navbar, Nav, NavDropdown, Form, FormControl, Button, MenuItem } from 'react-bootstrap';
 
-class NavbarReactBootstrap extends React.Component {
+class NavbarAdminReactBootstrap extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             jsxData: [],
             submenu: [],
-         
+
         };
     }
 
-   
+
 
     render() {
         return (
             <React.Fragment>
                 <Navbar className="navbar navbar-dark bg-dark navbar-expand-sm" expand="sm">
                     <Navbar.Brand href="#home">
-                        
-                            <a class="navbar-brand" href="#">
-                                <img src="assets/images/transparent_shield.png" width="30" height="30" alt="logo" />
-                                <span> The Guild App</span>
-                            </a>
-                        
-                        
-                            {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+                        <a class="navbar-brand" href="#">
+                            <img src="assets/images/transparent_shield.png" width="30" height="30" alt="logo" />
+                            <span> The Guild App</span>
+                        </a>
+
+
+                        {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button> */}
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                            
-                            
+
+
                             <NavDropdown eventKey={1}
                                 title={
                                     <div className="pull-left">
@@ -47,7 +47,7 @@ class NavbarReactBootstrap extends React.Component {
                                         /><span>Self</span>
                                     </div>
                                 }
-                                id="basic-nav-dropdown" 
+                                id="basic-nav-dropdown"
                             >
                                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -125,7 +125,7 @@ class NavbarReactBootstrap extends React.Component {
 
 
 
-export default NavbarReactBootstrap;
+export default NavbarAdminReactBootstrap;
 
 // ReactDOM.render(
 //     <CpcNavigation menu={menu} />,

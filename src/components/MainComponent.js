@@ -4,7 +4,7 @@ import Home from './HomeComponent'
 import MyGuilds from './MyGuildsComponent'
 import Bio from './BioComponent'
 import Header from './HeaderComponent'
-import CpcNavigation from './NavbarComponent'
+import NavbarReactBootstrap from './NavbarComponent'
 
 class Main extends Component{
     constructor(props){
@@ -38,7 +38,8 @@ class Main extends Component{
         return (
             <div>
                 <Header />
-                <CpcNavigation  />
+                {/* <CpcNavigation  /> */}
+                <NavbarReactBootstrap/>
                 <Switch>
                     <Route path='/home' component={HomePage}/>
                     <Route path='/bio' component={BioPage}/>
