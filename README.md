@@ -8,6 +8,9 @@ bootstrap navbar image w/ dropdown:https://codepen.io/quipcode/pen/KKwOzzm?edito
 my idealized version: https://codepen.io/quipcode/pen/KKwOzzm?editors=1100
 
 
+avatar editor idea from: https://github.com/mosch/react-avatar-editor
+consider using react-range for slider: https://www.npmjs.com/package/react-range 
+considerexpansive navbar: https://bootsnipp.com/snippets/Gq0z2
 profile page template idea from: https://bootsnipp.com/snippets/K0ZmK
 
 

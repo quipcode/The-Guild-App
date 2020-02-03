@@ -12,6 +12,7 @@ class UserProfile extends Component{
         return(
             <React.Fragment>
                 <MyEditor />
+                
                 <div class="container emp-profile">
                     <form method="post">
                         <div class="row">
