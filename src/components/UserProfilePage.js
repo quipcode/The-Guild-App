@@ -1,17 +1,33 @@
 import React, { Component } from 'react';
 import {Tabs, Tab} from 'react-bootstrap';
-import MyEditor from './AvatarEditor'
+import MyEditor from './AvatarEditor';
+import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label } from 'reactstrap';
+import AvatarEditor from 'react-avatar-editor';
 
 class UserProfile extends Component{
     constructor(props){
         super(props);
 
+        this.toggleModal = this.toggleModal.bind(this);
+
+        this.state = {
+            // isNavOpen: false,
+            isModalOpen: false
+
+        };
+
+    }
+
+    toggleModal() {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        });
     }
 
     render(){
         return(
             <React.Fragment>
-                <MyEditor />
+                
                 
                 <div class="container emp-profile">
                     <form method="post">
@@ -19,9 +35,10 @@ class UserProfile extends Component{
                             <div class="col-md-4">
                                 <div class="profile-img">
                                     <img class="rounded-circle" src="http://localhost:3001/images/ben-sweet-2LowviVHZ-E-unsplash.jpg" alt="" />
-                                    <div class="file btn btn-lg btn-primary">
+                                    <div class="file btn btn-lg btn-primary" onClick={this.toggleModal}>
+                                        {/* <div class="file btn btn-lg btn-primary" onClick={evt => this.updateRotateValue(evt)}></div> */}
                                         Change Photo
-                                <input type="file" name="file" />
+                                        {/* <input type="file" name="file" /> */}
                                     </div>
                                 </div>
                             </div>
@@ -60,6 +77,31 @@ class UserProfile extends Component{
                                 <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
                             </div>
                         </div>
+                        <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                            <ModalHeader toggle={this.toggleModal}>Avatar Editor</ModalHeader>
+                            <ModalBody>
+                                {/* <Form onSubmit={this.handleLogin}>
+                                    <FormGroup>
+                                        <Label htmlFor="username">Username</Label>
+                                        <Input type="text" id="username" name="username" innerRef={input => this.username = input} />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label htmlFor="password">Password</Label>
+                                        <Input type="password" id="password" name="password" innerRef={input => this.password = input} />
+                                    </FormGroup>
+                                    <FormGroup check>
+                                        <Label check>
+                                            <Input type="checkbox" name="remember"
+                                                innerRef={input => this.remember = input} />
+                                            Remember me
+                                </Label>
+                                    </FormGroup>
+                                    <Button type="Submit" value="submit" color="primary">Login</Button>
+                                </Form> */}
+                                <MyEditor />
+                            </ModalBody>
+                        </Modal>
+                        
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="profile-work">
