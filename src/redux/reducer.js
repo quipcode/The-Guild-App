@@ -1,9 +1,9 @@
-import { USERS } from '../shared/users';
+// import { USERS } from '../shared/users';
 
-export const initialState = {
-    users: USERS
-};
+// export const initialState = {
+//     users: USERS
+// };
 
-export const Reducer = (state = initialState, action) => {
-    return state;
-};
+// export const Reducer = (state = initialState, action) => {
+//     return state;
+// };

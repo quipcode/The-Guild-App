@@ -5,6 +5,7 @@ import { baseUrl } from '../shared/baseUrl';
 
 
 export const fetchUsers = () => dispatch => {
+    dispatch(usersLoading());
     return fetch(baseUrl + 'users')
         .then(response => {
             if (response.ok) {
@@ -22,6 +23,7 @@ export const fetchUsers = () => dispatch => {
         .then(response => response.json())
         .then(users => dispatch(addUsers(users)))
         .catch(error => dispatch(usersFailed(error.message)));
+        
 };
 
 export const usersLoading = () => ({

@@ -6,6 +6,7 @@ import Bio from './BioComponent'
 import Header from './HeaderComponent'
 import NavbarReactBootstrap from './NavbarComponent'
 import UserProfile from './UserProfilePage';
+import UserDirectory from './UserDirectoryComponent';
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
@@ -14,17 +15,16 @@ import { connect } from 'react-redux';
 import {usersLoading, usersFailed, addUsers, addUser, postUser, fetchUsers} from '../redux/ActionCreators'
 
 const mapDispatchToProps = {
-    // postUser = (userId, userName, userAvatar, avatarImage) 
+    fetchUsers: () => (fetchUsers()),
     postUser: (userId, userName, userAvatar, avatarImage)  => (postUser(userId, userName, userAvatar, avatarImage)),
     addUser: (userId, userName, userAvatar, avatarImage) => (addUser(userId, userName, userAvatar, avatarImage)),
     // addComment: (campsiteId, rating, author, text) => (addComment(campsiteId, rating, author, text)),
-    // fetchUsers: () => (fetchUsers()),
+    // postUser = (userId, userName, userAvatar, avatarImage) 
     // resetFeedbackForm: () => (actions.reset('feedbackForm')),
     // fetchComments: () => (fetchComments()),
     // fetchPromotions: () => (fetchPromotions()),
     // fetchPartners: () => (fetchPartners()),
     // postFeedback: () => (postFeedback())
-    
 };
 
 const mapStateToProps = state => {
@@ -39,21 +39,15 @@ const mapStateToProps = state => {
 
 
 class Main extends Component{
-    // constructor(props){
-    //     super(props);
-    //     this.state = {
-    //         // campsites: CAMPSITES
-           
-    //     }
-    // }
+   
+       
     componentDidMount() {
-        // this.props.fetchUsers();
-        // this.props.fetchComments();
-        // this.props.fetchPromotions();
-        // this.props.fetchPartners();
+        this.props.fetchUsers()     
     }
    
     render(){
+        console.log(this.props)
+        console.log(this.state)
         const HomePage = () => {
             return (
                 <Home/>
@@ -88,6 +82,7 @@ class Main extends Component{
                     <Route path='/bio' component={BioPage}/>
                     <Route path='/myguilds' component={MyGuildsPage}/>
                     <Route path='/myprofile' component={UserProfPageID} />
+                    <Route path='/userdirectory' render={() => <UserDirectory users={this.props.users} />} />
                     <Redirect to='/home' />
                 </Switch>
             </div>
@@ -97,4 +92,4 @@ class Main extends Component{
 }
 
 // export default Main;
-export default withRouter(connect(mapStateToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
