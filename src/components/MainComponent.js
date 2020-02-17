@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import Home from './HomeComponent'
 import MyGuilds from './MyGuildsComponent'
 import Bio from './BioComponent'
@@ -9,11 +10,33 @@ import UserProfile from './UserProfilePage';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 
+
+import {usersLoading, usersFailed, addUsers, addUser, postUser, fetchUsers} from '../redux/ActionCreators'
+
+const mapDispatchToProps = {
+    // postUser = (userId, userName, userAvatar, avatarImage) 
+    postUser: (userId, userName, userAvatar, avatarImage)  => (postUser(userId, userName, userAvatar, avatarImage)),
+    addUser: (userId, userName, userAvatar, avatarImage) => (addUser(userId, userName, userAvatar, avatarImage)),
+    // addComment: (campsiteId, rating, author, text) => (addComment(campsiteId, rating, author, text)),
+    // fetchUsers: () => (fetchUsers()),
+    // resetFeedbackForm: () => (actions.reset('feedbackForm')),
+    // fetchComments: () => (fetchComments()),
+    // fetchPromotions: () => (fetchPromotions()),
+    // fetchPartners: () => (fetchPartners()),
+    // postFeedback: () => (postFeedback())
+    
+};
+
 const mapStateToProps = state => {
     return {
-        users: state.users,
+        users: state.users
+        // comments: state.comments,
+        // partners: state.partners,
+        // promotions: state.promotions
     };
 };
+
+
 
 class Main extends Component{
     // constructor(props){
@@ -23,7 +46,12 @@ class Main extends Component{
            
     //     }
     // }
-
+    componentDidMount() {
+        // this.props.fetchUsers();
+        // this.props.fetchComments();
+        // this.props.fetchPromotions();
+        // this.props.fetchPartners();
+    }
    
     render(){
         const HomePage = () => {

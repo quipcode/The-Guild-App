@@ -5,6 +5,7 @@ import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, 
 import { Link } from 'react-router-dom';
 import AvatarEditor from 'react-avatar-editor';
 import {Loading} from './LoadingComponent';
+import {baseUrl} from '../shared/baseUrl';
 
 
 function UserProfile2(props) {
@@ -92,7 +93,9 @@ class UserProfile extends Component {
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="profile-img">
-                                    <img class="rounded-circle" src="http://localhost:3001/images/ben-sweet-2LowviVHZ-E-unsplash.jpg" alt="" />
+                                    {/* <img class="rounded-circle" src="http://localhost:3001/images/ben-sweet-2LowviVHZ-E-unsplash.jpg" alt="" /> */}
+                                    <img class="rounded-circle" src={baseUrl + 'images/bman.jpg'} alt="" />
+                                    {/* http://localhost:3001/images/bman.jpg */}
                                     <div class="file btn btn-lg btn-primary" onClick={this.toggleModal}>
                                         {/* <div class="file btn btn-lg btn-primary" onClick={evt => this.updateRotateValue(evt)}></div> */}
                                         Change Photo
@@ -138,7 +141,7 @@ class UserProfile extends Component {
                         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                             <ModalHeader toggle={this.toggleModal}>Avatar Editor</ModalHeader>
                             <ModalBody>
-                                {/* <Form onSubmit={this.handleLogin}>
+                                <Form onSubmit={this.handleLogin}>
                                     <FormGroup>
                                         <Label htmlFor="username">Username</Label>
                                         <Input type="text" id="username" name="username" innerRef={input => this.username = input} />
@@ -155,8 +158,9 @@ class UserProfile extends Component {
                                 </Label>
                                     </FormGroup>
                                     <Button type="Submit" value="submit" color="primary">Login</Button>
-                                </Form> */}
-                                <MyEditor />
+                                    <Button  value="submit" color="secondary" onClick = {this.toggleModal}>Cancel</Button>
+                                </Form>
+                                {/* <MyEditor /> */}
                             </ModalBody>
                         </Modal>
 

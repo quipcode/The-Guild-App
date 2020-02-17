@@ -45,7 +45,10 @@ class MyEditor extends React.Component {
         });
     }
 
- 
+    //closing the avatar editor modal
+    handleClose = () => {
+        this.setState({ isModalOpen: !this.state.isModalOpen })
+    }
     updateDemo = () =>{
         // this.output.innerHTML = this.slider.value; // Display the default slider value
 
@@ -162,7 +165,7 @@ class MyEditor extends React.Component {
                             </FormGroup>
                            
                             <Button type="Submit" value="submit" color="primary">Save</Button>
-                            <Button type="Submit" value="submit" color="secondary">Cancel</Button>
+                            <Button  value="submit" color="secondary" onClick = {this.handleClose}>Cancel</Button>
                             
                         </Form>
                 
