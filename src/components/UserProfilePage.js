@@ -1,11 +1,69 @@
 import React, { Component } from 'react';
 import {Tabs, Tab} from 'react-bootstrap';
 import MyEditor from './AvatarEditor';
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import AvatarEditor from 'react-avatar-editor';
+import {Loading} from './LoadingComponent';
 
-class UserProfile extends Component{
-    constructor(props){
+
+function UserProfile2(props) {
+    if (props.isLoading) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <Loading />
+                    </div>
+
+                </div>
+            </div>
+        )
+    }
+
+    if (props.errMess) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        {props.errMess}
+                    </div>
+                </div>
+            </div>
+        )
+    }
+    if (props.campsite) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <Breadcrumb>
+                            <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                            <BreadcrumbItem active>{props.campsite.name}</BreadcrumbItem>
+                        </Breadcrumb>
+                        <h2>{props.user.name}</h2>
+                        <h3>What up</h3>
+                        <hr />
+                    </div>
+                </div>
+                <div className="row">
+                    {/* <RenderCampsite campsite={props.campsite} />
+                    <RenderComments
+                        comments={props.comments}
+                        // addComment={props.addComment}
+                        postComment={props.postComment}
+                        campsiteId={props.campsite.id}
+                    /> */}
+                </div>
+            </div>
+        );
+    }
+    return <div />;
+}
+
+
+class UserProfile extends Component {
+    constructor(props) {
         super(props);
 
         this.toggleModal = this.toggleModal.bind(this);
@@ -24,11 +82,11 @@ class UserProfile extends Component{
         });
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <React.Fragment>
-                
-                
+
+
                 <div class="container emp-profile">
                     <form method="post">
                         <div class="row">
@@ -101,7 +159,7 @@ class UserProfile extends Component{
                                 <MyEditor />
                             </ModalBody>
                         </Modal>
-                        
+
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="profile-work">
@@ -118,41 +176,41 @@ class UserProfile extends Component{
                                 </div>
                             </div>
                             <div class="col-md-8">
-                                
+
                                 {/* where meat of tabs was */}
                             </div>
                         </div>
                     </form>
                     <div class="row text-center">
 
-                        
-      <div class="col-md-6 mb-4">
+
+                        <div class="col-md-6 mb-4">
 
                             <h2 class="my-5 h2">Basic example</h2>
 
                             <img class="rounded-circle" alt="100x100" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
-                                data-holder-rendered="true"/>
+                                data-holder-rendered="true" />
 
-      </div>
-                            
-                      
-      
-      <div class="col-md-6 mb-4">
+                        </div>
 
-                                <h2 class="my-5 h2">With shadow</h2>
 
-                                <img class="rounded-circle z-depth-2" alt="100x100" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
-                                    data-holder-rendered="true"/>
 
-      </div>
-                                
-                          
-    </div>
+                        <div class="col-md-6 mb-4">
+
+                            <h2 class="my-5 h2">With shadow</h2>
+
+                            <img class="rounded-circle z-depth-2" alt="100x100" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
+                                data-holder-rendered="true" />
+
+                        </div>
+
+
+                    </div>
                 </div>
-                
+
             </React.Fragment>
-            
-           
+
+
         )
     }
 }
