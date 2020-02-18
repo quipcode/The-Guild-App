@@ -69,13 +69,13 @@ class Main extends Component{
         const UserProfPageID = ({ match }) => {
             return(
                 // <UserProfile/>
-                <UserProfile user={this.props.users.users.filter(user => user.id === +match.params.userID)[0]}/>
+                <UserProfile user={this.props.users.users.filter(user => user.id === +match.params.userId)[0]}/>
             )
         }
 
         const MyUserProfPage = ({match}) => {
             return(
-                <MyUserProfile user={this.props.users.users.filter(user => user.id === +match.params.userID)[0]}/>
+                <MyUserProfile user={this.props.users.users.filter(user => user.id === +match.params.userId)[0]}/>
             )
         }
 
@@ -89,7 +89,7 @@ class Main extends Component{
                     <Route path='/bio' component={BioPage}/>
                     <Route path='/myguilds' component={MyGuildsPage}/>
                     <Route path='/myprofile' component={MyUserProfPage} />
-                    <Route path='/userprofile' component={UserProfPageID} />
+                    <Route path='/userprofile/:userId' component={UserProfPageID} />
                     <Route path='/userdirectory' render={() => <UserDirectory users={this.props.users} />} />
                     <Redirect to='/home' />
                 </Switch>

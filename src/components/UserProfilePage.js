@@ -6,7 +6,45 @@ import { Link } from 'react-router-dom';
 import AvatarEditor from 'react-avatar-editor';
 import {Loading} from './LoadingComponent';
 import {baseUrl} from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
+function RenderCampsite({campsite}){
+    return(
+        <div className="col-md-5 m-1">
+            <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
+                <Card>
+                    <CardImg top src={baseUrl + campsite.image} alt={campsite.name} />
+                    <CardBody>
+                        <CardText>{campsite.description}</CardText>
+                    </CardBody>
+                </Card>
+            </FadeTransform>
+        </div>
+    )
+}
+
+function UserProfile({user}){
+    return(
+        <div className="col-md-5 m-1">
+        <FadeTransform
+            in
+            transformProps={{
+                exitTransform: 'scale(0.5) translateY(-50%)'
+            }}>
+            <Card>
+                <CardImg top src={user.images.sm}  alt={user.name} />
+                <CardBody>
+                    <CardText>{user.biography.fullName}</CardText>
+                </CardBody>
+            </Card>
+        </FadeTransform>
+    </div>
+    )
+}
 
 function UserProfile2(props) {
     if (props.isLoading) {
@@ -63,7 +101,7 @@ function UserProfile2(props) {
 }
 
 
-class UserProfile extends Component {
+class UserProfile3 extends Component {
     constructor(props) {
         super(props);
 
@@ -218,4 +256,58 @@ class UserProfile extends Component {
     }
 }
 
+class UserAvatar extends Component{
+    constructor(props) {
+        super(props);
+        this.toggleModal = this.toggleModal.bind(this);
+        this.state = {
+            isModalOpen: false
+        };
+    }
+
+    toggleModal() {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        });
+    }
+
+    // handleSubmit(values) {
+    //     this.toggleModal();
+    //     // this.props.addComment(this.props.campsiteId, values.rating, values.author, values.text);
+    //     this.props.postComment(this.props.campsiteId, values.rating, values.author, values.text);
+    //     // console.log('Current state is: ' + JSON.stringify(values));
+    //     // alert('Current state is: ' + JSON.stringify(values));
+    // }
+    render(){
+        return(
+            <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                <ModalHeader toggle={this.toggleModal}>Avatar Editor</ModalHeader>
+                <ModalBody>
+                    <Form onSubmit={this.handleLogin}>
+                        <FormGroup>
+                            <Label htmlFor="username">Username</Label>
+                            <Input type="text" id="username" name="username" innerRef={input => this.username = input} />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label htmlFor="password">Password</Label>
+                            <Input type="password" id="password" name="password" innerRef={input => this.password = input} />
+                        </FormGroup>
+                        <FormGroup check>
+                            <Label check>
+                                <Input type="checkbox" name="remember"
+                                    innerRef={input => this.remember = input} />
+                                Remember me
+                    </Label>
+                        </FormGroup>
+                        <Button type="Submit" value="submit" color="primary">Login</Button>
+                        <Button  value="submit" color="secondary" onClick = {this.toggleModal}>Cancel</Button>
+                    </Form>
+                    {/* <MyEditor /> */}
+                </ModalBody>
+            </Modal>
+        )
+    }
+    
+
+}
 export default UserProfile;

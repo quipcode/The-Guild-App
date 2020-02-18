@@ -30,18 +30,24 @@ function RenderDirectoryItem({user}) {
         //         </CardImgOverlay>
         //     </Link>
         // </Card>
+        
+        
+            <div className="holder col-md-3">
+                {/* <input type="text" classNAme="search" onChange={this.searchHandler}/> */}
 
-        <div className="holder col-md-3">
-            {/* <input type="text" classNAme="search" onChange={this.searchHandler}/> */}
-            <ul className="userdirectoryul">
-                <li className="userdirectoryli">
-                    {/* <img src={user.images.sm}  width="100px" height="100px" alt="img"/>    */}
-                    <img  className="userdirectoryimage" src={user.images.sm} alt={user.name} roundedCircle width="75px" height="75px" border-radius="50%" margin="0 10px 0 0"  float="left" display="block" />
-                    <span className="userdirectoryname">{user.name}</span>
-                    <span className="userdirectoryfullname">{user.biography.fullName}</span>
-                </li>
-            </ul>
-        </div>   
+                <ul className="userdirectoryul">
+                    
+                        <li className="userdirectoryli">
+                            {/* <img src={user.images.sm}  width="100px" height="100px" alt="img"/>    */}
+                            <img  className="userdirectoryimage" src={user.images.sm} alt={user.name} roundedCircle width="75px" height="75px" border-radius="50%" margin="0 10px 0 0"  float="left" display="block" />
+                            <Link to={`/userprofile/${user.id}`}>
+                                <span className="userdirectoryname">{user.name}</span>
+                            </Link>  
+                            <span className="userdirectoryfullname">{user.biography.fullName}</span>
+                        </li>
+                </ul>
+            </div>   
+        
         
         // <div className="holder">
         //     <ul className="userdirectoryul">
