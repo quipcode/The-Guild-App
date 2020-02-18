@@ -63,7 +63,7 @@ function UserProfile2(props) {
 }
 
 
-class UserProfile extends Component {
+class MyUserProfile extends Component {
     constructor(props) {
         super(props);
 
@@ -113,7 +113,7 @@ class UserProfile extends Component {
                                     <p class="proile-rating">RANKINGS : <span>8/10</span></p>
                                     <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
                                         <Tab eventKey="home" title="Home">
-                                            <p>Say what again on user prof page by id</p>
+                                            <p>Say what again</p>
 
                                         </Tab>
                                         <Tab eventKey="profile" title="Profile">
@@ -218,4 +218,4 @@ class UserProfile extends Component {
     }
 }
 
-export default UserProfile;
+export default MyUserProfile;

@@ -7,6 +7,7 @@ import Header from './HeaderComponent'
 import NavbarReactBootstrap from './NavbarComponent'
 import UserProfile from './UserProfilePage';
 import UserDirectory from './UserDirectoryComponent';
+import MyUserProfile from './MyUserProfilePage';
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
@@ -72,6 +73,12 @@ class Main extends Component{
             )
         }
 
+        const MyUserProfPage = ({match}) => {
+            return(
+                <MyUserProfile user={this.props.users.users.filter(user => user.id === +match.params.userID)[0]}/>
+            )
+        }
+
         return (
             <div>
                 <Header />
@@ -81,7 +88,8 @@ class Main extends Component{
                     <Route path='/home' component={HomePage}/>
                     <Route path='/bio' component={BioPage}/>
                     <Route path='/myguilds' component={MyGuildsPage}/>
-                    <Route path='/myprofile' component={UserProfPageID} />
+                    <Route path='/myprofile' component={MyUserProfPage} />
+                    <Route path='/userprofile' component={UserProfPageID} />
                     <Route path='/userdirectory' render={() => <UserDirectory users={this.props.users} />} />
                     <Redirect to='/home' />
                 </Switch>

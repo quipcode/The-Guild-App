@@ -104,7 +104,7 @@ class NavbarReactBootstrap extends React.Component {
                                 id="basic-nav-dropdown"
                             >
                                 <NavDropdown.Item href="/userdirectory">Directory of Users</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                                <NavDropdown.Item href="/userprofile">User Profile by Id</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
