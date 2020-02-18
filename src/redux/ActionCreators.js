@@ -6,7 +6,9 @@ import { baseUrl } from '../shared/baseUrl';
 
 export const fetchUsers = () => dispatch => {
     dispatch(usersLoading());
-    return fetch(baseUrl + 'users')
+    // return fetch(baseUrl + 'users')
+    return fetch('https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json')
+   
         .then(response => {
             if (response.ok) {
                 return response;

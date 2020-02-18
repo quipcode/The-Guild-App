@@ -11,21 +11,62 @@ import React, {Component, Text} from 'react';
 import { Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import {Loading } from './LoadingComponent'
-import { baseUrl } from '../shared/baseUrl';
+// import { baseUrl } from '../shared/baseUrl';
 // import{Text} from 'react-bootstrap';
+import Image from 'react-bootstrap/Image'
 
 function RenderDirectoryItem({user}) {
     return (
-        <Card>
-            <Link to={`/myprofile/${user.id}`}>
-                {/* <CardImg width="100%" src={campsite.image} alt={campsite.name} /> */}
+        // <Card>
+        //     <Link to={`/myprofile/${user.id}`}>
+        //         {/* <CardImg width="100%" src={campsite.image} alt={campsite.name} /> */}
                 
-                <CardImg width="100%" src={baseUrl + user.avatar} alt={user.name} />
-                <CardImgOverlay>
-                    <CardTitle>{user.name}</CardTitle>
-                </CardImgOverlay>
-            </Link>
-        </Card>
+        //         {/* <CardImg width="100%" src={baseUrl + user.images.md} alt={user.name} /> */}
+        //         {/* <img class="rounded-circle" src={baseUrl + 'images/bman.jpg'} alt="" /> */}
+        //         {/* <CardImg width="100%" class="rounded-circle" src={user.images.md} alt={user.name} /> */}
+        //         <Image src={user.images.md} alt={user.name} roundedCircle />
+        //         <CardImgOverlay>
+        //             <CardTitle>{user.name}</CardTitle>
+        //         </CardImgOverlay>
+        //     </Link>
+        // </Card>
+
+        <div className="holder col-md-3">
+            {/* <input type="text" classNAme="search" onChange={this.searchHandler}/> */}
+            <ul className="userdirectoryul">
+                <li className="userdirectoryli">
+                    {/* <img src={user.images.sm}  width="100px" height="100px" alt="img"/>    */}
+                    <img  className="userdirectoryimage" src={user.images.sm} alt={user.name} roundedCircle width="50px" height="50px" border-radius="50%" margin="0 10px 0 0"  float="left" display="block" />
+                    <span className="userdirectoryname">{user.name}</span>
+                    <span className="userdirectoryfullname">{user.biography.fullName}</span>
+                </li>
+            </ul>
+        </div>   
+        
+        // <div className="holder">
+        //     <ul className="userdirectoryul">
+        //         <li className="userdirectoryli">
+        //             <img className="userdirectoryimage" src={user.images.sm}  width="100px" height="100px" alt="img"/>
+        //             <span className="userdirectoryname">John</span>
+        //             <span className="userdirectoryfullname">John Legend</span>
+        //         </li>
+        //     </ul>
+        // </div>
+
+      
+        
+     
+    //     <div>
+    //         <Image src={user.images.sm} alt={user.name} roundedCircle width="100px" height="100px" />
+    //     </div>
+    //      <li className="contact">
+             
+    //      {/* <img src={this.props.image} width="60px" height="60px" className="contact-image"/> */}
+    //      <div className="contact-info">
+    //        <div className="contact-name">{user.name}</div>
+    //        {/* <div className="contact-number">{this.props.phoneNumber}</div> */}
+    //      </div>
+    //    </li>
     );
 }
 
@@ -33,9 +74,11 @@ function Directory(props) {
 
     const users = props.users.users.map(user => {
         return(
-            <div key={user.id} className="col-md-5 m-1">
-                <RenderDirectoryItem user={user} />
-            </div>
+            // <div key={user.id} className="">
+            //     <RenderDirectoryItem user={user} />
+            // </div>
+            
+            <RenderDirectoryItem user={user} />
         );
     });
 
@@ -75,7 +118,7 @@ function Directory(props) {
                 <div className="col">
                     <Breadcrumb>
                         <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>Directory</BreadcrumbItem>
+                        <BreadcrumbItem active>User Directory</BreadcrumbItem>
                     </Breadcrumb>
                     <h2>Directory</h2>
                     <hr />

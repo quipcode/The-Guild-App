@@ -68,7 +68,7 @@ class Main extends Component{
         const UserProfPageID = ({ match }) => {
             return(
                 // <UserProfile/>
-                <UserProfile user={this.props.users.filter(user => user.id === +match.params.userID)[0]}/>
+                <UserProfile user={this.props.users.users.filter(user => user.id === +match.params.userID)[0]}/>
             )
         }
 

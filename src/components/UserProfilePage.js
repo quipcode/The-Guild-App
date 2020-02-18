@@ -86,8 +86,7 @@ class UserProfile extends Component {
     render() {
         return (
             <React.Fragment>
-
-
+                   
                 <div class="container emp-profile">
                     <form method="post">
                         <div class="row">
