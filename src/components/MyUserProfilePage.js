@@ -90,10 +90,10 @@ class MyUserProfile extends Component {
                 <div class="container emp-profile">
                     <form method="post">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="profile-img">
                                     {/* <img class="rounded-circle" src="http://localhost:3001/images/ben-sweet-2LowviVHZ-E-unsplash.jpg" alt="" /> */}
-                                    <img class="rounded-circle" src={baseUrl + 'images/bman.jpg'} alt="" />
+                                    <img className="userprofileimage" class="rounded-circle" src={baseUrl + 'images/bman.jpg'} alt="" />
                                     {/* http://localhost:3001/images/bman.jpg */}
                                     <div class="file btn btn-lg btn-primary" onClick={this.toggleModal}>
                                         {/* <div class="file btn btn-lg btn-primary" onClick={evt => this.updateRotateValue(evt)}></div> */}
@@ -202,7 +202,7 @@ class MyUserProfile extends Component {
 
                             <h2 class="my-5 h2">With shadow</h2>
 
-                            <img class="rounded-circle z-depth-2" alt="100x100" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
+                            <img class="rounded-circle z-depth-12" alt="100x100" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
                                 data-holder-rendered="true" />
 
                         </div>

@@ -26,7 +26,7 @@ body{
     text-align: center;
 }
 .profile-img img{
-    width: 70%;
+    width: 100%;
     height: 100%;
 }
 .profile-img .file {
@@ -181,8 +181,23 @@ body{
     color: #999;
   }
   
-
+div.userdirectoryusercarddiv{
+    background-color: #80d0c7
+}
 
 .holder .userdirectoryul .userdirectoryli  .userdirectoryimage .userdirectoryname .userdirectoryfullname{
     display: inline-block;
+}
+
+/* image seen on profile page */
+
+img.userprofileimage{
+    float: center;
+    display: block;
+    /* width: 750px;
+    height: 750px; */
+    /* width: 50%;
+    height: 50%; */
+    border-radius: 100%;
+    /* margin: 0 10px 0 0; */
 }

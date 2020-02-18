@@ -17,84 +17,33 @@ import Image from 'react-bootstrap/Image'
 
 function RenderDirectoryItem({user}) {
     return (
-        // <Card>
-        //     <Link to={`/myprofile/${user.id}`}>
-        //         {/* <CardImg width="100%" src={campsite.image} alt={campsite.name} /> */}
-                
-        //         {/* <CardImg width="100%" src={baseUrl + user.images.md} alt={user.name} /> */}
-        //         {/* <img class="rounded-circle" src={baseUrl + 'images/bman.jpg'} alt="" /> */}
-        //         {/* <CardImg width="100%" class="rounded-circle" src={user.images.md} alt={user.name} /> */}
-        //         <Image src={user.images.md} alt={user.name} roundedCircle />
-        //         <CardImgOverlay>
-        //             <CardTitle>{user.name}</CardTitle>
-        //         </CardImgOverlay>
-        //     </Link>
-        // </Card>
-        
-        
-            <div className="holder col-md-3">
+            <div className="holder col-md-3 ">
                 {/* <input type="text" classNAme="search" onChange={this.searchHandler}/> */}
-
+                <div className="userdirectoryusercarddiv">
                 <ul className="userdirectoryul">
-                    
-                        <li className="userdirectoryli">
-                            {/* <img src={user.images.sm}  width="100px" height="100px" alt="img"/>    */}
-                            <img  className="userdirectoryimage" src={user.images.sm} alt={user.name} roundedCircle width="75px" height="75px" border-radius="50%" margin="0 10px 0 0"  float="left" display="block" />
-                            <Link to={`/userprofile/${user.id}`}>
-                                <span className="userdirectoryname">{user.name}</span>
-                            </Link>  
-                            <span className="userdirectoryfullname">{user.biography.fullName}</span>
-                        </li>
+                        
+                            <li className="userdirectoryli">
+                                {/* <img src={user.images.sm}  width="100px" height="100px" alt="img"/>    */}
+                                <img  className="userdirectoryimage" src={user.images.sm} alt={user.name} roundedCircle width="75px" height="75px" border-radius="50%" margin="0 10px 0 0"  float="left" display="block" />
+                                <Link to={`/userprofile/${user.id}`}>
+                                    <span className="userdirectoryname">{user.name}</span>
+                                </Link>  
+                                <span className="userdirectoryfullname">{user.biography.fullName}</span>
+                            </li>
+                        
                 </ul>
-            </div>   
-        
-        
-        // <div className="holder">
-        //     <ul className="userdirectoryul">
-        //         <li className="userdirectoryli">
-        //             <img className="userdirectoryimage" src={user.images.sm}  width="100px" height="100px" alt="img"/>
-        //             <span className="userdirectoryname">John</span>
-        //             <span className="userdirectoryfullname">John Legend</span>
-        //         </li>
-        //     </ul>
-        // </div>
-
-      
-        
-     
-    //     <div>
-    //         <Image src={user.images.sm} alt={user.name} roundedCircle width="100px" height="100px" />
-    //     </div>
-    //      <li className="contact">
-             
-    //      {/* <img src={this.props.image} width="60px" height="60px" className="contact-image"/> */}
-    //      <div className="contact-info">
-    //        <div className="contact-name">{user.name}</div>
-    //        {/* <div className="contact-number">{this.props.phoneNumber}</div> */}
-    //      </div>
-    //    </li>
+                </div>
+            </div>     
     );
 }
 
 function Directory(props) {
 
     const users = props.users.users.map(user => {
-        return(
-            // <div key={user.id} className="">
-            //     <RenderDirectoryItem user={user} />
-            // </div>
-            
+        return(          
             <RenderDirectoryItem user={user} />
         );
     });
-
-    // const directory = props.campsites.campsites.map(campsite => {
-    //     return (
-    //         <div key={campsite.id} className="col-md-5 m-1">
-    //             <RenderDirectoryItem campsite={campsite} />
-    //         </div>
-    //     );
-    // });
 
     if(props.users.isLoading){
         return(
