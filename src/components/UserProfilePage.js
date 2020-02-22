@@ -96,7 +96,7 @@ function UserProfileComponent({user}){
                         <div class="row">
                             <div class="col-md-3">
                                    <div class="profile-img">
-                                   <ChangeProfileImage />
+                                   <ChangeProfileImage user={user} />
                                     <img  className="userprofileimage" src={user.image.small_url} alt={user.name}  data-holder-rendered="true" />
                                     {/* <div class="file btn btn-lg btn-primary" onClick={this.toggleModal}> */}
                                 </div>
@@ -170,18 +170,11 @@ class ChangeProfileImage extends Component {
 
     constructor(props) {
         super(props);
-
         this.toggleModal = this.toggleModal.bind(this);
-
-       
-
         this.state = {
             // isNavOpen: false,
             isModalOpen: false
-        };
-        
-        
-          
+        };  
     }
 
     toggleModal() {
@@ -223,7 +216,7 @@ class ChangeProfileImage extends Component {
                             <Button type="Submit" value="submit" color="primary">Login</Button>
                             <Button  value="submit" color="secondary" onClick = {this.toggleModal}>Cancel</Button>
                         </Form> */}
-                        <MyEditor />
+                        <MyEditor image={this.props.user} />
                     </ModalBody>
                 </Modal>
             </React.Fragment>

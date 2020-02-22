@@ -41,7 +41,7 @@ import Image from 'react-bootstrap/Image'
 //using comic vine
 function RenderDirectoryItem({user}) {
     return (
-            <div className="holder col-md-3 ">
+            <div className="holder col-md-3  ">
                 {/* <input type="text" classNAme="search" onChange={this.searchHandler}/> */}
                 <div className="userdirectoryusercarddiv">
                 <ul className="userdirectoryul">
@@ -49,7 +49,8 @@ function RenderDirectoryItem({user}) {
                             <li className="userdirectoryli">
                                 {/* <img src={user.images.sm}  width="100px" height="100px" alt="img"/>    */}
                                 <img  className="userdirectoryimage" src={user.image.medium_url} alt={user.name} roundedCircle width="75px" height="75px" border-radius="50%" margin="0 10px 0 0"  float="left" display="block" />
-                                <Link to={`/userdirectory/${user.id}`}>
+                                {/* <Link to={`/userdirectory/${user.id}`}> */}
+                        <Link to={`https://www.google.com/`}>
                                     <span className="userdirectoryname">{user.name}</span>
                                 </Link>  
                                 <span className="userdirectoryfullname">{user.real_name}</span>
@@ -99,13 +100,17 @@ function Directory(props) {
                         <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                         <BreadcrumbItem active>User Directory</BreadcrumbItem>
                     </Breadcrumb>
-                    <h2>Directory</h2>
+                    
                     <hr />
                 </div>
             </div>
-            <div className="row">
-                {users}
+            <div className="col" class="emp-profile">
+                <h2 class="centered-header">Directory</h2>
+                <div className="row">
+                    {users}
+                </div>
             </div>
+          
         </div>
     );
 }

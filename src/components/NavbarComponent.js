@@ -22,8 +22,8 @@ class NavbarReactBootstrap extends React.Component {
                 <Navbar className="navbar navbar-dark bg-dark navbar-expand-sm" expand="sm">
                     <Navbar.Brand href="#home">
                         
-                            <a class="navbar-brand" href="#">
-                                <img src="assets/images/transparent_shield.png" width="30" height="30" alt="logo" />
+                            <a className="navbar-brand" href="#">
+                                <img src="/assets/images/transparent_shield.png" width="30" height="30" alt="logo" />
                                 {/* instead of <img src={"/images/resto.png"} /> you need to use <img src={require('/images/image-name.png')} /> */}
                                 {/* <img src={require("images/transparent_shield.png")} width="30" height="30" alt="logo" /> */}
                                 {/* <img src="http://localhost:3001/images/transparent_shield.png" width="30" height="30" alt="logo" /> */}
@@ -45,9 +45,9 @@ class NavbarReactBootstrap extends React.Component {
                                 title={
                                     <div className="pull-left">
                                         <img className="thumbnail-image"
-                                            src="assets/images/icons8-user-shield-80.png"
+                                            src="/assets/images/icons8-user-shield-80.png"
                                             alt="user pic"
-                                            width="40" height="40" class="rounded-circle"
+                                            width="40" height="40" className="rounded-circle"
                                         /><span>Self</span>
                                     </div>
                                 }
@@ -63,7 +63,7 @@ class NavbarReactBootstrap extends React.Component {
                                 title={
                                     <div className="pull-left">
                                         <img className="thumbnail-image"
-                                            src="assets/images/icons8-web-shield-80.png"
+                                            src="/assets/images/icons8-web-shield-80.png"
                                             alt="user pic"
                                             width="40" height="40" class="rounded-circle"
                                         /><span>Guild</span>
@@ -81,7 +81,7 @@ class NavbarReactBootstrap extends React.Component {
                                 title={
                                     <div className="pull-left">
                                         <img className="thumbnail-image"
-                                            src="assets/images/shielded_message.png"
+                                            src="/assets/images/shielded_message.png"
                                             alt="user pic"
                                             width="40" height="40" class="rounded-circle"
                                         /><span>Messages</span>
@@ -89,7 +89,7 @@ class NavbarReactBootstrap extends React.Component {
                                 }
                                 id="basic-nav-dropdown"
                             >
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                                <NavDropdown.Item href="/messagingcenter">Messaging Center</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                                 <NavDropdown.Divider />
@@ -99,7 +99,7 @@ class NavbarReactBootstrap extends React.Component {
                                 title={
                                     <div className="pull-left">
                                         <img className="thumbnail-image"
-                                            src="assets/images/icons8-security-configuration-100.png"
+                                            src="/assets/images/icons8-security-configuration-100.png"
                                             alt="user pic"
                                             width="40" height="40" class="rounded-circle"
                                         /><span>Admin</span>

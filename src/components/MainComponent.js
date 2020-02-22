@@ -8,6 +8,7 @@ import NavbarReactBootstrap from './NavbarComponent'
 import UserProfile from './UserProfilePage';
 import UserDirectory from './UserDirectoryComponent';
 import MyUserProfile from './MyUserProfilePage';
+import MessagingCenter from './MessagingCenter';
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
@@ -79,6 +80,10 @@ class Main extends Component{
             )
         }
 
+        const MessagingCenterPage = ({match}) => {
+            return <MessagingCenter/>
+        }
+
         return (
             <div>
                 <Header />
@@ -87,6 +92,7 @@ class Main extends Component{
                 <Switch>
                     <Route path='/home' component={HomePage}/>
                     <Route path='/bio' component={BioPage}/>
+                    <Route path='/messagingcenter' component={MessagingCenterPage} />
                     <Route path='/myguilds' component={MyGuildsPage}/>
                     <Route path='/myprofile' component={MyUserProfPage} />
                     <Route path='/userdirectory/:userId' component={UserProfPageID} />
