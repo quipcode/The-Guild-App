@@ -23,7 +23,8 @@ class NavbarAdminReactBootstrap extends React.Component {
                     <Navbar.Brand href="#home">
 
                         <a class="navbar-brand" href="#">
-                            <img src="assets/images/transparent_shield.png" width="30" height="30" alt="logo" />
+                            {/* <img src="assets/images/transparent_shield.png" width="30" height="30" alt="logo" /> */}
+                            <img src="http://localhost:3001/images/transparent_shield.png" width="30" height="30" alt="logo" />
                             <span> The Guild App</span>
                         </a>
 

@@ -89,7 +89,7 @@ class Main extends Component{
                     <Route path='/bio' component={BioPage}/>
                     <Route path='/myguilds' component={MyGuildsPage}/>
                     <Route path='/myprofile' component={MyUserProfPage} />
-                    <Route path='/userprofile/:userId' component={UserProfPageID} />
+                    <Route path='/userdirectory/:userId' component={UserProfPageID} />
                     <Route path='/userdirectory' render={() => <UserDirectory users={this.props.users} />} />
                     <Redirect to='/home' />
                 </Switch>

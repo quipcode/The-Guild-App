@@ -4,10 +4,34 @@ import { baseUrl } from '../shared/baseUrl';
 
 
 
+// export const fetchUsers = () => dispatch => {
+//     dispatch(usersLoading());
+//     // return fetch(baseUrl + 'users')
+//     return fetch('https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json')
+   
+//         .then(response => {
+//             if (response.ok) {
+//                 return response;
+//             } else {
+//                 const error = new Error(`Error ${response.status}: ${response.statusText}`); error.response = response;
+//                 throw error;
+//             }
+//         },
+//             error => {
+//                 var errMess = new Error(error.message);
+//                 throw errMess;
+//             }
+//         )
+//         .then(response => response.json())
+//         .then(users => dispatch(addUsers(users)))
+//         .catch(error => dispatch(usersFailed(error.message)));
+        
+// };
+
 export const fetchUsers = () => dispatch => {
     dispatch(usersLoading());
     // return fetch(baseUrl + 'users')
-    return fetch('https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json')
+    return fetch('http://localhost:3002/results')
    
         .then(response => {
             if (response.ok) {
@@ -27,6 +51,7 @@ export const fetchUsers = () => dispatch => {
         .catch(error => dispatch(usersFailed(error.message)));
         
 };
+
 
 export const usersLoading = () => ({
     type: ActionTypes.USERS_LOADING

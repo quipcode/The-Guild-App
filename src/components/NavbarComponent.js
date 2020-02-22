@@ -24,6 +24,10 @@ class NavbarReactBootstrap extends React.Component {
                         
                             <a class="navbar-brand" href="#">
                                 <img src="assets/images/transparent_shield.png" width="30" height="30" alt="logo" />
+                                {/* instead of <img src={"/images/resto.png"} /> you need to use <img src={require('/images/image-name.png')} /> */}
+                                {/* <img src={require("images/transparent_shield.png")} width="30" height="30" alt="logo" /> */}
+                                {/* <img src="http://localhost:3001/images/transparent_shield.png" width="30" height="30" alt="logo" /> */}
+                                
                                 <span> The Guild App</span>
                             </a>
                         

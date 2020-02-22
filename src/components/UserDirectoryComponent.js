@@ -15,6 +15,30 @@ import {Loading } from './LoadingComponent'
 // import{Text} from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
 
+// using basic superhero api
+// function RenderDirectoryItem({user}) {
+//     return (
+//             <div className="holder col-md-3 ">
+//                 {/* <input type="text" classNAme="search" onChange={this.searchHandler}/> */}
+//                 <div className="userdirectoryusercarddiv">
+//                 <ul className="userdirectoryul">
+                        
+//                             <li className="userdirectoryli">
+//                                 {/* <img src={user.images.sm}  width="100px" height="100px" alt="img"/>    */}
+//                                 <img  className="userdirectoryimage" src={user.images.sm} alt={user.name} roundedCircle width="75px" height="75px" border-radius="50%" margin="0 10px 0 0"  float="left" display="block" />
+//                                 <Link to={`/userprofile/${user.id}`}>
+//                                     <span className="userdirectoryname">{user.name}</span>
+//                                 </Link>  
+//                                 <span className="userdirectoryfullname">{user.biography.fullName}</span>
+//                             </li>
+                        
+//                 </ul>
+//                 </div>
+//             </div>     
+//     );
+// }
+
+//using comic vine
 function RenderDirectoryItem({user}) {
     return (
             <div className="holder col-md-3 ">
@@ -24,11 +48,11 @@ function RenderDirectoryItem({user}) {
                         
                             <li className="userdirectoryli">
                                 {/* <img src={user.images.sm}  width="100px" height="100px" alt="img"/>    */}
-                                <img  className="userdirectoryimage" src={user.images.sm} alt={user.name} roundedCircle width="75px" height="75px" border-radius="50%" margin="0 10px 0 0"  float="left" display="block" />
-                                <Link to={`/userprofile/${user.id}`}>
+                                <img  className="userdirectoryimage" src={user.image.medium_url} alt={user.name} roundedCircle width="75px" height="75px" border-radius="50%" margin="0 10px 0 0"  float="left" display="block" />
+                                <Link to={`/userdirectory/${user.id}`}>
                                     <span className="userdirectoryname">{user.name}</span>
                                 </Link>  
-                                <span className="userdirectoryfullname">{user.biography.fullName}</span>
+                                <span className="userdirectoryfullname">{user.real_name}</span>
                             </li>
                         
                 </ul>
