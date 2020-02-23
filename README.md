@@ -14,6 +14,7 @@ considerexpansive navbar: https://bootsnipp.com/snippets/Gq0z2
 profile page template idea from: https://bootsnipp.com/snippets/K0ZmK
 user directory page tempalte idea from: https://codepen.io/Natarajah/pen/mAGQpw
 react chat/message idea from: https://codepen.io/swaibu/pen/OJLZjLb
+even better chat/message idea: https://bootsnipp.com/snippets/nNg98
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
