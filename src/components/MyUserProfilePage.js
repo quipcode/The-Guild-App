@@ -54,6 +54,7 @@ function MyUserProfile(props) {
                 <div className="row">
                     {/* <MyUserProfile user={props.user}/> */}
                     <MyUserProfileComponent user={props.user} />
+                    
                     {/* <RenderCampsite campsite={props.campsite} />
                     <RenderComments
                         comments={props.comments}

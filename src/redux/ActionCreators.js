@@ -52,6 +52,9 @@ export const fetchUsers = () => dispatch => {
         
 };
 
+export const userLoggedIn = () => ({
+    type: ActionTypes.USER_LOGGED_IN
+})
 
 export const usersLoading = () => ({
     type: ActionTypes.USERS_LOADING
@@ -108,3 +111,31 @@ export const postUser = (userId, userName, userAvatar, avatarImage) => dispatch 
             alert('Your user could not be posted\nError: ' + error.message);
         });
 };
+
+// export const fetchLoggedInUsers = () => dispatch => {
+//     dispatch(userLoggedIn());
+
+// }
+// export const fetchUsers = () => dispatch => {
+//     dispatch(usersLoading());
+//     // return fetch(baseUrl + 'users')
+//     return fetch('http://localhost:3002/results')
+   
+//         .then(response => {
+//             if (response.ok) {
+//                 return response;
+//             } else {
+//                 const error = new Error(`Error ${response.status}: ${response.statusText}`); error.response = response;
+//                 throw error;
+//             }
+//         },
+//             error => {
+//                 var errMess = new Error(error.message);
+//                 throw errMess;
+//             }
+//         )
+//         .then(response => response.json())
+//         .then(users => dispatch(addUsers(users)))
+//         .catch(error => dispatch(usersFailed(error.message)));
+        
+// };

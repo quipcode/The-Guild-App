@@ -49,8 +49,8 @@ function RenderDirectoryItem({user}) {
                             <li className="userdirectoryli">
                                 {/* <img src={user.images.sm}  width="100px" height="100px" alt="img"/>    */}
                                 <img  className="userdirectoryimage" src={user.image.medium_url} alt={user.name} roundedCircle width="75px" height="75px" border-radius="50%" margin="0 10px 0 0"  float="left" display="block" />
-                                {/* <Link to={`/userdirectory/${user.id}`}> */}
-                        <Link to={`https://www.google.com/`}>
+                                <Link to={`/userdirectory/${user.id}`}>
+                        {/* <Link to={`https://www.google.com/`}> */}
                                     <span className="userdirectoryname">{user.name}</span>
                                 </Link>  
                                 <span className="userdirectoryfullname">{user.real_name}</span>
