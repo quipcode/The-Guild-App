@@ -7,6 +7,7 @@ import Header from './HeaderComponent'
 import NavbarReactBootstrap from './NavbarComponent'
 import UserProfile from './UserProfilePage';
 import UserDirectory from './UserDirectoryComponent';
+import Directory from './UserDirectoryComponent'
 import MyUserProfile from './MyUserProfilePage';
 import MessagingCenter from './MessagingCenter';
 
@@ -98,9 +99,11 @@ class Main extends Component{
                     <Route path='/bio' component={BioPage}/>
                     <Route path='/messagingcenter' component={MessagingCenterPage} />
                     <Route path='/myguilds' component={MyGuildsPage}/>
-                    <Route path='/myprofile' component={MyUserProfPage} />
+                    {/* <Route path='/myprofile' component={MyUserProfPage} /> */}
+                    <Route path='/myprofile' render={() => <MyUserProfile loggedInUser={this.props.loggedInUser}/>} />
                     <Route path='/userdirectory/:userId' component={UserProfPageID} />
-                    <Route path='/userdirectory' render={() => <UserDirectory users={this.props.users} />} />
+                    {/* <Route path='/userdirectory' render={() => <UserDirectory users={this.props.users} />} /> */}
+                    <Route path='/userdirectory' render={() => <Directory  users={this.props.users}/>} />
                     <Redirect to='/home' />
                 </Switch>
             </div>

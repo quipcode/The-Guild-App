@@ -12,6 +12,11 @@ import {baseUrl} from '../shared/baseUrl';
 
 
 function MyUserProfile(props) {
+    const user = props.loggedInUser.loggedInUser.map(user => {
+        return(          
+            <MyUserProfileComponent user={user} />
+        );
+    });
     if (props.isLoading) {
         return (
             <div className="container">
@@ -36,7 +41,7 @@ function MyUserProfile(props) {
         )
     }
 
-    if (props.user) {
+    if (props.loggedInUser) {
         return (
 
             <div className="container">
@@ -45,15 +50,17 @@ function MyUserProfile(props) {
                         <Breadcrumb>
                             <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                             <BreadcrumbItem><Link to="/userdirectory">User Directory</Link></BreadcrumbItem>
-                            <BreadcrumbItem active>{props.user.name}</BreadcrumbItem>
+                            {/* <BreadcrumbItem active>{props.loggedInUser}</BreadcrumbItem> */}
                         </Breadcrumb>
                         {/* <h2>{props.campsite.name}</h2> */}
+                        {/* <h2>{props.loggedInUser.loggedInUser.name}</h2> */}
+                        {user}
                         <hr />
                     </div>
                 </div>
                 <div className="row">
                     {/* <MyUserProfile user={props.user}/> */}
-                    <MyUserProfileComponent user={props.user} />
+                    {/* <MyUserProfileComponent user={props.user[0]} /> */}
                     
                     {/* <RenderCampsite campsite={props.campsite} />
                     <RenderComments

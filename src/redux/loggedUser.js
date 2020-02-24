@@ -4,7 +4,7 @@ import * as ActionTypes from './ActionTypes';
 export const LoggedInUser = (state = {
     isLoading: true,
     errMess: null, 
-    loggedInUser: null
+    loggedInUser: []
 }, action) => {
     switch(action.type){
         case ActionTypes.USER_LOGIN_SUCCESS:
