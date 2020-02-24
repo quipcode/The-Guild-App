@@ -14,12 +14,13 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 
-import {usersLoading, usersFailed, addUsers, addUser, postUser, fetchUsers} from '../redux/ActionCreators'
+import {usersLoading, usersFailed, addUsers, addUser, postUser, fetchUsers, fetchLoginUser} from '../redux/ActionCreators'
 
 const mapDispatchToProps = {
     fetchUsers: () => (fetchUsers()),
-    postUser: (userId, userName, userAvatar, avatarImage)  => (postUser(userId, userName, userAvatar, avatarImage)),
-    addUser: (userId, userName, userAvatar, avatarImage) => (addUser(userId, userName, userAvatar, avatarImage)),
+    // postUser: (userId, userName, userAvatar, avatarImage)  => (postUser(userId, userName, userAvatar, avatarImage)),
+    // addUser: (userId, userName, userAvatar, avatarImage) => (addUser(userId, userName, userAvatar, avatarImage)),
+    fetchLoginUser: () => (fetchLoginUser())
     // addComment: (campsiteId, rating, author, text) => (addComment(campsiteId, rating, author, text)),
     // postUser = (userId, userName, userAvatar, avatarImage) 
     // resetFeedbackForm: () => (actions.reset('feedbackForm')),
@@ -31,7 +32,9 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => {
     return {
-        users: state.users
+        users: state.users,
+        // loggedInUser: "hello",
+        loggedInUser: state.loggedInUser
         // comments: state.comments,
         // partners: state.partners,
         // promotions: state.promotions
@@ -44,7 +47,8 @@ class Main extends Component{
    
        
     componentDidMount() {
-        this.props.fetchUsers()     
+        this.props.fetchUsers()
+        this.props.fetchLoginUser()     
     }
    
     render(){

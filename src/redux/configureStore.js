@@ -13,6 +13,7 @@
 
 import { createStore, combineReducers, applyMiddleware} from 'redux';
 import { Users } from './users';
+import {LoggedInUser} from './loggedUser'
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
@@ -29,6 +30,7 @@ export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
             users: Users,
+            loggedInUser: LoggedInUser
             // comments: Comments,
             // partners: Partners,
             // promotions: Promotions,

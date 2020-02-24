@@ -4,41 +4,18 @@ import { baseUrl } from '../shared/baseUrl';
 
 
 
-// export const fetchUsers = () => dispatch => {
-//     dispatch(usersLoading());
-//     // return fetch(baseUrl + 'users')
-//     return fetch('https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json')
-   
-//         .then(response => {
-//             if (response.ok) {
-//                 return response;
-//             } else {
-//                 const error = new Error(`Error ${response.status}: ${response.statusText}`); error.response = response;
-//                 throw error;
-//             }
-//         },
-//             error => {
-//                 var errMess = new Error(error.message);
-//                 throw errMess;
-//             }
-//         )
-//         .then(response => response.json())
-//         .then(users => dispatch(addUsers(users)))
-//         .catch(error => dispatch(usersFailed(error.message)));
-        
-// };
 
-export const fetchUsers = () => dispatch => {
-    dispatch(usersLoading());
-    // return fetch(baseUrl + 'users')
-    return fetch('http://localhost:3002/results')
-   
+
+export const fetchLoginUser = () => dispatch =>{
+    dispatch(userLoginLoading());
+    return fetch('http://localhost:3002/loggedInUser')
         .then(response => {
-            if (response.ok) {
-                return response;
+            if(response.ok){
+                return response
             } else {
-                const error = new Error(`Error ${response.status}: ${response.statusText}`); error.response = response;
-                throw error;
+                const error = new Error(`Error ${response.status}: ${response.statusText}`); 
+                error.response = response;
+                throw error
             }
         },
             error => {
@@ -47,14 +24,30 @@ export const fetchUsers = () => dispatch => {
             }
         )
         .then(response => response.json())
-        .then(users => dispatch(addUsers(users)))
-        .catch(error => dispatch(usersFailed(error.message)));
-        
-};
+        .then(loggedInUser => dispatch(userLoginSuccess(loggedInUser)))
+        .catch(error => dispatch(userLoginFailed(error.message)));
+}
 
-export const userLoggedIn = () => ({
-    type: ActionTypes.USER_LOGGED_IN
+
+
+export const userLoginSuccess = loggedInUser => ({
+    type: ActionTypes.USER_LOGIN_SUCCESS,
+    payload: loggedInUser
 })
+
+
+
+export const userLoginLoading = () => ({
+    type: ActionTypes.USER_LOGIN_LOADING
+})
+
+export const userLoginFailed = errMess => ({
+    type: ActionTypes.USER_LOGIN_FAILED,
+    payload: errMess
+})
+
+
+
 
 export const usersLoading = () => ({
     type: ActionTypes.USERS_LOADING
@@ -112,30 +105,27 @@ export const postUser = (userId, userName, userAvatar, avatarImage) => dispatch 
         });
 };
 
-// export const fetchLoggedInUsers = () => dispatch => {
-//     dispatch(userLoggedIn());
 
-// }
-// export const fetchUsers = () => dispatch => {
-//     dispatch(usersLoading());
-//     // return fetch(baseUrl + 'users')
-//     return fetch('http://localhost:3002/results')
+export const fetchUsers = () => dispatch => {
+    dispatch(usersLoading());
+    // return fetch(baseUrl + 'users')
+    return fetch('http://localhost:3002/results')
    
-//         .then(response => {
-//             if (response.ok) {
-//                 return response;
-//             } else {
-//                 const error = new Error(`Error ${response.status}: ${response.statusText}`); error.response = response;
-//                 throw error;
-//             }
-//         },
-//             error => {
-//                 var errMess = new Error(error.message);
-//                 throw errMess;
-//             }
-//         )
-//         .then(response => response.json())
-//         .then(users => dispatch(addUsers(users)))
-//         .catch(error => dispatch(usersFailed(error.message)));
+        .then(response => {
+            if (response.ok) {
+                return response;
+            } else {
+                const error = new Error(`Error ${response.status}: ${response.statusText}`); error.response = response;
+                throw error;
+            }
+        },
+            error => {
+                var errMess = new Error(error.message);
+                throw errMess;
+            }
+        )
+        .then(response => response.json())
+        .then(users => dispatch(addUsers(users)))
+        .catch(error => dispatch(usersFailed(error.message)));
         
-// };
+};
