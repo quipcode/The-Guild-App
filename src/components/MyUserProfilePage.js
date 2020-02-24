@@ -12,7 +12,8 @@ import {baseUrl} from '../shared/baseUrl';
 
 
 function MyUserProfile(props) {
-    const user = props.loggedInUser.loggedInUser.map(user => {
+    // my 'props.loggedinusers.loggedinuser' will contain all information pertinent to the logged in user i.e. details, preferences messages...profile detail will only be available in the first inde
+    const user = props.loggedInUser.loggedInUser.slice(0,1).map(user => {
         return(          
             <MyUserProfileComponent user={user} />
         );
@@ -49,7 +50,8 @@ function MyUserProfile(props) {
                     <div className="col">
                         <Breadcrumb>
                             <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
-                            <BreadcrumbItem><Link to="/userdirectory">User Directory</Link></BreadcrumbItem>
+                            {/* <BreadcrumbItem><Link to="/myprofile">My Profile</Link></BreadcrumbItem> */}
+                            <BreadcrumbItem active>My Profile</BreadcrumbItem>
                             {/* <BreadcrumbItem active>{props.loggedInUser}</BreadcrumbItem> */}
                         </Breadcrumb>
                         {/* <h2>{props.campsite.name}</h2> */}
