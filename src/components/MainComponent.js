@@ -15,13 +15,14 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 
-import {usersLoading, usersFailed, addUsers, addUser, postUser, fetchUsers, fetchLoginUser} from '../redux/ActionCreators'
+import {usersLoading, usersFailed, addUsers, addUser, postUser, fetchUsers, fetchLoginUser, fetchMessages} from '../redux/ActionCreators'
 
 const mapDispatchToProps = {
     fetchUsers: () => (fetchUsers()),
     // postUser: (userId, userName, userAvatar, avatarImage)  => (postUser(userId, userName, userAvatar, avatarImage)),
     // addUser: (userId, userName, userAvatar, avatarImage) => (addUser(userId, userName, userAvatar, avatarImage)),
-    fetchLoginUser: () => (fetchLoginUser())
+    fetchLoginUser: () => (fetchLoginUser()),
+    fetchMessages: () => (fetchMessages())
     // addComment: (campsiteId, rating, author, text) => (addComment(campsiteId, rating, author, text)),
     // postUser = (userId, userName, userAvatar, avatarImage) 
     // resetFeedbackForm: () => (actions.reset('feedbackForm')),
@@ -35,7 +36,8 @@ const mapStateToProps = state => {
     return {
         users: state.users,
         // loggedInUser: "hello",
-        loggedInUser: state.loggedInUser
+        loggedInUser: state.loggedInUser,
+        messages: state.messages
         // comments: state.comments,
         // partners: state.partners,
         // promotions: state.promotions
@@ -49,7 +51,8 @@ class Main extends Component{
        
     componentDidMount() {
         this.props.fetchUsers()
-        this.props.fetchLoginUser()     
+        this.props.fetchLoginUser()   
+        this.props.fetchMessages()  
     }
    
     render(){
@@ -81,7 +84,7 @@ class Main extends Component{
 
         const MyUserProfPage = ({match}) => {
             return(
-                <MyUserProfile user={this.props.users.users.filter(user => user.id === +match.params.userId)[0]}/>
+                <MyUserProfile />
             )
         }
 
@@ -97,7 +100,7 @@ class Main extends Component{
                 <Switch>
                     <Route path='/home' component={HomePage}/>
                     <Route path='/bio' component={BioPage}/>
-                    <Route path='/messagingcenter' component={MessagingCenterPage} />
+                    <Route path='/messagingcenter' render ={() => < MessagingCenterPage  messages={this.props.messages} />}/> 
                     <Route path='/myguilds' component={MyGuildsPage}/>
                     {/* <Route path='/myprofile' component={MyUserProfPage} /> */}
                     <Route path='/myprofile' render={() => <MyUserProfile loggedInUser={this.props.loggedInUser}/>} />

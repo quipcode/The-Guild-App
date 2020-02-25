@@ -16,6 +16,8 @@ import { Users } from './users';
 import {LoggedInUser} from './loggedUser'
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import { Messages } from './messages';
+
 
 // import { persistStore, persistCombineReducers } from 'redux-persist';
 // import storage from 'redux-persist/es/storage';
@@ -30,7 +32,8 @@ export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
             users: Users,
-            loggedInUser: LoggedInUser
+            loggedInUser: LoggedInUser,
+            messages: Messages,
             // comments: Comments,
             // partners: Partners,
             // promotions: Promotions,
