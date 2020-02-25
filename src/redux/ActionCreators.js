@@ -8,7 +8,8 @@ import { baseUrl } from '../shared/baseUrl';
 
 export const fetchLoginUser = () => dispatch =>{
     dispatch(userLoginLoading());
-    return fetch('http://localhost:3002/loggedInUser')
+    // return fetch('http://localhost:3002/loggedInUser')
+    return fetch(baseUrl +'loggedInUser')
         .then(response => {
             if(response.ok){
                 return response
@@ -109,7 +110,8 @@ export const postUser = (userId, userName, userAvatar, avatarImage) => dispatch 
 export const fetchUsers = () => dispatch => {
     dispatch(usersLoading());
     // return fetch(baseUrl + 'users')
-    return fetch('http://localhost:3002/results')
+    // return fetch('http://localhost:3002/results')
+    return fetch(baseUrl + 'results')
    
         .then(response => {
             if (response.ok) {

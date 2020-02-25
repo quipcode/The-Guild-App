@@ -17,6 +17,8 @@ react chat/message idea from: https://codepen.io/swaibu/pen/OJLZjLb
 even better chat/message idea: https://bootsnipp.com/snippets/nNg98
 
 
+The schema/backend documentation for the project can be found [here](https://github.com/quipcode/guild_json_server)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
