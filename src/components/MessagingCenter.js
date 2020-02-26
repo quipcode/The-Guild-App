@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 // import {Breadcrumb, BreadcrumbItem} from 'reactstrap'
 import { Link } from 'react-router-dom';
 import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Card, CardImg, CardText, CardBody, CardTitle, Dropdown, DropdownToggle, UncontrolledDropdown, DropdownMenu, DropdownItem, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
+import { LoggedInUser } from '../redux/loggedUser';
 
 class MessagingCenter extends Component{
     constructor(props){
@@ -57,6 +58,7 @@ class MessagingCenter extends Component{
 
         
                 <div class="row justify-content-center h-100">
+                    {/* start of contact cards component */}
                     <div class=" col-md-5 col-xl-4 chat"><div class="card mb-sm-3 mb-md-0 contacts_card">
                             <div class="card-header">
                                 <div class="input-group">
@@ -132,6 +134,11 @@ class MessagingCenter extends Component{
                             </div>
                             <div class="card-footer"></div>
                         </div></div>
+
+                        {/* end of contact component card above ^^^^ */}
+
+
+                        {/* Start of chat section below */}
                         <div class="col-md-7 col-xl-8 chat">
                             <div class="card">
                                 <div class="card-header msg_head">
@@ -163,7 +170,7 @@ class MessagingCenter extends Component{
                                         </DropdownToggle>
                                         <DropdownMenu class="action_menu">
 
-                                            <DropdownItem><i class="fa fa-user-circle"></i> View profile</DropdownItem>
+                                            <DropdownItem><i class="fa fa-user-circle"></i> <Link to={`/userdirectory`}>View profile</Link></DropdownItem>
                                             <DropdownItem><i class="fa fa-users"></i> Add to close friends</DropdownItem>
                                             <DropdownItem><i class="fa fa-plus"></i> Add to group</DropdownItem>
                                             <DropdownItem><i class="fa fa-ban"></i> Block</DropdownItem>
@@ -171,7 +178,9 @@ class MessagingCenter extends Component{
                                             <DropdownItem>Another Action</DropdownItem> */}
                                         </DropdownMenu>
                                     </UncontrolledDropdown>
-                                    {/* <span id="action_menu_btn" onclick={this.toggleModal}><i class="fa fa-ellipsis-v"></i></span> */}
+
+                                    {/* went away from modal...because couldn't get beneath line to work */}
+                                    {/* <span id="action_menu_btn" onclick={this.toggleModal}><i class="fa fa-ellipsis-v"></i></span>
                                     <div class="action_menu">
                                         <p>dropdown</p>
                                    
@@ -188,7 +197,7 @@ class MessagingCenter extends Component{
                                         </ul>
                                         </ModalBody>
                                     </Modal>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div class="card-body msg_card_body">
                                     <div class="d-flex justify-content-start mb-4">
@@ -268,11 +277,133 @@ class MessagingCenter extends Component{
                                 </div>
                             </div>
                         </div>
+                        {/* end of chat section above */}
                     </div>
+                    {/* end of container for chat + contact slider */}
                 </div>
+                {/* end of overall container for whole page */}
+                
             </React.Fragment>
         )
     }
+
+
+// function chatSection(chattingWith) {
+//     if(chattingWith.status == "active"){
+//         return <ActiveChatter chatter={chattingWith}/>
+//     }else{
+//         return <InactiveChatter chatter={chattingWith}/>
+//     }
+// }
+
+
+
+
+ ActiveChatter(chatter){
+    return ( 
+        <div class="col-md-7 col-xl-8 chat">
+            <div class="card">
+                <div class="card-header msg_head">
+                    <div class="d-flex bd-highlight">
+                        <div class="img_cont">
+                            <img src={chatter.avatar} class="rounded-circle user_img"/>
+                            <span class="online_icon"></span>                          
+                            {/* for inactive user <span class="online_icon offline"></span> */}
+                        </div>
+                        <div class="user_info">
+                            <span>Chat with {chatter.firstname}</span>
+                            <p>{chatter.messagetally}</p>
+                        </div>
+                        <div class="video_cam">
+                            {/* <span><i class="fad fa-video"></i></span> */}
+                            <span><i class="fa fa-video-camera"></i></span>
+                            <span><i class="fa fa-phone"></i></span>
+                            
+                        </div>
+                    </div>
+                    
+                
+                
+                    <UncontrolledDropdown id="action_menu_btn">
+                        <DropdownToggle>
+                            <i class="fa fa-ellipsis-v"></i>
+                        </DropdownToggle>
+                        <DropdownMenu class="action_menu">
+
+                            <DropdownItem><i class="fa fa-user-circle"></i> <Link to={`/userdirectory`}>View profile</Link> </DropdownItem>
+                            <DropdownItem><i class="fa fa-users"></i> Add to close friends</DropdownItem>
+                            <DropdownItem><i class="fa fa-plus"></i> Add to group</DropdownItem>
+                            <DropdownItem><i class="fa fa-ban"></i> Block</DropdownItem>
+                            {/* <DropdownItem divider />
+                            <DropdownItem>Another Action</DropdownItem> */}
+                        </DropdownMenu>
+                    </UncontrolledDropdown>
+                    {/* <span id="action_menu_btn" onclick={this.toggleModal}><i class="fa fa-ellipsis-v"></i></span> */}
+                  
+                </div>
+
+
+                <div class="card-body msg_card_body">
+
+                    {this.generateChatContent({chattingWith})}
+                </div>
+
+                <div class="card-footer">
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text attach_btn"><i class="fa fa-paperclip"></i></span>
+                        </div>
+                        <textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
+                        <div class="input-group-append">
+                            <span class="input-group-text send_btn"><i class="fa fa-location-arrow"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+            
+    )
+}
+
+ generateChatHistory({chattingWith}){
+    //chattingWith should be == props.messages.messages.userIDReceiver //where userIDReciever is who you're chatting with
+
+}
+
+ generateChatContent({chattingWith}){
+    let chatContent = [];
+    for(var i = 0; i < chattingWith.length; i++){
+        if(chattingWith.messageby == loggedInUser){
+            chatContent.push(
+                <div class="d-flex justify-content-end mb-4">
+                        <div class="msg_cotainer_send">
+                            {chattingWith.messagecontent}
+                            <span class="msg_time_send">{chattingWith.messagetimestamp}</span>
+                        </div>
+                        <div class="img_cont_msg">
+                    <img src={chattingWith.messangeravatar} class="rounded-circle user_img_msg"/>
+                        </div>
+                    </div>
+            )
+        }else if(chattingWith.messageby != loggedInUser){
+            <div class="d-flex justify-content-start mb-4">
+                        <div class="img_cont_msg">
+                            <img src={chattingWith.messangeravatar} class="rounded-circle user_img_msg"/>
+                        </div>
+                        <div class="msg_cotainer">
+                        {chattingWith.messagecontent}
+                            <span class="msg_time">{chattingWith.messagetimestamp}</span>
+                        </div>
+                    </div>
+        }else{
+            continue
+        }
+    }
+    return chatContent
+}
+
+
 }
 
 export default MessagingCenter;

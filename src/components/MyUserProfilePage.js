@@ -13,6 +13,8 @@ import {baseUrl} from '../shared/baseUrl';
 
 function MyUserProfile(props) {
     // my 'props.loggedinusers.loggedinuser' will contain all information pertinent to the logged in user i.e. details, preferences messages...profile detail will only be available in the first inde
+    
+    // const user = props.loggedInUser.loggedInUser.slice(0,1)
     const user = props.loggedInUser.loggedInUser.slice(0,1).map(user => {
         return(          
             <MyUserProfileComponent user={user} />
@@ -63,14 +65,8 @@ function MyUserProfile(props) {
                 <div className="row">
                     {/* <MyUserProfile user={props.user}/> */}
                     {/* <MyUserProfileComponent user={props.user[0]} /> */}
+                    {/* <MyUserProfileComponent user={user} /> */}
                     
-                    {/* <RenderCampsite campsite={props.campsite} />
-                    <RenderComments
-                        comments={props.comments}
-                        // addComment={props.addComment}
-                        postComment={props.postComment} 
-                        campsiteId={props.campsite.id}
-                    /> */}
                 </div>
             </div>
         );
