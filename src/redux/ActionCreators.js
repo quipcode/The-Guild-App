@@ -94,7 +94,7 @@ export const addUsers = users => ({
 
 export const fetchMessages = () => dispatch =>{
     dispatch(messagesLoading());
-    return fetch(baseUrl + 'loggedInUser/:messages')
+    return fetch(baseUrl + 'messages/' + 'bman')
         .then(response => {
           if(response.ok){
               return response
