@@ -3,15 +3,19 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Card, CardImg, CardText, CardBody, CardTitle, Dropdown, DropdownToggle, UncontrolledDropdown, DropdownMenu, DropdownItem, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
 import { LoggedInUser } from '../redux/loggedUser';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
+const chatContacts = [{id: 1, name: "CatWoman", fullName: "Selina Kyle", status:"online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6784476-catwoman_vol_5_1_textless_variant.jpg"}, {id: 2, name: "Harley Quin", fullName: "Harleen Frances Quinzel", status: "offline", avatar: "https://comicvine1.cbsistatic.com/uploads/scale_medium/11118/111185556/5296059-harley%20quinn%20by%20stanley%20lau.jpg"}, {id:3, name:"Superman", fullName: "Clark Kent", status:"online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11/117229/6777461-ce00l1hcatb21.jpg"}]
 class TestingButtonContent extends Component{
     constructor(props){
         super(props);
+        this.onItemClick = this.onItemClick.bind(this)
         this.state = {
-            chatContent: "hello there"
+            chatContent: "hello there",
+            headerContent: "What up though"
         }
     }
-
+    
     button1 = () => {
         this.setState({
             chatContent: "button 1 was clicked"
@@ -24,19 +28,28 @@ class TestingButtonContent extends Component{
         })
     }
 
+    onItemClick = () => {
+        this.setState({
+            headerContent: "not much you"
+        })
+    }
+
     render(){
         return(
             <React.Fragment>
                 <Button onClick={this.button1}>Button 1</Button>
                 <Button onClick={this.button2}>Button 2</Button>
+                <h4 onClick={this.onItemClick}>head button 1</h4>
+                <h2>{this.headerContent}</h2>
                 <div style={{"overflow-y": "auto",  "width": "500px"}}>
                     <h1>{this.state.chatContent}</h1>
                 </div>
-                <RenderContactProfileChat user={{image: "hi"}}/>
+                <RenderContactProfileChat users={chatContacts}/>
             </React.Fragment>
         )
     }
 }
+
 
 // function RenderContactProfileChat({contact}){
 //     return(
@@ -46,24 +59,40 @@ class TestingButtonContent extends Component{
 //     )
 // }
 
-function RenderContactProfileChat({user}) {
+function RenderContactProfileChat({users}) {
     return (
             <div className="holder col-md-3  ">
                 {/* <input type="text" classNAme="search" onChange={this.searchHandler}/> */}
                 {/* <div className="userdirectoryusercarddiv"> */}
-                <div className="">
-                <ul className="userdirectoryul">
-                        
-                            <li className="userdirectoryli">
-                                {/* <img src={user.images.sm}  width="100px" height="100px" alt="img"/>    */}
+                <div className="card-body chat_contacts_body">
+                <ul className="chat_contacts">
+                    {users.map(user => {
+                            return(
+                            <li className="d-flex bd-highlight">
+                                <div className="img_chatuser_cont">
+                                    <img  className="rounded-circle chatuser_img" src={user.avatar}  />
+                                    <span class={`online_icon ${user.status}`}></span>
+                                </div>
+                                <div className="chatuser_info">
+                                    <Link to={`/userdirectory/${users.id}`}>
+                                        <span className="userdirectoryname">{user.name}</span>
+                                    </Link>  
+                                    
+                                    {/* <span className="chatuserfullname">{user.fullName}</span><br/> */}
+                                    <span className="chatuserfullname">{user.fullName} is {user.status}</span>
+                                    {/* <span className="userdirectoryfullname">{user.fullName}</span> */}
+                                   
+                                </div>
+                            </li>)
+                        })}
+                            {/* <li className="userdirectoryli">
                                 <img  className="userdirectoryimage" src="https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6784476-catwoman_vol_5_1_textless_variant.jpg" roundedCircle  width="75px" height="75px" border-radius="50%" margin="0 10px 0 0"  float="left" display="block" />
-                                <Link to={`/userdirectory/${user.id}`}>
-                        {/* <Link to={`https://www.google.com/`}> */}
-                                    <span className="userdirectoryname">{user.name}</span>
+                                <Link to={`/userdirectory/${users.id}`}>
+                                    <span className="userdirectoryname">{users.name}</span>
                                     <span className="userdirectoryname">Catwoman</span>
                                 </Link>  
                                 <span className="userdirectoryfullname">Selina Kyle</span>
-                            </li>
+                            </li> */}
                         
                 </ul>
                 </div>
@@ -347,18 +376,19 @@ class MessagingCenter extends Component{
                         </div>
                         {/* end of chat section above */}
                         <div>
-                            <p>Test buttons change content</p>
-                            <TestingButtonContent/>
+                            
+                            
                         </div>
                         
-                        
+                        {/* <TestingButtonContent/> */}
                         
                     </div>
                     {/* end of container for chat + contact slider */}
                     
                 </div>
                 {/* end of overall container for whole page */}
-                
+                <p>Test buttons change content</p>
+                <TestingButtonContent/>
             </React.Fragment>
         )
     }
