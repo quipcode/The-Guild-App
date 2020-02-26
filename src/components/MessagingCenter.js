@@ -4,6 +4,73 @@ import { Link } from 'react-router-dom';
 import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Card, CardImg, CardText, CardBody, CardTitle, Dropdown, DropdownToggle, UncontrolledDropdown, DropdownMenu, DropdownItem, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
 import { LoggedInUser } from '../redux/loggedUser';
 
+class TestingButtonContent extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            chatContent: "hello there"
+        }
+    }
+
+    button1 = () => {
+        this.setState({
+            chatContent: "button 1 was clicked"
+        })
+    }
+
+    button2 = () => {
+        this.setState({
+            chatContent: "button 2 was clicked"
+        })
+    }
+
+    render(){
+        return(
+            <React.Fragment>
+                <Button onClick={this.button1}>Button 1</Button>
+                <Button onClick={this.button2}>Button 2</Button>
+                <div style={{"overflow-y": "auto",  "width": "500px"}}>
+                    <h1>{this.state.chatContent}</h1>
+                </div>
+                <RenderContactProfileChat user={{image: "hi"}}/>
+            </React.Fragment>
+        )
+    }
+}
+
+// function RenderContactProfileChat({contact}){
+//     return(
+//         <div>
+//             <img src="https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6784476-catwoman_vol_5_1_textless_variant.jpg" class="rounded-image"></img> 
+//         </div>
+//     )
+// }
+
+function RenderContactProfileChat({user}) {
+    return (
+            <div className="holder col-md-3  ">
+                {/* <input type="text" classNAme="search" onChange={this.searchHandler}/> */}
+                {/* <div className="userdirectoryusercarddiv"> */}
+                <div className="">
+                <ul className="userdirectoryul">
+                        
+                            <li className="userdirectoryli">
+                                {/* <img src={user.images.sm}  width="100px" height="100px" alt="img"/>    */}
+                                <img  className="userdirectoryimage" src="https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6784476-catwoman_vol_5_1_textless_variant.jpg" roundedCircle  width="75px" height="75px" border-radius="50%" margin="0 10px 0 0"  float="left" display="block" />
+                                <Link to={`/userdirectory/${user.id}`}>
+                        {/* <Link to={`https://www.google.com/`}> */}
+                                    <span className="userdirectoryname">{user.name}</span>
+                                    <span className="userdirectoryname">Catwoman</span>
+                                </Link>  
+                                <span className="userdirectoryfullname">Selina Kyle</span>
+                            </li>
+                        
+                </ul>
+                </div>
+            </div>     
+    );
+}
+
 class MessagingCenter extends Component{
     constructor(props){
         super(props)
@@ -34,6 +101,7 @@ class MessagingCenter extends Component{
 
     render(){
         return(
+            
             <React.Fragment>
                 
                 <div className="container">
@@ -278,8 +346,16 @@ class MessagingCenter extends Component{
                             </div>
                         </div>
                         {/* end of chat section above */}
+                        <div>
+                            <p>Test buttons change content</p>
+                            <TestingButtonContent/>
+                        </div>
+                        
+                        
+                        
                     </div>
                     {/* end of container for chat + contact slider */}
+                    
                 </div>
                 {/* end of overall container for whole page */}
                 
@@ -299,111 +375,112 @@ class MessagingCenter extends Component{
 
 
 
- ActiveChatter(chatter){
-    return ( 
-        <div class="col-md-7 col-xl-8 chat">
-            <div class="card">
-                <div class="card-header msg_head">
-                    <div class="d-flex bd-highlight">
-                        <div class="img_cont">
-                            <img src={chatter.avatar} class="rounded-circle user_img"/>
-                            <span class="online_icon"></span>                          
-                            {/* for inactive user <span class="online_icon offline"></span> */}
-                        </div>
-                        <div class="user_info">
-                            <span>Chat with {chatter.firstname}</span>
-                            <p>{chatter.messagetally}</p>
-                        </div>
-                        <div class="video_cam">
-                            {/* <span><i class="fad fa-video"></i></span> */}
-                            <span><i class="fa fa-video-camera"></i></span>
-                            <span><i class="fa fa-phone"></i></span>
+//  ActiveChatter(chatter){
+//     return ( 
+//         <div class="col-md-7 col-xl-8 chat">
+//             <div class="card">
+//                 <div class="card-header msg_head">
+//                     <div class="d-flex bd-highlight">
+//                         <div class="img_cont">
+//                             <img src={chatter.avatar} class="rounded-circle user_img"/>
+//                             <span class="online_icon"></span>                          
+//                             {/* for inactive user <span class="online_icon offline"></span> */}
+//                         </div>
+//                         <div class="user_info">
+//                             <span>Chat with {chatter.firstname}</span>
+//                             <p>{chatter.messagetally}</p>
+//                         </div>
+//                         <div class="video_cam">
+//                             {/* <span><i class="fad fa-video"></i></span> */}
+//                             <span><i class="fa fa-video-camera"></i></span>
+//                             <span><i class="fa fa-phone"></i></span>
                             
-                        </div>
-                    </div>
+//                         </div>
+//                     </div>
                     
                 
                 
-                    <UncontrolledDropdown id="action_menu_btn">
-                        <DropdownToggle>
-                            <i class="fa fa-ellipsis-v"></i>
-                        </DropdownToggle>
-                        <DropdownMenu class="action_menu">
+//                     <UncontrolledDropdown id="action_menu_btn">
+//                         <DropdownToggle>
+//                             <i class="fa fa-ellipsis-v"></i>
+//                         </DropdownToggle>
+//                         <DropdownMenu class="action_menu">
 
-                            <DropdownItem><i class="fa fa-user-circle"></i> <Link to={`/userdirectory`}>View profile</Link> </DropdownItem>
-                            <DropdownItem><i class="fa fa-users"></i> Add to close friends</DropdownItem>
-                            <DropdownItem><i class="fa fa-plus"></i> Add to group</DropdownItem>
-                            <DropdownItem><i class="fa fa-ban"></i> Block</DropdownItem>
-                            {/* <DropdownItem divider />
-                            <DropdownItem>Another Action</DropdownItem> */}
-                        </DropdownMenu>
-                    </UncontrolledDropdown>
-                    {/* <span id="action_menu_btn" onclick={this.toggleModal}><i class="fa fa-ellipsis-v"></i></span> */}
+//                             <DropdownItem><i class="fa fa-user-circle"></i> <Link to={`/userdirectory`}>View profile</Link> </DropdownItem>
+//                             <DropdownItem><i class="fa fa-users"></i> Add to close friends</DropdownItem>
+//                             <DropdownItem><i class="fa fa-plus"></i> Add to group</DropdownItem>
+//                             <DropdownItem><i class="fa fa-ban"></i> Block</DropdownItem>
+//                             {/* <DropdownItem divider />
+//                             <DropdownItem>Another Action</DropdownItem> */}
+//                         </DropdownMenu>
+//                     </UncontrolledDropdown>
+//                     {/* <span id="action_menu_btn" onclick={this.toggleModal}><i class="fa fa-ellipsis-v"></i></span> */}
                   
-                </div>
+//                 </div>
 
 
-                <div class="card-body msg_card_body">
+//                 <div class="card-body msg_card_body">
 
-                    {this.generateChatContent({chattingWith})}
-                </div>
+//                     {this.generateChatContent({chattingWith})}
+//                 </div>
 
-                <div class="card-footer">
-                    <div class="input-group">
-                        <div class="input-group-append">
-                            <span class="input-group-text attach_btn"><i class="fa fa-paperclip"></i></span>
-                        </div>
-                        <textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
-                        <div class="input-group-append">
-                            <span class="input-group-text send_btn"><i class="fa fa-location-arrow"></i></span>
-                        </div>
-                    </div>
-                </div>
+//                 <div class="card-footer">
+//                     <div class="input-group">
+//                         <div class="input-group-append">
+//                             <span class="input-group-text attach_btn"><i class="fa fa-paperclip"></i></span>
+//                         </div>
+//                         <textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
+//                         <div class="input-group-append">
+//                             <span class="input-group-text send_btn"><i class="fa fa-location-arrow"></i></span>
+//                         </div>
+//                     </div>
+//                 </div>
 
-            </div>
-        </div>
+//             </div>
+//         </div>
             
-    )
+//     )
+// }
+
+//  generateChatHistory({chattingWith}){
+//     //chattingWith should be == props.messages.messages.userIDReceiver //where userIDReciever is who you're chatting with
+
+// }
+
+//  generateChatContent({chattingWith}){
+//     let chatContent = [];
+//     for(var i = 0; i < chattingWith.length; i++){
+//         if(chattingWith.messageby == loggedInUser){
+//             chatContent.push(
+//                 <div class="d-flex justify-content-end mb-4">
+//                         <div class="msg_cotainer_send">
+//                             {chattingWith.messagecontent}
+//                             <span class="msg_time_send">{chattingWith.messagetimestamp}</span>
+//                         </div>
+//                         <div class="img_cont_msg">
+//                     <img src={chattingWith.messangeravatar} class="rounded-circle user_img_msg"/>
+//                         </div>
+//                     </div>
+//             )
+//         }else if(chattingWith.messageby != loggedInUser){
+//             <div class="d-flex justify-content-start mb-4">
+//                         <div class="img_cont_msg">
+//                             <img src={chattingWith.messangeravatar} class="rounded-circle user_img_msg"/>
+//                         </div>
+//                         <div class="msg_cotainer">
+//                         {chattingWith.messagecontent}
+//                             <span class="msg_time">{chattingWith.messagetimestamp}</span>
+//                         </div>
+//                     </div>
+//         }else{
+//             continue
+//         }
+//     }
+//     return chatContent
+// }
+
+
 }
 
- generateChatHistory({chattingWith}){
-    //chattingWith should be == props.messages.messages.userIDReceiver //where userIDReciever is who you're chatting with
-
-}
-
- generateChatContent({chattingWith}){
-    let chatContent = [];
-    for(var i = 0; i < chattingWith.length; i++){
-        if(chattingWith.messageby == loggedInUser){
-            chatContent.push(
-                <div class="d-flex justify-content-end mb-4">
-                        <div class="msg_cotainer_send">
-                            {chattingWith.messagecontent}
-                            <span class="msg_time_send">{chattingWith.messagetimestamp}</span>
-                        </div>
-                        <div class="img_cont_msg">
-                    <img src={chattingWith.messangeravatar} class="rounded-circle user_img_msg"/>
-                        </div>
-                    </div>
-            )
-        }else if(chattingWith.messageby != loggedInUser){
-            <div class="d-flex justify-content-start mb-4">
-                        <div class="img_cont_msg">
-                            <img src={chattingWith.messangeravatar} class="rounded-circle user_img_msg"/>
-                        </div>
-                        <div class="msg_cotainer">
-                        {chattingWith.messagecontent}
-                            <span class="msg_time">{chattingWith.messagetimestamp}</span>
-                        </div>
-                    </div>
-        }else{
-            continue
-        }
-    }
-    return chatContent
-}
-
-
-}
 
 export default MessagingCenter;
