@@ -135,7 +135,10 @@ export const addMessage = message => ({
     payload: message
 })
 
-
+export const loadMessageForUser = userId =>({
+    type: ActionTypes.LOAD_MESSAGE_FOR_USER,
+    payload: userId
+})
 
 export const addUser = user => ({
     type: ActionTypes.ADD_USER,

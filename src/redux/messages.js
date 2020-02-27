@@ -3,7 +3,8 @@ import * as ActionTypes from './ActionTypes';
 export const Messages = (state = {
     isLoading: true,
     errMess: null, 
-    messages: []
+    messages: [],
+    loadMessagesForUser: null
 }, action) => {
     switch(action.type){
         case ActionTypes.MESSAGES_LOADING:
@@ -18,7 +19,9 @@ export const Messages = (state = {
         case ActionTypes.ADD_MESSAGE:
             const message = action.payload;
             return {...state, messages: state.messages.concat(message)};
-            
+        
+        case ActionTypes.LOAD_MESSAGE_FOR_USER:
+            return {...state, isLoading: false, errMess: null, loadMessagesForUser: action.payload};
         default:
             return state;
     }

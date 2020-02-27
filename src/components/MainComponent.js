@@ -15,14 +15,15 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 
-import {usersLoading, usersFailed, addUsers, addUser, postUser, fetchUsers, fetchLoginUser, fetchMessages} from '../redux/ActionCreators'
+import {usersLoading, usersFailed, addUsers, addUser, postUser, fetchUsers, fetchLoginUser, fetchMessages, loadMessageForUser} from '../redux/ActionCreators'
 
 const mapDispatchToProps = {
     fetchUsers: () => (fetchUsers()),
     // postUser: (userId, userName, userAvatar, avatarImage)  => (postUser(userId, userName, userAvatar, avatarImage)),
     // addUser: (userId, userName, userAvatar, avatarImage) => (addUser(userId, userName, userAvatar, avatarImage)),
     fetchLoginUser: () => (fetchLoginUser()),
-    fetchMessages: () => (fetchMessages())
+    fetchMessages: () => (fetchMessages()),
+    loadMessageForUser: (userId) => (loadMessageForUser(userId))
     // addComment: (campsiteId, rating, author, text) => (addComment(campsiteId, rating, author, text)),
     // postUser = (userId, userName, userAvatar, avatarImage) 
     // resetFeedbackForm: () => (actions.reset('feedbackForm')),

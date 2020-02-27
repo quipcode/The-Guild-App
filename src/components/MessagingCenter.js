@@ -1,9 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
+
 // import {Breadcrumb, BreadcrumbItem} from 'reactstrap'
 import { Link } from 'react-router-dom';
 import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Card, CardImg, CardText, CardBody, CardTitle, Dropdown, DropdownToggle, UncontrolledDropdown, DropdownMenu, DropdownItem, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
 import { LoggedInUser } from '../redux/loggedUser';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+import {loadMessageForUser} from '../redux/ActionCreators'
 
 const chatContacts = [{id: 0, name:"Batman", fullName: "Bruce Wayne", status: "online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6733777-4.jpg", testText: "Bruce Bruce's test", messages: [1,2,3]},
     {id: 1, name: "CatWoman", fullName: "Selina Kyle", status:"online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6784476-catwoman_vol_5_1_textless_variant.jpg", testText: "Selina's test", messages: [1,2,3,4,5,6,7]}, 
@@ -15,16 +17,25 @@ const chatContacts = [{id: 0, name:"Batman", fullName: "Bruce Wayne", status: "o
 
     {id:3, name:"The Flash", fullName: "Barry Allen", status:"offline", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/10/100647/6772221-gplus1141127786.jpg", testText:"Barry's Test", messages: [1]},
 ]
+const Buti = (props)=><button>{props.children}</button>
 class TestingButtonContent extends Component{
     constructor(props){
         super(props);
+
         this.onItemClick = this.onItemClick.bind(this)
+        // this.handleSubmitEvent = this.handleSubmitEvent.bind(this);
+        // this.handleChangeEvent = this.handleChangeEvent.bind(this);
+        this.clickOnUser = this.clickOnUser.bind(this);
+        
+
         this.state = {
             chatContent: "hello there",
-            headerContent: "What up though"
+            headerContent: "What up though",
+            messageContent: "Lorem ipsum",
+            isDialogOpen: false
         }
     }
-    
+
     button1 = () => {
         this.setState({
             chatContent: "button 1 was clicked"
@@ -48,6 +59,15 @@ class TestingButtonContent extends Component{
             headerContent: "gg"
         })
     }
+
+    clickOnUser = () =>{
+        // this.setState({
+        //     isDialogOpen: true
+            
+        // })
+        window.alert("hello")
+    }
+
     render(){
         return(
             <React.Fragment>
@@ -72,7 +92,9 @@ class TestingButtonContent extends Component{
                                     </div>
                                 </div>
                             </div>
-                                <RenderContactProfileChat users={chatContacts} />
+                            
+                                <RenderContactProfileChat users={chatContacts} onClick={this.clickOnUser} data={this.state.messageContent}/>
+                                
                             <div class="card-footer"></div>
                         </div></div>
 
@@ -80,8 +102,10 @@ class TestingButtonContent extends Component{
                             <div class="card">
 
                             <div class="card-body msg_card_body">
-                                <h3>Lorem </h3>
-                            
+                                <h3>{this.state.messageContent}</h3>
+                                {this.state.isDialogOpen ? (<p>I'm butt hurt</p>) : null}
+                                
+                                <Buti/>
                                 </div>
 
                                 <div class="card-footer">
@@ -166,8 +190,8 @@ function GenerateChatContentLeftAndRightHistory({messages, loggedInUser}){
 
 }
 
-function RenderContactProfileChat({users}) {
-    
+function RenderContactProfileChat({users, data}) {
+    const [count, setCount] = useState(0);
     return (
             
                 <div className="card-body   chat_contacts_body">
@@ -175,11 +199,13 @@ function RenderContactProfileChat({users}) {
                     {users.map(user => {
                             return(
                             <li className="d-flex bd-highlight chat_contact_card " >
-                                <div className="chat_user_image_and_cont" onClick={()=> {console.log(`hello there b man its , ${user.testText}`)}}>
-
+                                <div className="chat_user_image_and_cont" onClick={loadMessageForUser("hi")}>
+                                {/* <div className="chat_user_image_and_cont" onClick={()=> {console.log(`hello there b man its , ${user.testText}`)}}> */}
+                                
                                 
                                     <div className="img_chatuser_cont" >
-                                        <img  className="rounded-circle chatuser_img" src={user.avatar}  />
+                                        <Link to="/myprofile"><img  className="rounded-circle chatuser_img" src={user.avatar}  /></Link>
+                                        
                                         <span class={`online_icon ${user.status}`}></span>
                                     </div>
                                     <div className="chatuser_info">
@@ -191,7 +217,8 @@ function RenderContactProfileChat({users}) {
                                 
                                 
                                     </div>
-                                    <span class="chat_close" onClick={()=> {console.log("close the chat ")}}>&times;</span>
+                                    <span class="chat_close" onClick={()=> setCount(count + 1)}>&times;</span>
+                                    <p>You closed {count} times</p>
                                 
                                 
                             </li>
