@@ -358,6 +358,9 @@ border:1.5px solid white;
 .offline{
 background-color: #c23616 !important;
 }
+.away{
+    background-color: #FAA61A !important;
+}
 .user_info{
 margin-top: auto;
 margin-bottom: auto;
@@ -528,7 +531,7 @@ span.chatuserfullname {
     color: #999;
     
     display: inline-block;
-    float: left;
+    /* float: left; */
     /* clear: left; */
   }
 

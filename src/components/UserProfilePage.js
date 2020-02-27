@@ -89,6 +89,9 @@ function UserProfile(props){
 }
 
 function UserProfileComponent({user}){
+    // function getDetails(){
+    //     return {_html: {user.description}}
+    // }
     return(
         <div class="container emp-profile">
                     <form method="post">
@@ -103,6 +106,8 @@ function UserProfileComponent({user}){
                                 
                                     
                             </div>
+
+                            
                             <div class="col-md-6">
                                 <div class="profile-head">
                                     <h5>
@@ -121,8 +126,7 @@ function UserProfileComponent({user}){
                                             {user.aliases}
                                         </Tab>
                                         <Tab eventKey="contact" title="Contact" >
-                                            
-                                            {user.description}
+                                            <div dangerouslySetInnerHTML={{ __html: user.description}}/>                                          
                                         </Tab>
                                     </Tabs>
                                     {/* <ul class="nav nav-tabs" id="myTab" role="tablist">

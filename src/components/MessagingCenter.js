@@ -5,7 +5,10 @@ import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, 
 import { LoggedInUser } from '../redux/loggedUser';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
-const chatContacts = [{id: 1, name: "CatWoman", fullName: "Selina Kyle", status:"online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6784476-catwoman_vol_5_1_textless_variant.jpg"}, {id: 2, name: "Harley Quin", fullName: "Harleen Frances Quinzel", status: "offline", avatar: "https://comicvine1.cbsistatic.com/uploads/scale_medium/11118/111185556/5296059-harley%20quinn%20by%20stanley%20lau.jpg"}, {id:3, name:"Superman", fullName: "Clark Kent", status:"online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11/117229/6777461-ce00l1hcatb21.jpg"}]
+const chatContacts = [{id: 0, name:"Batman", fullName: "Bruce Wayne", status: "online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6733777-4.jpg", testText: "Bruce Bruce's test", messages: [1,2,3]},
+    {id: 1, name: "CatWoman", fullName: "Selina Kyle", status:"online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6784476-catwoman_vol_5_1_textless_variant.jpg", testText: "Selina's test", messages: [1,2,3,4,5,6,7]}, 
+    {id: 2, name: "Harley Quin", fullName: "Harleen Frances Quinzel", status: "offline", avatar: "https://comicvine1.cbsistatic.com/uploads/scale_medium/11118/111185556/5296059-harley%20quinn%20by%20stanley%20lau.jpg", testText: "Harley's test", messages: [1,2]}, 
+    {id:3, name:"Superman", fullName: "Clark Kent", status:"away", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11/117229/6777461-ce00l1hcatb21.jpg", testText:"Sup's Test", messages: [1]}]
 class TestingButtonContent extends Component{
     constructor(props){
         super(props);
@@ -34,36 +37,131 @@ class TestingButtonContent extends Component{
         })
     }
 
+    onItemClick2 = () => {
+        this.setState({
+            headerContent: "gg"
+        })
+    }
     render(){
         return(
             <React.Fragment>
-                <Button onClick={this.button1}>Button 1</Button>
+                {/* <Button onClick={this.button1}>Button 1</Button>
                 <Button onClick={this.button2}>Button 2</Button>
+                <button onClick={this.onItemClick}></button>
                 <h4 onClick={this.onItemClick}>head button 1</h4>
-                <h2>{this.headerContent}</h2>
+                <h4 onClick={this.onItemClick2}>head button 2</h4>
+                <h2>{this.state.headerContent}</h2>
                 <div style={{"overflow-y": "auto",  "width": "500px"}}>
                     <h1>{this.state.chatContent}</h1>
+                </div> */}
+
+                <div className="container">
+                    <div class="row justify-content-center h-100">
+                        <div class=" col-md-5 col-xl-4 chat"><div class="card mb-sm-3 mb-md-0 contacts_card">
+                            <div class="card-header">
+                                <div class="input-group">
+                                    <input type="text" placeholder="Search..." name="" class="form-control search"/>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text search_btn"><i class="fa fa-search"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                                <RenderContactProfileChat users={chatContacts}/>
+                            <div class="card-footer"></div>
+                        </div></div>
+
+                        <div class="col-md-7 col-xl-8 chat">
+                            <div class="card">
+
+                            <div class="card-body msg_card_body">
+                                <h3>Lorem </h3>
+                                </div>
+
+                                <div class="card-footer">
+                                    <div class="input-group">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text attach_btn"><i class="fa fa-paperclip"></i></span>
+                                        </div>
+                                        <textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text send_btn"><i class="fa fa-location-arrow"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <RenderContactProfileChat users={chatContacts}/>
             </React.Fragment>
         )
     }
 }
 
 
-// function RenderContactProfileChat({contact}){
-//     return(
-//         <div>
-//             <img src="https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6784476-catwoman_vol_5_1_textless_variant.jpg" class="rounded-image"></img> 
-//         </div>
-//     )
-// }
+
+function RenderChatMessageComponent({user}){
+    return(
+        <div class="card-header msg_head">
+            <div class="d-flex bd-highlight">
+                <div class="img_cont">
+                    <img src={user.avatar} class="rounded-circle user_img"/>
+                    <span class={`online_icon ${user.status}`}></span>
+                </div>
+                <div class="user_info">
+                    <span>Chat with {user.name}</span>
+                    <p>{user.messages.length} Messages</p>
+                </div>
+                <div class="video_cam">
+                    {/* <span><i class="fad fa-video"></i></span> */}
+                    <span><i class="fa fa-video-camera"></i></span>
+                    <span><i class="fa fa-phone"></i></span>
+                </div>
+            </div>
+            
+        
+            <UncontrolledDropdown id="action_menu_btn">
+                <DropdownToggle>
+                    <i class="fa fa-ellipsis-v"></i>
+                </DropdownToggle>
+                <DropdownMenu class="action_menu">
+
+                    <DropdownItem><i class="fa fa-user-circle"></i> <Link to={`/userdirectory`}>View profile</Link></DropdownItem>
+                    <DropdownItem><i class="fa fa-users"></i> Add to close friends</DropdownItem>
+                    <DropdownItem><i class="fa fa-plus"></i> Add to group</DropdownItem>
+                    <DropdownItem><i class="fa fa-ban"></i> Block</DropdownItem>
+                    {/* <DropdownItem divider />
+                    <DropdownItem>Another Action</DropdownItem> */}
+                </DropdownMenu>
+            </UncontrolledDropdown>        
+        </div>
+        
+
+    )
+  
+}
+
+function GenerateChatContentLeftAndRightHistory({messages, loggedInUser}){
+    let allMessages = []
+    for(var i = 0; i < messages.length; i++){
+        if(messages.messageBy == loggedInUser.id){
+            allMessages.push(<div class="d-flex justify-content-end mb-4">
+            <div class="msg_cotainer_send">
+                {messages[i].messageContent}
+                <span class="msg_time_send">{messages[i].messagetimestamp}</span>
+            </div>
+            <div class="img_cont_msg">
+                <img src={messages[i].messangerAvatar} class="rounded-circle user_img_msg"/>
+            </div>
+        </div>)
+        }
+    }
+
+}
 
 function RenderContactProfileChat({users}) {
     return (
-            <div className="holder col-md-3  ">
-                {/* <input type="text" classNAme="search" onChange={this.searchHandler}/> */}
-                {/* <div className="userdirectoryusercarddiv"> */}
+            
                 <div className="card-body chat_contacts_body">
                 <ul className="chat_contacts">
                     {users.map(user => {
@@ -77,7 +175,6 @@ function RenderContactProfileChat({users}) {
                                     <Link to={`/userdirectory/${users.id}`}>
                                         <span className="userdirectoryname">{user.name}</span>
                                     </Link>  
-                                    
                                     {/* <span className="chatuserfullname">{user.fullName}</span><br/> */}
                                     <span className="chatuserfullname">{user.fullName} is {user.status}</span>
                                     {/* <span className="userdirectoryfullname">{user.fullName}</span> */}
@@ -85,18 +182,9 @@ function RenderContactProfileChat({users}) {
                                 </div>
                             </li>)
                         })}
-                            {/* <li className="userdirectoryli">
-                                <img  className="userdirectoryimage" src="https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6784476-catwoman_vol_5_1_textless_variant.jpg" roundedCircle  width="75px" height="75px" border-radius="50%" margin="0 10px 0 0"  float="left" display="block" />
-                                <Link to={`/userdirectory/${users.id}`}>
-                                    <span className="userdirectoryname">{users.name}</span>
-                                    <span className="userdirectoryname">Catwoman</span>
-                                </Link>  
-                                <span className="userdirectoryfullname">Selina Kyle</span>
-                            </li> */}
-                        
                 </ul>
                 </div>
-            </div>     
+            
     );
 }
 
