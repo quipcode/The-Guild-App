@@ -110,8 +110,8 @@ function MyUserProfileComponent({ user }) {
                                     {user.aliases}
                                 </Tab>
                                 <Tab eventKey="contact" title="Contact" >
-
-                                    {user.description}
+                                    <div dangerouslySetInnerHTML={{ __html: user.description}}/>  
+                                    {/* {user.description} */}
                                 </Tab>
                             </Tabs>
                             {/* <ul class="nav nav-tabs" id="myTab" role="tablist">

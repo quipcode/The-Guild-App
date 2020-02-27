@@ -8,7 +8,13 @@ import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 const chatContacts = [{id: 0, name:"Batman", fullName: "Bruce Wayne", status: "online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6733777-4.jpg", testText: "Bruce Bruce's test", messages: [1,2,3]},
     {id: 1, name: "CatWoman", fullName: "Selina Kyle", status:"online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6784476-catwoman_vol_5_1_textless_variant.jpg", testText: "Selina's test", messages: [1,2,3,4,5,6,7]}, 
     {id: 2, name: "Harley Quin", fullName: "Harleen Frances Quinzel", status: "offline", avatar: "https://comicvine1.cbsistatic.com/uploads/scale_medium/11118/111185556/5296059-harley%20quinn%20by%20stanley%20lau.jpg", testText: "Harley's test", messages: [1,2]}, 
-    {id:3, name:"Superman", fullName: "Clark Kent", status:"away", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11/117229/6777461-ce00l1hcatb21.jpg", testText:"Sup's Test", messages: [1]}]
+    
+    {id:3, name:"Superman", fullName: "Clark Kent", status:"away", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11/117229/6777461-ce00l1hcatb21.jpg", testText:"Sup's Test", messages: [1]},
+
+    {id:3, name:"Wonder Woman", fullName: "Diana Prince", status:"online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/10/103530/6444044-4130984370-aHR0cDovL3d3dy5uZXdzYXJhbWEuY29tL2ltYWdlcy9pLzAwMC8yMjcvMjY2L29yaWdpbmFsL0pMXzFfdmFyX01hcmtfQnJvb2tzX2IuanBn", testText:"Diana's Test", messages: [1]},
+
+    {id:3, name:"The Flash", fullName: "Barry Allen", status:"offline", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/10/100647/6772221-gplus1141127786.jpg", testText:"Barry's Test", messages: [1]},
+]
 class TestingButtonContent extends Component{
     constructor(props){
         super(props);
@@ -45,7 +51,7 @@ class TestingButtonContent extends Component{
     render(){
         return(
             <React.Fragment>
-                {/* <Button onClick={this.button1}>Button 1</Button>
+                <Button onClick={this.button1}>Button 1</Button>
                 <Button onClick={this.button2}>Button 2</Button>
                 <button onClick={this.onItemClick}></button>
                 <h4 onClick={this.onItemClick}>head button 1</h4>
@@ -53,7 +59,7 @@ class TestingButtonContent extends Component{
                 <h2>{this.state.headerContent}</h2>
                 <div style={{"overflow-y": "auto",  "width": "500px"}}>
                     <h1>{this.state.chatContent}</h1>
-                </div> */}
+                </div>
 
                 <div className="container">
                     <div class="row justify-content-center h-100">
@@ -66,7 +72,7 @@ class TestingButtonContent extends Component{
                                     </div>
                                 </div>
                             </div>
-                                <RenderContactProfileChat users={chatContacts}/>
+                                <RenderContactProfileChat users={chatContacts} />
                             <div class="card-footer"></div>
                         </div></div>
 
@@ -75,6 +81,7 @@ class TestingButtonContent extends Component{
 
                             <div class="card-body msg_card_body">
                                 <h3>Lorem </h3>
+                            
                                 </div>
 
                                 <div class="card-footer">
@@ -160,27 +167,36 @@ function GenerateChatContentLeftAndRightHistory({messages, loggedInUser}){
 }
 
 function RenderContactProfileChat({users}) {
+    
     return (
             
-                <div className="card-body chat_contacts_body">
-                <ul className="chat_contacts">
+                <div className="card-body   chat_contacts_body">
+                <ul className=" chat_contacts">
                     {users.map(user => {
                             return(
-                            <li className="d-flex bd-highlight">
-                                <div className="img_chatuser_cont">
-                                    <img  className="rounded-circle chatuser_img" src={user.avatar}  />
-                                    <span class={`online_icon ${user.status}`}></span>
-                                </div>
-                                <div className="chatuser_info">
-                                    <Link to={`/userdirectory/${users.id}`}>
-                                        <span className="userdirectoryname">{user.name}</span>
-                                    </Link>  
-                                    {/* <span className="chatuserfullname">{user.fullName}</span><br/> */}
-                                    <span className="chatuserfullname">{user.fullName} is {user.status}</span>
-                                    {/* <span className="userdirectoryfullname">{user.fullName}</span> */}
-                                   
-                                </div>
-                            </li>)
+                            <li className="d-flex bd-highlight chat_contact_card " >
+                                <div className="chat_user_image_and_cont" onClick={()=> {console.log(`hello there b man its , ${user.testText}`)}}>
+
+                                
+                                    <div className="img_chatuser_cont" >
+                                        <img  className="rounded-circle chatuser_img" src={user.avatar}  />
+                                        <span class={`online_icon ${user.status}`}></span>
+                                    </div>
+                                    <div className="chatuser_info">
+                                        
+                                            <span className="chatusername">{user.name}</span>
+                                    
+                                        <span className="chatuserfullname">{user.fullName} is {user.status}</span>
+                                    </div>
+                                
+                                
+                                    </div>
+                                    <span class="chat_close" onClick={()=> {console.log("close the chat ")}}>&times;</span>
+                                
+                                
+                            </li>
+                            
+                            )
                         })}
                 </ul>
                 </div>
