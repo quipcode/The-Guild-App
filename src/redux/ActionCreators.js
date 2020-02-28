@@ -183,10 +183,10 @@ export const addSpecificMessage = specificMessage => ({
     type: ActionTypes.ADD_SPECIFIC_MESSAGE,
     payload: specificMessage
 })
-
-export const fetchSpecificyMessage = () => dispatch => {
+// const sman = 'sman'
+export const fetchSpecificyMessage = (sman) => dispatch => {
     dispatch(specificMessageLoading());
-    return(fetch(baseUrl + 'messages/' + 'sman'))
+    return(fetch(baseUrl + `messages/${sman}`))
         .then(response =>{
             if(response.ok){
                 return response
