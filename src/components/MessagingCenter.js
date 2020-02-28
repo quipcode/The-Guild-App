@@ -103,7 +103,8 @@ class TestingButtonContent extends Component{
 
                             <div class="card-body msg_card_body">
                                 <h3>{this.state.messageContent}</h3>
-                                {this.state.isDialogOpen ? (<p>I'm butt hurt</p>) : null}
+                                {/* {this.state.isDialogOpen ? (<p>why is this so hard</p>) : null} */}
+                                <p>why now {this.props.loadMessageForUser}</p>
                                 
                                 <Buti/>
                                 </div>
@@ -190,6 +191,8 @@ function GenerateChatContentLeftAndRightHistory({messages, loggedInUser}){
 
 }
 
+
+
 function RenderContactProfileChat({users, data}) {
     const [count, setCount] = useState(0);
     return (
@@ -214,12 +217,14 @@ function RenderContactProfileChat({users, data}) {
                                     
                                         <span className="chatuserfullname">{user.fullName} is {user.status}</span>
                                     </div>
-                                
+                                        
                                 
                                     </div>
-                                    <span class="chat_close" onClick={()=> setCount(count + 1)}>&times;</span>
-                                    <p>You closed {count} times</p>
-                                
+                                    
+                                    <div>
+                                        <span class="chat_close" onClick={()=> setCount(count + 1)}>&times;</span>
+                                        <p>You closed {count} times</p>
+                                    </div>
                                 
                             </li>
                             

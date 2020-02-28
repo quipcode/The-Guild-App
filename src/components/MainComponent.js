@@ -15,15 +15,16 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 
-import {usersLoading, usersFailed, addUsers, addUser, postUser, fetchUsers, fetchLoginUser, fetchMessages, loadMessageForUser} from '../redux/ActionCreators'
-
+import {usersLoading, usersFailed, addUsers, addUser, postUser, fetchUsers, fetchLoginUser, fetchMessages, loadMessageForUser, fetchSpecificyMessage} from '../redux/ActionCreators'
+const bob = "bob"
 const mapDispatchToProps = {
     fetchUsers: () => (fetchUsers()),
     // postUser: (userId, userName, userAvatar, avatarImage)  => (postUser(userId, userName, userAvatar, avatarImage)),
     // addUser: (userId, userName, userAvatar, avatarImage) => (addUser(userId, userName, userAvatar, avatarImage)),
     fetchLoginUser: () => (fetchLoginUser()),
     fetchMessages: () => (fetchMessages()),
-    loadMessageForUser: (userId) => (loadMessageForUser(userId))
+    // loadMessageForUser: (bob) => (loadMessageForUser("bob")),
+    fetchSpecificyMessage: () => (fetchSpecificyMessage())
     // addComment: (campsiteId, rating, author, text) => (addComment(campsiteId, rating, author, text)),
     // postUser = (userId, userName, userAvatar, avatarImage) 
     // resetFeedbackForm: () => (actions.reset('feedbackForm')),
@@ -38,7 +39,8 @@ const mapStateToProps = state => {
         users: state.users,
         // loggedInUser: "hello",
         loggedInUser: state.loggedInUser,
-        messages: state.messages
+        messages: state.messages,
+        specificMessages: state.specificMessages
         // comments: state.comments,
         // partners: state.partners,
         // promotions: state.promotions
@@ -54,6 +56,7 @@ class Main extends Component{
         this.props.fetchUsers()
         this.props.fetchLoginUser()   
         this.props.fetchMessages()  
+        this.props.fetchSpecificyMessage()
     }
    
     render(){

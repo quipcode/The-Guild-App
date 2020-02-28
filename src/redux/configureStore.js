@@ -17,6 +17,7 @@ import {LoggedInUser} from './loggedUser'
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { Messages } from './messages';
+import { SpecificMessage } from './specificmessage';
 
 
 // import { persistStore, persistCombineReducers } from 'redux-persist';
@@ -34,6 +35,7 @@ export const ConfigureStore = () => {
             users: Users,
             loggedInUser: LoggedInUser,
             messages: Messages,
+            specificMessages: SpecificMessage
             // comments: Comments,
             // partners: Partners,
             // promotions: Promotions,

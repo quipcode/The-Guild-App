@@ -140,6 +140,81 @@ export const loadMessageForUser = userId =>({
     payload: userId
 })
 
+
+// export const fetchSpecificyMessage = () => dispatch =>{
+//     dispatch(messagesLoading());
+//     return fetch(baseUrl + 'messages/' + 'bman')
+//         .then(response => {
+//           if(response.ok){
+//               return response
+//           }else {
+//               const error = new Error(`Error ${response.status}: ${response.statusText}`);
+//               error.response = response;
+//               throw error
+//           }
+//         }, 
+//             error => {
+//                 var errMess = new Error(error.message);
+//                 throw errMess;
+//             }
+//         )
+//         .then(response => response.json())
+//         .then(userId => dispatch(loadMessageForUser(userId)))
+//         .catch(error => dispatch(messagesFailed(error.message)))
+// }
+
+
+export const addSpecificMessages = specificMessages => ({
+    type: ActionTypes.ADD_SPECIFIC_MESSAGES,
+    payload: specificMessages
+
+})
+
+export const specificMessageLoading = () => ({
+    type: ActionTypes.SPECIFIC_MESSAGE_LOADING
+})
+
+export const specificMessageFailed = errMess => ({
+    type: ActionTypes.SPECIFIC_MESSAGE_FAILED,
+    payload: errMess
+})
+
+export const addSpecificMessage = specificMessage => ({
+    type: ActionTypes.ADD_SPECIFIC_MESSAGE,
+    payload: specificMessage
+})
+
+export const fetchSpecificyMessage = () => dispatch => {
+    dispatch(specificMessageLoading());
+    return(fetch(baseUrl + 'messages/' + 'sman'))
+        .then(response =>{
+            if(response.ok){
+                return response
+            }else{
+                const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                error.response = response
+                throw error
+            }
+        },
+            error => {
+                var errMess = new Error(error.message)
+                throw errMess;
+            }
+        )
+        .then(response => response.json())
+        .then(specificMessages => dispatch(addSpecificMessages(specificMessages)))
+        .catch(errMess => dispatch(specificMessageFailed(errMess.message)))
+}
+
+
+
+
+
+
+
+
+
+
 export const addUser = user => ({
     type: ActionTypes.ADD_USER,
     payload: user
