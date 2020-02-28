@@ -18,60 +18,62 @@ const chatContacts = [{id: 0, name:"Batman", fullName: "Bruce Wayne", status: "o
     {id:3, name:"The Flash", fullName: "Barry Allen", status:"offline", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/10/100647/6772221-gplus1141127786.jpg", testText:"Barry's Test", messages: [1]},
 ]
 const Buti = (props)=><button>{props.children}</button>
-class TestingButtonContent extends Component{
-    constructor(props){
-        super(props);
+// class TestingButtonContent extends Component
 
-        this.onItemClick = this.onItemClick.bind(this)
-        // this.handleSubmitEvent = this.handleSubmitEvent.bind(this);
-        // this.handleChangeEvent = this.handleChangeEvent.bind(this);
-        this.clickOnUser = this.clickOnUser.bind(this);
+function TestingButtonContent({props}){
+    // constructor(props){
+    //     super(props);
+
+    //     this.onItemClick = this.onItemClick.bind(this)
+    //     // this.handleSubmitEvent = this.handleSubmitEvent.bind(this);
+    //     // this.handleChangeEvent = this.handleChangeEvent.bind(this);
+    //     this.clickOnUser = this.clickOnUser.bind(this);
         
 
-        this.state = {
-            chatContent: "hello there",
-            headerContent: "What up though",
-            messageContent: "Lorem ipsum",
-            isDialogOpen: false
-        }
-    }
+    //     this.state = {
+    //         chatContent: "hello there",
+    //         headerContent: "What up though",
+    //         messageContent: "Lorem ipsum",
+    //         isDialogOpen: false
+    //     }
+    // }
 
-    button1 = () => {
-        this.setState({
-            chatContent: "button 1 was clicked"
-        })
-    }
+    // button1 = () => {
+    //     this.setState({
+    //         chatContent: "button 1 was clicked"
+    //     })
+    // }
 
-    button2 = () => {
-        this.setState({
-            chatContent: "button 2 was clicked"
-        })
-    }
+    // button2 = () => {
+    //     this.setState({
+    //         chatContent: "button 2 was clicked"
+    //     })
+    // }
 
-    onItemClick = () => {
-        this.setState({
-            headerContent: "not much you"
-        })
-    }
+    // onItemClick = () => {
+    //     this.setState({
+    //         headerContent: "not much you"
+    //     })
+    // }
 
-    onItemClick2 = () => {
-        this.setState({
-            headerContent: "gg"
-        })
-    }
+    // onItemClick2 = () => {
+    //     this.setState({
+    //         headerContent: "gg"
+    //     })
+    // }
 
-    clickOnUser = () =>{
-        // this.setState({
-        //     isDialogOpen: true
+    // clickOnUser = () =>{
+    //     // this.setState({
+    //     //     isDialogOpen: true
             
-        // })
-        window.alert("hello")
-    }
+    //     // })
+    //     window.alert("hello")
+    // }
 
-    render(){
+    // render(){
         return(
             <React.Fragment>
-                <Button onClick={this.button1}>Button 1</Button>
+                {/* <Button onClick={this.button1}>Button 1</Button>
                 <Button onClick={this.button2}>Button 2</Button>
                 <button onClick={this.onItemClick}></button>
                 <h4 onClick={this.onItemClick}>head button 1</h4>
@@ -79,7 +81,7 @@ class TestingButtonContent extends Component{
                 <h2>{this.state.headerContent}</h2>
                 <div style={{"overflow-y": "auto",  "width": "500px"}}>
                     <h1>{this.state.chatContent}</h1>
-                </div>
+                </div> */}
 
                 <div className="container">
                     <div class="row justify-content-center h-100">
@@ -93,7 +95,8 @@ class TestingButtonContent extends Component{
                                 </div>
                             </div>
                             
-                                <RenderContactProfileChat users={chatContacts} onClick={this.clickOnUser} data={this.state.messageContent}/>
+                                {/* <RenderContactProfileChat users={chatContacts} onClick={this.clickOnUser} data={this.state.messageContent}/> */}
+                                <RenderContactProfileChat users={chatContacts}/>
                                 
                             <div class="card-footer"></div>
                         </div></div>
@@ -102,9 +105,10 @@ class TestingButtonContent extends Component{
                             <div class="card">
 
                             <div class="card-body msg_card_body">
-                                <h3>{this.state.messageContent}</h3>
+                                {/* <h3>{this.state.messageContent}</h3> */}
                                 {/* {this.state.isDialogOpen ? (<p>why is this so hard</p>) : null} */}
-                                <p>why now {this.props.loadMessageForUser}</p>
+                                {/* <p>why now {this.props.specificMessages.specificMessages}</p> */}
+            <p>{props.id} +  {props.messages_4_loggedInUserId[0].userIDReceiver[0].messagecontent}</p>
                                 
                                 <Buti/>
                                 </div>
@@ -127,7 +131,7 @@ class TestingButtonContent extends Component{
                 </div>
             </React.Fragment>
         )
-    }
+    // }
 }
 
 
@@ -235,36 +239,37 @@ function RenderContactProfileChat({users, data}) {
             
     );
 }
+// class MessagingCenter extends Component
 
-class MessagingCenter extends Component{
-    constructor(props){
-        super(props)
-        this.toggleChatOption = this.toggleChatOption.bind(this);
-        this.toggleModal = this.toggleModal.bind(this);
-        this.state = {
-            hasBeenClicked: false,
-            isModalOpen: false,
-        }
-    }
-    toggleChatOption(){
-        this.setState({
-            hasBeenClicked: !this.state.hasBeenClicked
-        });
-        // window.alert("hello there")
-        // console.log(this.state.hasBeenClicked)
-    }
+function MessagingCenter(props){
+    // constructor(props){
+    //     super(props)
+    //     this.toggleChatOption = this.toggleChatOption.bind(this);
+    //     this.toggleModal = this.toggleModal.bind(this);
+    //     this.state = {
+    //         hasBeenClicked: false,
+    //         isModalOpen: false,
+    //     }
+    // }
+    // toggleChatOption(){
+    //     this.setState({
+    //         hasBeenClicked: !this.state.hasBeenClicked
+    //     });
+    //     // window.alert("hello there")
+    //     // console.log(this.state.hasBeenClicked)
+    // }
 
-    toggleModal() {
-        this.setState({
-            isModalOpen: !this.state.isModalOpen
-        });
-    }
+    // toggleModal() {
+    //     this.setState({
+    //         isModalOpen: !this.state.isModalOpen
+    //     });
+    // }
 
     // const [dropdownOpen, setDropdownOpen] = useState(false);
 
     // const toggle = () => setDropdownOpen(prevState => !prevState);
 
-    render(){
+    // render(){
         return(
             
             <React.Fragment>
@@ -524,10 +529,20 @@ class MessagingCenter extends Component{
                 </div>
                 {/* end of overall container for whole page */}
                 <p>Test buttons change content</p>
-                <TestingButtonContent/>
+                <TestingButtonContent props={         { "id": "wwoman",
+            "messages_4_loggedInUserId": [ 
+                {"userIDReceiver": [
+                {"messageby": "userIDSender", "messageto": "userIDReceiver", "messagetimestamp": "time", "messagecontent": "when is the party", "messangerAvatar": "/sendersavatar"},
+                {"messageby": "userIDSender", "messageto": "userIDReceiver", "messagetimestamp": "time", "messagecontent": "half past noon tomorrow", "messangerAvatar": "/sendersavatar"}
+            ]}, 
+            {"userIDReceiver": [
+                {"messageby": "userIDReceiver", "messagetimestamp": "time", "messagecontent": "when is the party", "messangerAvatar": "/sendersavatar"},
+                {"messageby": "userIDSender", "messageto": "userIDReceiver", "messagetimestamp": "time", "messagecontent": "half past noon tomorrow", "messangerAvatar": "/sendersavatar"}
+        ]} 
+    ]}}/>
             </React.Fragment>
         )
-    }
+    // }
 
 
 // function chatSection(chattingWith) {
