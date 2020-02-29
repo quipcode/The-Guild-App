@@ -58,6 +58,7 @@ function MyUserProfile(props) {
                         </Breadcrumb>
                         {/* <h2>{props.campsite.name}</h2> */}
                         {/* <h2>{props.loggedInUser.loggedInUser.name}</h2> */}
+                        <p onClick={() => console.log(props.loggedInUser.loggedInUser[0], props.loggedInUser.loggedInUser[1] )}>Hi there</p>
                         {user}
                         <hr />
                     </div>

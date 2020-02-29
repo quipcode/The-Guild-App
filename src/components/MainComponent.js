@@ -24,7 +24,7 @@ const mapDispatchToProps = {
     fetchLoginUser: () => (fetchLoginUser()),
     fetchMessages: () => (fetchMessages()),
     // loadMessageForUser: (bob) => (loadMessageForUser("bob")),
-    fetchSpecificyMessage: () => (fetchSpecificyMessage('wwoman'))
+    fetchSpecificyMessage: () => (fetchSpecificyMessage())
     // addComment: (campsiteId, rating, author, text) => (addComment(campsiteId, rating, author, text)),
     // postUser = (userId, userName, userAvatar, avatarImage) 
     // resetFeedbackForm: () => (actions.reset('feedbackForm')),
@@ -40,7 +40,8 @@ const mapStateToProps = state => {
         // loggedInUser: "hello",
         loggedInUser: state.loggedInUser,
         messages: state.messages,
-        specificMessages: state.specificMessages
+        specificMessages: state.specificMessages,
+        getMyMessagesForUser: 'bman'
         // comments: state.comments,
         // partners: state.partners,
         // promotions: state.promotions
@@ -104,7 +105,7 @@ class Main extends Component{
                 <Switch>
                     <Route path='/home' component={HomePage}/>
                     <Route path='/bio' component={BioPage}/>
-                    <Route path='/messagingcenter' render ={() => < MessagingCenterPage  messages={this.props.messages} specificMessages={this.props.specificMessages} />}/> 
+                    <Route path='/messagingcenter' render ={() => < MessagingCenter  specificMessages={this.props.specificMessages} />}/> 
                     <Route path='/myguilds' component={MyGuildsPage}/>
                     {/* <Route path='/myprofile' component={MyUserProfPage} /> */}
                     <Route path='/myprofile' render={() => <MyUserProfile loggedInUser={this.props.loggedInUser}/>} />

@@ -7,13 +7,13 @@ import { LoggedInUser } from '../redux/loggedUser';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 import {loadMessageForUser} from '../redux/ActionCreators'
 
-const chatContacts = [{id: 0, name:"Batman", fullName: "Bruce Wayne", status: "online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6733777-4.jpg", testText: "Bruce Bruce's test", messages: [1,2,3]},
+const chatContacts = [{id: 0, id2:"bman", name:"Batman", fullName: "Bruce Wayne", status: "online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6733777-4.jpg", testText: "Bruce Bruce's test", messages: [1,2,3]},
     {id: 1, name: "CatWoman", fullName: "Selina Kyle", status:"online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6784476-catwoman_vol_5_1_textless_variant.jpg", testText: "Selina's test", messages: [1,2,3,4,5,6,7]}, 
     {id: 2, name: "Harley Quin", fullName: "Harleen Frances Quinzel", status: "offline", avatar: "https://comicvine1.cbsistatic.com/uploads/scale_medium/11118/111185556/5296059-harley%20quinn%20by%20stanley%20lau.jpg", testText: "Harley's test", messages: [1,2]}, 
     
-    {id:3, name:"Superman", fullName: "Clark Kent", status:"away", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11/117229/6777461-ce00l1hcatb21.jpg", testText:"Sup's Test", messages: [1]},
+    {id:3, id2: 'sman', name:"Superman", fullName: "Clark Kent", status:"away", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11/117229/6777461-ce00l1hcatb21.jpg", testText:"Sup's Test", messages: [1]},
 
-    {id:3, name:"Wonder Woman", fullName: "Diana Prince", status:"online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/10/103530/6444044-4130984370-aHR0cDovL3d3dy5uZXdzYXJhbWEuY29tL2ltYWdlcy9pLzAwMC8yMjcvMjY2L29yaWdpbmFsL0pMXzFfdmFyX01hcmtfQnJvb2tzX2IuanBn", testText:"Diana's Test", messages: [1]},
+    {id:3, id2:'wwoman', name:"Wonder Woman", fullName: "Diana Prince", status:"online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/10/103530/6444044-4130984370-aHR0cDovL3d3dy5uZXdzYXJhbWEuY29tL2ltYWdlcy9pLzAwMC8yMjcvMjY2L29yaWdpbmFsL0pMXzFfdmFyX01hcmtfQnJvb2tzX2IuanBn", testText:"Diana's Test", messages: [1]},
 
     {id:3, name:"The Flash", fullName: "Barry Allen", status:"offline", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/10/100647/6772221-gplus1141127786.jpg", testText:"Barry's Test", messages: [1]},
 ]
@@ -70,6 +70,17 @@ function TestingButtonContent({props}){
     //     window.alert("hello")
     // }
 
+    // const myMessages  = props.specificMessages.specificMessages.test[0].map(messages => {
+    //     return <GenerateChatAllLeftSide messages={messages}/>
+    // })
+    // const mymesser = props.specificMessages.specificMessages.test.map(message =>{
+    //     return <GenerateChatAllLeftSide messages={message}/>
+    // })
+
+    const mymesser = props.specificMessages.specificMessages.messages_4_loggedInUserId ? props.specificMessages.specificMessages.messages_4_loggedInUserId.map(message =>{
+        return <GenerateChatAllLeftSide messages={message}/>
+    }) : ["1", "2"]
+
     // render(){
         return(
             <React.Fragment>
@@ -108,8 +119,29 @@ function TestingButtonContent({props}){
                                 {/* <h3>{this.state.messageContent}</h3> */}
                                 {/* {this.state.isDialogOpen ? (<p>why is this so hard</p>) : null} */}
                                 {/* <p>why now {this.props.specificMessages.specificMessages}</p> */}
-            <p>{props.id} +  {props.messages_4_loggedInUserId[0].userIDReceiver[0].messagecontent}</p>
-                                
+                                {/* <p>{props.id} +  {props.messages_4_loggedInUserId.[0].userIDReceiver[0].messagecontent}</p> */}
+                                <p> {props.id}</p>
+                                <p onClick={() => console.log(props.specificMessages.specificMessages.messages_4_loggedInUserId[0])}>Hi there</p>
+                                {/* <GenerateChatAllLeftSide/> */}
+                                {mymesser}
+
+                                <div class="d-flex justify-content-end mb-4">
+                                    <div class="msg_cotainer_send">
+                                        {/* "{messages[i].messageContent}" */}
+                                        "Love it"
+                                        {/* <span class="msg_time_send">{messages[i].messagetimestamp}</span> */}
+                                        <span class="msg_time_send">10:15</span>
+                                    </div>
+                                    <div class="img_cont_msg">
+                                        <img src="https://comicvine1.cbsistatic.com/uploads/scale_medium/10/103530/6444044-4130984370-aHR0cDovL3d3dy5uZXdzYXJhbWEuY29tL2ltYWdlcy9pLzAwMC8yMjcvMjY2L29yaWdpbmFsL0pMXzFfdmFyX01hcmtfQnJvb2tzX2IuanBn" class="rounded-circle user_img_msg"/>
+                                    </div>
+                                </div>
+
+                                {/* <p>{props.specificMessages.id} said:  {props.specificMessages.test} </p> */}
+                                {/* {props.specificMessages.messages_4_loggedInUserId[0].userIDReceiver1[0].messagecontent} */}
+                                {/* <p>what is in props {props.messages_4_loggedInUserId} </p> */}
+                                {/* <p>{props.messages_4_loggedInUserId.userIDReceiver1.messagecontent ? props.messages_4_loggedInUserId.userIDReceiver1.messagecontent : "still loading"}</p> */}
+                                {/* <p>what is in test props {props.test[0].thing1} </p> */}
                                 <Buti/>
                                 </div>
 
@@ -177,19 +209,46 @@ function RenderChatMessageComponent({user}){
   
 }
 
+function GenerateChatAllLeftSide({messages}){
+    let ans = ["1", "@"]
+    // if(messages.userIDReceiver){
+       
+    //     // return(
+    //     //     <p>messages {messages.userIDReceiver[0].messagecontent}</p>
+    //     //     )
+    // }
+    // for(var i = 0; i < messages.userIDReceiver.length; i++){
+    //     ans.push[messages.userIDReceiver[i]]
+    // };
+    messages.userIDReceiver.forEach(e => ans.push(e.messagecontent))
+    return(
+            // <p onClick={() => console.log(props.specificMessages.specificMessages.test[0])}>Hi there</p>
+            <p onClick={() =>console.log(messages.userIDReceiver[0].messagecontent)  }>messages {ans} {messages.userIDReceiver[0].messagecontent} </p>
+            // <p>tongue</p>
+        );
+}
+
+{/* <p onClick={() => console.log(props.specificMessages.specificMessages.test[0])}>Hi there</p> */}
+
+// const mymesser = props.specificMessages.specificMessages.messages_4_loggedInUserId ? props.specificMessages.specificMessages.messages_4_loggedInUserId.map(message =>{
+//     return <GenerateChatAllLeftSide messages={message}/>
+// }) : ["1", "2"]
+
 function GenerateChatContentLeftAndRightHistory({messages, loggedInUser}){
     let allMessages = []
     for(var i = 0; i < messages.length; i++){
         if(messages.messageBy == loggedInUser.id){
-            allMessages.push(<div class="d-flex justify-content-end mb-4">
-            <div class="msg_cotainer_send">
-                {messages[i].messageContent}
-                <span class="msg_time_send">{messages[i].messagetimestamp}</span>
+            allMessages.push(
+            <div class="d-flex justify-content-end mb-4">
+                <div class="msg_cotainer_send">
+                    {messages[i].messageContent}
+                    <span class="msg_time_send">{messages[i].messagetimestamp}</span>
+                </div>
+                <div class="img_cont_msg">
+                    <img src={messages[i].messangerAvatar} class="rounded-circle user_img_msg"/>
+                </div>
             </div>
-            <div class="img_cont_msg">
-                <img src={messages[i].messangerAvatar} class="rounded-circle user_img_msg"/>
-            </div>
-        </div>)
+        )
         }
     }
 
@@ -206,8 +265,9 @@ function RenderContactProfileChat({users, data}) {
                     {users.map(user => {
                             return(
                             <li className="d-flex bd-highlight chat_contact_card " >
-                                <div className="chat_user_image_and_cont" onClick={loadMessageForUser("hi")}>
-                                {/* <div className="chat_user_image_and_cont" onClick={()=> {console.log(`hello there b man its , ${user.testText}`)}}> */}
+                                <div className="chat_user_image_and_cont" onClick={() => console.log(user.id2)} >
+                                {/* onClick={() => this.props.fetchSpecificyMessage(user.id2) */}
+                                {/* <div className="chat_user_image_and_cont" onClick={()=> {console.log(`hello there b man its , ${user.testText}`)}}>  onClick={loadMessageForUser("hi")}*/}
                                 
                                 
                                     <div className="img_chatuser_cont" >
@@ -215,7 +275,7 @@ function RenderContactProfileChat({users, data}) {
                                         
                                         <span class={`online_icon ${user.status}`}></span>
                                     </div>
-                                    <div className="chatuser_info">
+                                    <div className="chatuser_info" >
                                         
                                             <span className="chatusername">{user.name}</span>
                                     
@@ -229,7 +289,7 @@ function RenderContactProfileChat({users, data}) {
                                         <span class="chat_close" onClick={()=> setCount(count + 1)}>&times;</span>
                                         <p>You closed {count} times</p>
                                     </div>
-                                
+                                {/* </div> */}
                             </li>
                             
                             )
@@ -528,18 +588,15 @@ function MessagingCenter(props){
                     
                 </div>
                 {/* end of overall container for whole page */}
-                <p>Test buttons change content</p>
-                <TestingButtonContent props={         { "id": "wwoman",
-            "messages_4_loggedInUserId": [ 
-                {"userIDReceiver": [
-                {"messageby": "userIDSender", "messageto": "userIDReceiver", "messagetimestamp": "time", "messagecontent": "when is the party", "messangerAvatar": "/sendersavatar"},
-                {"messageby": "userIDSender", "messageto": "userIDReceiver", "messagetimestamp": "time", "messagecontent": "half past noon tomorrow", "messangerAvatar": "/sendersavatar"}
-            ]}, 
-            {"userIDReceiver": [
-                {"messageby": "userIDReceiver", "messagetimestamp": "time", "messagecontent": "when is the party", "messangerAvatar": "/sendersavatar"},
-                {"messageby": "userIDSender", "messageto": "userIDReceiver", "messagetimestamp": "time", "messagecontent": "half past noon tomorrow", "messangerAvatar": "/sendersavatar"}
-        ]} 
-    ]}}/>
+                {/* const user = props.loggedInUser.loggedInUser.slice(0,1).map(user => {
+        return(          
+            <MyUserProfileComponent user={user} />
+        );
+    }); */}
+                <p onClick={() => console.log(props.specificMessages.specificMessages.id)}> Test buttons change content</p>
+                                {/* <p>{props.specificMessages.specificMessages.test[2]}</p> */}
+                {/* <TestingButtonContent props={ props.specificMessages.specificMessages}/> */}
+                <TestingButtonContent props={ props}/>
             </React.Fragment>
         )
     // }

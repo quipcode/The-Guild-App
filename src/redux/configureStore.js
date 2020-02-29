@@ -35,7 +35,8 @@ export const ConfigureStore = () => {
             users: Users,
             loggedInUser: LoggedInUser,
             messages: Messages,
-            specificMessages: SpecificMessage
+            specificMessages: SpecificMessage,
+            getMyMessagesForUser: "bman"
             // comments: Comments,
             // partners: Partners,
             // promotions: Promotions,

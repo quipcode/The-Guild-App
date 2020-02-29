@@ -186,7 +186,7 @@ export const addSpecificMessage = specificMessage => ({
 // const sman = 'sman'
 export const fetchSpecificyMessage = (sman) => dispatch => {
     dispatch(specificMessageLoading());
-    return(fetch(baseUrl + `messages/${sman}`))
+    return(fetch(baseUrl + `messages/wwoman`))
         .then(response =>{
             if(response.ok){
                 return response
