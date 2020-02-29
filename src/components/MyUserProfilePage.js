@@ -58,7 +58,7 @@ function MyUserProfile(props) {
                         </Breadcrumb>
                         {/* <h2>{props.campsite.name}</h2> */}
                         {/* <h2>{props.loggedInUser.loggedInUser.name}</h2> */}
-                        <p onClick={() => console.log(props.loggedInUser.loggedInUser[0], props.loggedInUser.loggedInUser[1] )}>Hi there</p>
+                        {/* <p onClick={() => console.log(props.loggedInUser.loggedInUser[0], props.loggedInUser.loggedInUser[1] )}>Hi there</p> */}
                         {user}
                         <hr />
                     </div>
@@ -99,7 +99,7 @@ function MyUserProfileComponent({ user }) {
                                 {user.name}
                             </h5>
                             <h6>
-                                Web Developer and Designer
+                                Dark Knight of Gotham
                                     </h6>
                             <p class="proile-rating">RANKINGS : <span>8/10</span></p>
                             <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
