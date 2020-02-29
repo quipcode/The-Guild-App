@@ -17,7 +17,7 @@ const chatContacts = [{id: 0, id2:"bman", name:"Batman", fullName: "Bruce Wayne"
 
     {id:3, name:"The Flash", fullName: "Barry Allen", status:"offline", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/10/100647/6772221-gplus1141127786.jpg", testText:"Barry's Test", messages: [1]},
 ]
-const Buti = (props)=><button>{props.children}</button>
+
 // class TestingButtonContent extends Component
 
 function TestingButtonContent({props}){
@@ -79,7 +79,7 @@ function TestingButtonContent({props}){
 
     const mymesser = props.specificMessages.specificMessages.messages_4_loggedInUserId ? props.specificMessages.specificMessages.messages_4_loggedInUserId.map(message =>{
         return <GenerateChatAllLeftSide messages={message}/>
-    }) : ["1", "2"]
+    }) : []
 
     // render(){
         return(
@@ -114,35 +114,62 @@ function TestingButtonContent({props}){
 
                         <div class="col-md-7 col-xl-8 chat">
                             <div class="card">
+                            <div class="card-header msg_head">
+            <div class="d-flex bd-highlight">
+                <div class="img_cont">
+                    {/* <img src={left2[0].messangerAvatar} class="rounded-circle user_img"/> */}
+                    <img src="https://comicvine1.cbsistatic.com/uploads/scale_medium/10/103530/6444044-4130984370-aHR0cDovL3d3dy5uZXdzYXJhbWEuY29tL2ltYWdlcy9pLzAwMC8yMjcvMjY2L29yaWdpbmFsL0pMXzFfdmFyX01hcmtfQnJvb2tzX2IuanBn" class="rounded-circle user_img"/>
+                    {/* <span class={`online_icon ${left2[0].status}`}></span> */}
+                    <span class={`online_icon online`}></span>
+                </div>
+                <div class="user_info">
+                    <span>Chat with Wonder Woman</span>
+                    {/* <span>Chat with {left2[0].name}</span> */}
+                    {/* <p>{left2.length} Messages</p> */}
+                </div>
+                <div class="video_cam">
+                    {/* <span><i class="fad fa-video"></i></span> */}
+                    <span><i class="fa fa-video-camera"></i></span>
+                    <span><i class="fa fa-phone"></i></span>
+                </div>
+            </div>
+            
+        
+            <UncontrolledDropdown id="action_menu_btn">
+                <DropdownToggle>
+                    <i class="fa fa-ellipsis-v"></i>
+                </DropdownToggle>
+                <DropdownMenu class="action_menu">
 
+                    <DropdownItem><i class="fa fa-user-circle"></i> <Link to={`/userdirectory`}>View profile</Link></DropdownItem>
+                    <DropdownItem><i class="fa fa-users"></i> Add to close friends</DropdownItem>
+                    <DropdownItem><i class="fa fa-plus"></i> Add to group</DropdownItem>
+                    <DropdownItem><i class="fa fa-ban"></i> Block</DropdownItem>
+                    {/* <DropdownItem divider />
+                    <DropdownItem>Another Action</DropdownItem> */}
+                </DropdownMenu>
+            </UncontrolledDropdown>        
+        </div>
                             <div class="card-body msg_card_body">
                                 {/* <h3>{this.state.messageContent}</h3> */}
                                 {/* {this.state.isDialogOpen ? (<p>why is this so hard</p>) : null} */}
                                 {/* <p>why now {this.props.specificMessages.specificMessages}</p> */}
                                 {/* <p>{props.id} +  {props.messages_4_loggedInUserId.[0].userIDReceiver[0].messagecontent}</p> */}
-                                <p> {props.id}</p>
-                                <p onClick={() => console.log(props.specificMessages.specificMessages.messages_4_loggedInUserId[0])}>Hi there</p>
+                                {/* <p> {props.id}</p>
+                                <p onClick={() => console.log(props.specificMessages.specificMessages.messages_4_loggedInUserId[0])}>Hi there</p> */}
                                 {/* <GenerateChatAllLeftSide/> */}
                                 {mymesser}
 
-                                <div class="d-flex justify-content-end mb-4">
-                                    <div class="msg_cotainer_send">
-                                        {/* "{messages[i].messageContent}" */}
-                                        "Love it"
-                                        {/* <span class="msg_time_send">{messages[i].messagetimestamp}</span> */}
-                                        <span class="msg_time_send">10:15</span>
-                                    </div>
-                                    <div class="img_cont_msg">
-                                        <img src="https://comicvine1.cbsistatic.com/uploads/scale_medium/10/103530/6444044-4130984370-aHR0cDovL3d3dy5uZXdzYXJhbWEuY29tL2ltYWdlcy9pLzAwMC8yMjcvMjY2L29yaWdpbmFsL0pMXzFfdmFyX01hcmtfQnJvb2tzX2IuanBn" class="rounded-circle user_img_msg"/>
-                                    </div>
-                                </div>
+                              
 
+                                
+                                 
                                 {/* <p>{props.specificMessages.id} said:  {props.specificMessages.test} </p> */}
                                 {/* {props.specificMessages.messages_4_loggedInUserId[0].userIDReceiver1[0].messagecontent} */}
                                 {/* <p>what is in props {props.messages_4_loggedInUserId} </p> */}
                                 {/* <p>{props.messages_4_loggedInUserId.userIDReceiver1.messagecontent ? props.messages_4_loggedInUserId.userIDReceiver1.messagecontent : "still loading"}</p> */}
                                 {/* <p>what is in test props {props.test[0].thing1} </p> */}
-                                <Buti/>
+                                
                                 </div>
 
                                 <div class="card-footer">
@@ -210,7 +237,7 @@ function RenderChatMessageComponent({user}){
 }
 
 function GenerateChatAllLeftSide({messages}){
-    let ans = ["1", "@"]
+    // let ans = ["1", "@"]
     // if(messages.userIDReceiver){
        
     //     // return(
@@ -220,10 +247,46 @@ function GenerateChatAllLeftSide({messages}){
     // for(var i = 0; i < messages.userIDReceiver.length; i++){
     //     ans.push[messages.userIDReceiver[i]]
     // };
-    messages.userIDReceiver.forEach(e => ans.push(e.messagecontent))
+    let left = []
+    let right = []
+    let ans = []
+    // messages.userIDReceiver.forEach(e => left.push(e.messagecontent))
+    messages.userIDReceiver.forEach( e => ans.push(e.messagecontent))
+    let right2 = messages.userIDReceiver.filter(e => e.messageby == "bman")
+    let left2 = messages.userIDReceiver.filter(e => e.messageby != "bman")
+    let finallizedRight = []
+    let finallizedLeft = []
+    right2.forEach(e => finallizedRight.push(
+        <div class="d-flex justify-content-end mb-4">
+            <div class="msg_cotainer_send">        
+                {e.messagecontent}        
+                <span class="msg_time_send">{e.messagetimestamp}</span>
+            </div>
+            <div class="img_cont_msg">
+                <img src={e.messangerAvatar} class="rounded-circle user_img_msg"/>
+            </div>
+        </div>))
+    left2.forEach(e => finallizedLeft.push(
+            <div class="d-flex justify-content-start mb-4">
+                <div class="img_cont_msg">
+                    <img src={e.messangerAvatar} class="rounded-circle user_img_msg"/>
+                </div>
+                <div class="msg_cotainer">
+                {e.messagecontent}
+                    <span class="msg_time">{e.messagetimestamp}</span>
+                </div>
+            </div>))
+    // const fn = a => (a ? 1 : 2);
     return(
             // <p onClick={() => console.log(props.specificMessages.specificMessages.test[0])}>Hi there</p>
-            <p onClick={() =>console.log(messages.userIDReceiver[0].messagecontent)  }>messages {ans} {messages.userIDReceiver[0].messagecontent} </p>
+    // <p onClick={() =>console.log(right2)  }>  right2: {right2[0].messagecontent} left2: {left2[0].messagecontent} </p>
+        <React.Fragment>
+           
+            {finallizedLeft[0]}
+            {finallizedRight[0]}
+            
+        </React.Fragment>
+    
             // <p>tongue</p>
         );
 }
