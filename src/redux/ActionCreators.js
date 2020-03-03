@@ -185,10 +185,12 @@ export const addSpecificMessage = specificMessage => ({
 })
 // const sman = 'sman'
 export const fetchSpecificyMessage = (sman) => dispatch => {
-    // console.log("id is ", sman)
+    console.log("id is ", sman)
     dispatch(specificMessageLoading());
-    return(fetch(baseUrl + `messages/wwoman`))
+    
+    return(fetch(baseUrl + `messages/${sman}`))
         .then(response =>{
+            console.log("in the res before if res.ok", sman)
             if(response.ok){
                 return response
             }else{
@@ -207,6 +209,30 @@ export const fetchSpecificyMessage = (sman) => dispatch => {
         .catch(errMess => dispatch(specificMessageFailed(errMess.message)))
 }
 
+export const fetchSpecificMessageWithSam = (sman) =>  dispatch => {
+    console.log("id is ", sman)
+    
+    
+    return(fetch(baseUrl + `messages/${sman}`))
+        .then(response =>{
+            console.log("in the res before if res.ok", sman)
+            if(response.ok){
+                return response
+            }else{
+                const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                error.response = response
+                throw error
+            }
+        },
+            error => {
+                var errMess = new Error(error.message)
+                throw errMess;
+            }
+        )
+        .then(response => response.json())
+        // .then(specificMessages => dispatch(addSpecificMessages(specificMessages)))
+        // .catch(errMess => dispatch(specificMessageFailed(errMess.message)))
+}
 
 
 

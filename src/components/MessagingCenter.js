@@ -6,7 +6,9 @@ import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, 
 import { LoggedInUser } from '../redux/loggedUser';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 import {loadMessageForUser} from '../redux/ActionCreators'
-import {fetchSpecificyMessage} from '../redux/ActionCreators'
+import {fetchSpecificyMessage, fetchSpecificMessageWithSam} from '../redux/ActionCreators'
+import {connect} from 'react-redux'
+import RenderContactProfileChat from './RenderContactProfileChat'
 
 const chatContacts = [{id: 0, id2:"bman", name:"Batman", fullName: "Bruce Wayne", status: "online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6733777-4.jpg", testText: "Bruce Bruce's test", messages: [1,2,3]},
     {id: 1, name: "CatWoman", fullName: "Selina Kyle", status:"online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6784476-catwoman_vol_5_1_textless_variant.jpg", testText: "Selina's test", messages: [1,2,3,4,5,6,7]}, 
@@ -328,52 +330,94 @@ function useForceUpdate(user){
 //     useForceUpdate()
 // }
 
-function RenderContactProfileChat({users, data}) {
-    const [count, setCount] = useState(0);
-    return (
+// function RenderContactProfileChat({users, data, setMessage}) {
+//     const [count, setCount] = useState(0);
+//     return (
             
-                <div className="card-body   chat_contacts_body">
-                <ul className=" chat_contacts">
-                    {users.map(user => {
-                            return(
-                            <li className="d-flex bd-highlight chat_contact_card " >
-                                <div className="chat_user_image_and_cont" onClick={() => console.log(user.id2)} >
-                                {/* onClick={() => this.props.fetchSpecificyMessage(user.id2) */}
-                                {/* <div className="chat_user_image_and_cont" onClick={()=> {console.log(`hello there b man its , ${user.testText}`)}}>  onClick={loadMessageForUser("hi")}*/}
+//                 <div className="card-body   chat_contacts_body">
+//                 <ul className=" chat_contacts">
+//                     {users.map(user => {
+//                             return(
+//                             <li className="d-flex bd-highlight chat_contact_card " >
+//                                 <div className="chat_user_image_and_cont"  >
+//                                 {/* onClick={() => this.props.fetchSpecificyMessage(user.id2) */}
+//                                 {/* <div className="chat_user_image_and_cont" onClick={()=> {console.log(`hello there b man its , ${user.testText}`)}}>  onClick={loadMessageForUser("hi")}*/}
                                 
                                 
-                                    <div className="img_chatuser_cont" >
-                                        <Link to="/myprofile"><img  className="rounded-circle chatuser_img" src={user.avatar}  /></Link>
+//                                     <div className="img_chatuser_cont" >
+//                                         <Link to="/myprofile"><img  className="rounded-circle chatuser_img" src={user.avatar}  /></Link>
                                         
-                                        <span class={`online_icon ${user.status}`}></span>
-                                    </div>
-                                    <Link to='/messagingcenter' onClick={fetchSpecificyMessage(user.id2)} > 
+//                                         <span class={`online_icon ${user.status}`}></span>
+//                                     </div>
+//                                     {/* <Link to='/messagingcenter' onClick={fetchSpecificyMessage(user.id2)} >  */}
                                     
-                                    <div className="chatuser_info" onClick={() => fetchSpecificyMessage(user.id2)}>
+//                                     <div className="chatuser_info" onClick={setMessage(user.id2)}>
                                         
-                                            <span className="chatusername">{user.name}</span>
+//                                             <span className="chatusername">{user.name}</span>
                                     
-                                        <span className="chatuserfullname">{user.fullName} is {user.status}</span>
-                                    </div>
-                                    </Link>
+//                                         <span className="chatuserfullname">{user.fullName} is {user.status}</span>
+//                                     </div>
+//                                     {/* </Link> */}
                                         
                                 
-                                    </div>
+//                                     </div>
                                     
-                                    <div>
-                                        <span class="chat_close" onClick={()=> setCount(count + 1)}>&times;</span>
-                                        <p>You closed {count} times</p>
-                                    </div>
-                                {/* </div> */}
-                            </li>
+//                                     <div>
+//                                         <span class="chat_close" onClick={()=> setCount(count + 1)}>&times;</span>
+//                                         <p>You closed {count} times</p>
+//                                     </div>
+//                                 {/* </div> */}
+//                             </li>
                             
-                            )
-                        })}
-                </ul>
-                </div>
+//                             )
+//                         })}
+//                 </ul>
+//                 </div>
             
-    );
-}
+//     );
+// }
+
+// const RenderContactProfileChat = ({users, data, setMessage}) => 
+
+// <div className="card-body   chat_contacts_body">
+//                 <ul className=" chat_contacts">
+//                     {users.map(user => {
+//                             return(
+//                             <li className="d-flex bd-highlight chat_contact_card " >
+//                                 <div className="chat_user_image_and_cont"  >
+//                                 {/* onClick={() => this.props.fetchSpecificyMessage(user.id2) */}
+//                                 {/* <div className="chat_user_image_and_cont" onClick={()=> {console.log(`hello there b man its , ${user.testText}`)}}>  onClick={loadMessageForUser("hi")}*/}
+                                
+                                
+//                                     <div className="img_chatuser_cont" >
+//                                         <Link to="/myprofile"><img  className="rounded-circle chatuser_img" src={user.avatar}  /></Link>
+                                        
+//                                         <span class={`online_icon ${user.status}`}></span>
+//                                     </div>
+//                                     {/* <Link to='/messagingcenter' onClick={fetchSpecificyMessage(user.id2)} >  */}
+                                    
+//                                     <div className="chatuser_info" onClick={setMessage(user.id2)}>
+                                        
+//                                             <span className="chatusername">{user.name}</span>
+                                    
+//                                         <span className="chatuserfullname">{user.fullName} is {user.status}</span>
+//                                     </div>
+//                                     {/* </Link> */}
+                                        
+                                
+//                                     </div>
+                                    
+//                                     <div>
+//                                         {/* <span class="chat_close" onClick={()=> setCount(count + 1)}>&times;</span> */}
+//                                         {/* <p>You closed {count} times</p> */}
+//                                     </div>
+//                                 {/* </div> */}
+//                             </li>
+                            
+//                             )
+//                         })}
+//                 </ul>
+//                 </div>
 // class MessagingCenter extends Component
 
 function MessagingCenter(props){
@@ -543,5 +587,16 @@ function MessagingCenter(props){
 
 }
 
+const mapStateToProps = ({ specificMessages}) => ({
+    specificMessages,
+  });
 
-export default MessagingCenter;
+  const mapDispatchToProps = dispatch => ({
+    setMessage(id){
+        return () => {
+            dispatch(fetchSpecificyMessage(id))
+            
+        }
+    }
+})
+export default connect(mapStateToProps, mapDispatchToProps)(MessagingCenter) ;
