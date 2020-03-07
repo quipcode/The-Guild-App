@@ -3,9 +3,10 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom'
 // import {setCharacter} from '../reducer/character'
 
-import {fetchSpecificyMessage} from '../redux/ActionCreators'
+import {fetchSpecificyMessage} from '../../redux/ActionCreators'
 
 const RenderContactProfileChat = ({users, data, setMessage}) => 
 <div className="card-body   chat_contacts_body">
@@ -19,7 +20,7 @@ const RenderContactProfileChat = ({users, data, setMessage}) =>
                                 
                                 
                                     <div className="img_chatuser_cont" >
-                                        {/* <Link to="/myprofile"><img  className="rounded-circle chatuser_img" src={user.avatar}  /></Link> */}
+                                        <Link to="/myprofile"><img  className="rounded-circle chatuser_img" src={user.avatar}  /></Link>
                                         
                                         <span class={`online_icon ${user.status}`}></span>
                                     </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Home from './HomeComponent'
-import MyGuilds from './MyGuildsComponent'
+import MyGuilds from './Guild/MyGuildsComponent'
 import Bio from './BioComponent'
 import Header from './HeaderComponent'
 import NavbarReactBootstrap from './NavbarComponent'
@@ -9,7 +9,7 @@ import UserProfile from './UserProfilePage';
 import UserDirectory from './UserDirectoryComponent';
 import Directory from './UserDirectoryComponent'
 import MyUserProfile from './MyUserProfilePage';
-import MessagingCenter from './MessagingCenter';
+import MessagingCenter from './Messaging/MessagingCenter';
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';

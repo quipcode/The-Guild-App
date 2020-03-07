@@ -179,10 +179,10 @@ export const specificMessageFailed = errMess => ({
     payload: errMess
 })
 
-export const addSpecificMessage = specificMessage => ({
-    type: ActionTypes.ADD_SPECIFIC_MESSAGE,
-    payload: specificMessage
-})
+// export const addSpecificMessage = specificMessage => ({
+//     type: ActionTypes.ADD_SPECIFIC_MESSAGE,
+//     payload: specificMessage
+// })
 // const sman = 'sman'
 export const fetchSpecificyMessage = (sman) => dispatch => {
     console.log("id is ", sman)
@@ -209,30 +209,6 @@ export const fetchSpecificyMessage = (sman) => dispatch => {
         .catch(errMess => dispatch(specificMessageFailed(errMess.message)))
 }
 
-export const fetchSpecificMessageWithSam = (sman) =>  dispatch => {
-    console.log("id is ", sman)
-    
-    
-    return(fetch(baseUrl + `messages/${sman}`))
-        .then(response =>{
-            console.log("in the res before if res.ok", sman)
-            if(response.ok){
-                return response
-            }else{
-                const error = new Error(`Error ${response.status}: ${response.statusText}`);
-                error.response = response
-                throw error
-            }
-        },
-            error => {
-                var errMess = new Error(error.message)
-                throw errMess;
-            }
-        )
-        .then(response => response.json())
-        // .then(specificMessages => dispatch(addSpecificMessages(specificMessages)))
-        // .catch(errMess => dispatch(specificMessageFailed(errMess.message)))
-}
 
 
 
@@ -285,3 +261,45 @@ export const postUser = (userId, userName, userAvatar, avatarImage) => dispatch 
 };
 
 
+
+export const fetchMyGuilds = () => dispatch => {
+    dispatch(usersLoading());
+    // return fetch(baseUrl + 'users')
+    // return fetch('http://localhost:3002/results')
+    return fetch(baseUrl + 'results')
+   
+        .then(response => {
+            if (response.ok) {
+                return response;
+            } else {
+                const error = new Error(`Error ${response.status}: ${response.statusText}`); error.response = response;
+                throw error;
+            }
+        },
+            error => {
+                var errMess = new Error(error.message);
+                throw errMess;
+            }
+        )
+        .then(response => response.json())
+        .then(users => dispatch(addUsers(users)))
+        .catch(error => dispatch(usersFailed(error.message)));
+        
+};
+
+
+
+
+// export const usersLoading = () => ({
+//     type: ActionTypes.USERS_LOADING
+// });
+
+// export const usersFailed = errMess => ({
+//     type: ActionTypes.USERS_FAILED,
+//     payload: errMess
+// });
+
+// export const addUsers = users => ({
+//     type: ActionTypes.ADD_USERS,
+//     payload: users
+// });
