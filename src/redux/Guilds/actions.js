@@ -1,6 +1,9 @@
+import { baseUrl } from '../../shared/baseUrl';
+
 export const MY_GUILDS_LOADING = 'MY_GUILDS_LOADING'
 export const MY_GUILDS_FAILED = 'MY_GUILDS_FAILED'
 export const MY_GUILDS = 'MY_GUILDS'
+
 
 
 export const fetchMyGuilds = () => dispatch => {

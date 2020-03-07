@@ -14,7 +14,7 @@ import MessagingCenter from './Messaging/MessagingCenter';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-
+import {fetchMyGuilds} from '../redux/Guilds/actions'
 import {usersLoading, usersFailed, addUsers, addUser, postUser, fetchUsers, fetchLoginUser, fetchMessages, loadMessageForUser, fetchSpecificyMessage} from '../redux/ActionCreators'
 const bob = "bob"
 const mapDispatchToProps = {
@@ -24,7 +24,8 @@ const mapDispatchToProps = {
     fetchLoginUser: () => (fetchLoginUser()),
     fetchMessages: () => (fetchMessages()),
     // loadMessageForUser: (bob) => (loadMessageForUser("bob")),
-    fetchSpecificyMessage: (userid) => (fetchSpecificyMessage(userid))
+    fetchSpecificyMessage: (userid) => (fetchSpecificyMessage(userid)),
+    fetchMyGuilds: () => (fetchMyGuilds())
     // addComment: (campsiteId, rating, author, text) => (addComment(campsiteId, rating, author, text)),
     // postUser = (userId, userName, userAvatar, avatarImage) 
     // resetFeedbackForm: () => (actions.reset('feedbackForm')),
@@ -41,7 +42,8 @@ const mapStateToProps = state => {
         loggedInUser: state.loggedInUser,
         messages: state.messages,
         specificMessages: state.specificMessages,
-        getMyMessagesForUser: 'bman'
+        getMyMessagesForUser: 'bman',
+        myGuilds: state.myGuilds
         // comments: state.comments,
         // partners: state.partners,
         // promotions: state.promotions
@@ -58,6 +60,7 @@ class Main extends Component{
         this.props.fetchLoginUser()   
         this.props.fetchMessages()  
         this.props.fetchSpecificyMessage()
+        this.props.fetchMyGuilds()
     }
    
     render(){
@@ -106,7 +109,7 @@ class Main extends Component{
                     <Route path='/home' component={HomePage}/>
                     <Route path='/bio' component={BioPage}/>
                     <Route path='/messagingcenter' render ={() => < MessagingCenter  specificMessages={this.props.specificMessages} />}/> 
-                    <Route path='/myguilds' component={MyGuildsPage}/>
+                    <Route path='/myguilds' render ={() => <MyGuilds myGuilds={this.props.myGuilds}/> } />
                     {/* <Route path='/myprofile' component={MyUserProfPage} /> */}
                     <Route path='/myprofile' render={() => <MyUserProfile loggedInUser={this.props.loggedInUser}/>} />
                     <Route path='/userdirectory/:userId' component={UserProfPageID} />

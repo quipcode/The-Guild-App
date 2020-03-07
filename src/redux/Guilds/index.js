@@ -1,19 +1,18 @@
-import * as ActionTypes from './ActionTypes'
+import * as ActionTypes from './actions'
 
 //Making a reducer
-export const Users = (state = {
+export const MyGuilds = (state = {
     isLoading: true,
     errMess: null,
-    users: [],
-    // loggedInUser: []
+    myGuilds: []
 }, action) => {
     switch (action.type) {
-        case ActionTypes.ADD_USERS:
-            return { ...state, isLoading: false, errMess: null, users: action.payload };
+        case ActionTypes.MY_GUILDS:
+            return { ...state, isLoading: false, errMess: null, myGuilds: action.payload };
        
-        case ActionTypes.USERS_LOADING:
-            return { ...state, isLoading: true, errMess: null, users: [] };
-        case ActionTypes.USERS_FAILED:
+        case ActionTypes.MY_GUILDS_LOADING:
+            return { ...state, isLoading: true, errMess: null, myGuilds: [] };
+        case ActionTypes.MY_GUILDS_FAILED:
             return { ...state, isLoading: false, errMess: action.payload };
 
         default:
