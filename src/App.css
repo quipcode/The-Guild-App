@@ -575,3 +575,20 @@ margin-bottom: 15px !important;
     transform: translate(0%, -50%); */
   }
   
+/* MyGuilds page setting */
+
+.myGuild-card .myGuild-card-body .myGuild-card-message {
+    padding-left: 80px;
+}
+.myGuild-card .myGuild-card-body .myGuild-card-message::after {
+    clear: both;
+}
+.myGuild-card .myGuild-card-body .myGuild-actions {
+    margin-top: 5px;
+    
+}
+
+/* provides spacing between each 'guild card' */
+.myGuild-container{
+    margin-top: 20px;
+}
