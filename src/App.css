@@ -590,5 +590,15 @@ margin-bottom: 15px !important;
 
 /* provides spacing between each 'guild card' */
 .myGuild-container{
+    /* margin-top: 20px;
+    background-color: #FAA61A;
+    border-radius: 70% */
+}
+.myGuild-ultra-container{
     margin-top: 20px;
+    /* background-color: #FAA61A; */
+    /* border-radius: 30%; */
+    
+    /* border-radius: 15px 500px 300px 5px; */
+    /* border-radius: 1000000% 33% 8000% 1000000%; */
 }

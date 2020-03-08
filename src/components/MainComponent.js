@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Home from './HomeComponent'
 import MyGuilds from './Guild/MyGuildsComponent'
+import GuildDirectory from './Guild/GuildDirectory'
 import Bio from './BioComponent'
 import Header from './HeaderComponent'
 import NavbarReactBootstrap from './NavbarComponent'
@@ -14,8 +15,10 @@ import MessagingCenter from './Messaging/MessagingCenter';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-import {fetchMyGuilds} from '../redux/Guilds/actions'
+import {fetchMyGuilds, fetchAllGuilds} from '../redux/Guilds/actions'
 import {usersLoading, usersFailed, addUsers, addUser, postUser, fetchUsers, fetchLoginUser, fetchMessages, loadMessageForUser, fetchSpecificyMessage} from '../redux/ActionCreators'
+
+import GuildProfile from './Guild/GuildProfile'
 const bob = "bob"
 const mapDispatchToProps = {
     fetchUsers: () => (fetchUsers()),
@@ -25,7 +28,8 @@ const mapDispatchToProps = {
     fetchMessages: () => (fetchMessages()),
     // loadMessageForUser: (bob) => (loadMessageForUser("bob")),
     fetchSpecificyMessage: (userid) => (fetchSpecificyMessage(userid)),
-    fetchMyGuilds: () => (fetchMyGuilds())
+    fetchMyGuilds: () => (fetchMyGuilds()),
+    fetchAllGuilds: () => (fetchAllGuilds())
     // addComment: (campsiteId, rating, author, text) => (addComment(campsiteId, rating, author, text)),
     // postUser = (userId, userName, userAvatar, avatarImage) 
     // resetFeedbackForm: () => (actions.reset('feedbackForm')),
@@ -43,7 +47,8 @@ const mapStateToProps = state => {
         messages: state.messages,
         specificMessages: state.specificMessages,
         getMyMessagesForUser: 'bman',
-        myGuilds: state.myGuilds
+        myGuilds: state.myGuilds,
+        allGuilds: state.allGuilds
         // comments: state.comments,
         // partners: state.partners,
         // promotions: state.promotions
@@ -61,6 +66,7 @@ class Main extends Component{
         this.props.fetchMessages()  
         this.props.fetchSpecificyMessage()
         this.props.fetchMyGuilds()
+        this.props.fetchAllGuilds()
     }
    
     render(){
@@ -99,7 +105,12 @@ class Main extends Component{
         const MessagingCenterPage = ({match}) => {
             return <MessagingCenter/>
         }
-
+        const GuildProfPageID = ({ match }) => {
+            return(
+                // <UserProfile/>
+                <GuildProfile guild={this.props.allGuilds.allGuilds.filter(guild => guild.id === +match.params.guildId)[0]}/>
+            )
+        }
         return (
             <div>
                 <Header />
@@ -113,8 +124,13 @@ class Main extends Component{
                     {/* <Route path='/myprofile' component={MyUserProfPage} /> */}
                     <Route path='/myprofile' render={() => <MyUserProfile loggedInUser={this.props.loggedInUser}/>} />
                     <Route path='/userdirectory/:userId' component={UserProfPageID} />
+                    <Route path='/guilddirectory/:guildId' component={GuildProfPageID} />
                     {/* <Route path='/userdirectory' render={() => <UserDirectory users={this.props.users} />} /> */}
                     <Route path='/userdirectory' render={() => <Directory  users={this.props.users}/>} />
+                    <Route path='/guilddirectory' render={() => <GuildDirectory  allGuilds={this.props.allGuilds}/>} />
+                    
+                    {/* <Route path='/guildprofile' render={() => <GuildProfile />}  /> */}
+                    
                     <Redirect to='/home' />
                 </Switch>
             </div>

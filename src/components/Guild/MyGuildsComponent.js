@@ -22,7 +22,7 @@ function GuildGenerator({guild}){
         //     </ul>
         //     </div>
         // </div>    
-        <div className="container"  key={guild.id} >
+        <div className="container myGuild-ultra-container"  key={guild.id} >
               <div class="myGuild-card" class="myGuild-container" >
                 <div class="myGuild-card-body">
                 <img src={guild.avatar} class="float-left rounded-circle" roundedCircle width="225px" height="225px" border-radius="50%"  margin="0 10px 0 0" float="left" display="block"/>

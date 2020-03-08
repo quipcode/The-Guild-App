@@ -18,7 +18,8 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { Messages } from './messages';
 import { SpecificMessage } from './specificmessage';
-import {MyGuilds} from './Guilds/index'
+import {MyGuilds} from './Guilds/index';
+import {AllGuilds} from './Guilds/allGuilds';
 
 // import { persistStore, persistCombineReducers } from 'redux-persist';
 // import storage from 'redux-persist/es/storage';
@@ -37,7 +38,8 @@ export const ConfigureStore = () => {
             messages: Messages,
             specificMessages: SpecificMessage,
             getMyMessagesForUser: "bman",
-            myGuilds: MyGuilds
+            myGuilds: MyGuilds,
+            allGuilds: AllGuilds,
             // comments: Comments,
             // partners: Partners,
             // promotions: Promotions,
