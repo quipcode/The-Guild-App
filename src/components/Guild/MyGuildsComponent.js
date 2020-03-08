@@ -1,6 +1,7 @@
 import React from 'react'
 import {Breadcrumb, BreadcrumbItem} from 'reactstrap'
 import {Link} from 'react-router-dom'
+import {Loading} from '../LoadingComponent'
 
 function GuildGenerator({guild}){
     return (
@@ -54,31 +55,51 @@ function MyGuilds(props){
             <GuildGenerator  guild = {guild}/>
         )
     })
+    if(props.myGuilds.isLoading){
+        return(
+            <div className="container">
+                <div className="row">
+                    <Loading />
+                </div>
+            </div>
+            
+        )
+    }
 
-    return(
-        // <div> 
-        //     <p>Hello There</p>
-        // </div>
+    if(props.myGuilds.errMess){
+        return(
+            <div className="container">
+                <div className="row">
+                    {props.errMess}
+                </div>
+            </div>
+            
+        )
+    }
+    
+    return (
         <div className="container">
-        <div className="row">
-            <div className="col">
-                <Breadcrumb>
-                    <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
-                    <BreadcrumbItem active>My Guilds</BreadcrumbItem>
-                </Breadcrumb>
-                
-                <hr />
-            </div>
-        </div>
-        <div className="col" class="emp-profile">
-            <h2 class="centered-header">My Guilds</h2>
             <div className="row">
-                {myGuilds}
+                <div className="col">
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>My Guilds</BreadcrumbItem>
+                    </Breadcrumb>
+                    
+                    <hr />
+                </div>
             </div>
+            <div className="col" class="emp-profile">
+                <h2 class="centered-header">My Guilds</h2>
+                <div className="row">
+                    {myGuilds}
+                </div>
+            </div>
+          
         </div>
-      
-        </div>
-    )
+    );
+
+    
    
 }
 

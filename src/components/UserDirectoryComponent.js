@@ -62,7 +62,7 @@ function RenderDirectoryItem({user}) {
     );
 }
 
-function Directory(props) {
+function UserDirectory(props) {
 
     const users = props.users.users.map(user => {
         return(          
@@ -115,7 +115,7 @@ function Directory(props) {
     );
 }
 
-export default Directory;
+export default UserDirectory;
 
 // function UserProfile2(props) {
 //     if (props.isLoading) {

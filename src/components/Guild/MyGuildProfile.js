@@ -9,64 +9,73 @@ import {Loading} from '../LoadingComponent';
 
 
 
-function MyGuildProfile(props){
-    if(props.isLoading){
-        return(
-            <div className="container">
-            <div className="row">
-                <div className="col">
-                    <Loading />
-                </div>
+// function MyGuildProfile(props){
+//     if(props.isLoading){
+//         return(
+//             <div className="container">
+//             <div className="row">
+//                 <div className="col">
+//                     <Loading />
+//                 </div>
                 
-            </div>
-        </div>
-        )
-    }
-    if(props.errMess){
-        return(
-            <div className="container">
-                <div className="row">
-                    <div className="col">
-                        {props.errMess}
-                    </div>
-                </div>
-            </div>
-        )
-    }
+//             </div>
+//         </div>
+//         )
+//     }
+//     if(props.errMess){
+//         return(
+//             <div className="container">
+//                 <div className="row">
+//                     <div className="col">
+//                         {props.errMess}
+//                     </div>
+//                 </div>
+//             </div>
+//         )
+//     }
 
-    if (props.guild) {
-        return (
+//     if (props.guild) {
+//         return (
             
-            <div className="container">
-                <div className="row">
-                    <div className="col">
-                        <Breadcrumb>
-                            <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
-                            <BreadcrumbItem><Link to="/guilddirectory">Guild Directory</Link></BreadcrumbItem>
-                            <BreadcrumbItem active>{props.guild.name}</BreadcrumbItem>
-                        </Breadcrumb>
-                        {/* <h2>{props.campsite.name}</h2> */}
-                        <hr />
-                    </div>
-                </div>
-                <div className="row">
-                {/* <MyUserProfile user={props.user}/> */}
-                <MyGuildProfileComponent guild={props.guild}/>
-                    {/* <RenderCampsite campsite={props.campsite} />
-                    <RenderComments
-                        comments={props.comments}
-                        // addComment={props.addComment}
-                        postComment={props.postComment} 
-                        campsiteId={props.campsite.id}
-                    /> */}
-                    
-                </div>
-            </div>
-        );
-    }
-return  <p>what up{props.guild}</p>;
+//             <div className="container">
+//                 <div className="row">
+//                     <div className="col">
+//                         <Breadcrumb>
+//                             <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+//                             <BreadcrumbItem><Link to="/guilddirectory">Guild Directory</Link></BreadcrumbItem>
+//                             <BreadcrumbItem active>{props.guild.name}</BreadcrumbItem>
+//                         </Breadcrumb>
+//                         {/* <h2>{props.campsite.name}</h2> */}
+//                         <hr />
+//                     </div>
+//                 </div>
+//                 <div className="row">
+//                 {/* <MyUserProfile user={props.user}/> */}
+//                 {/* <MyGuildProfileComponent guild={props.guild}/> */}
+//                     {/* <RenderCampsite campsite={props.campsite} />
+//                     <RenderComments
+//                         comments={props.comments}
+//                         // addComment={props.addComment}
+//                         postComment={props.postComment} 
+//                         campsiteId={props.campsite.id}
+//                     /> */}
+//                     {/* <p>{props.guild.guild.forEach(element => {
+//                         console.log(element)
+//                     })}</p>         */}
+//                     <p>{props.match}what in tarnation</p>
+//                 </div>
+//             </div>
+//         );
+//     }
+    
+//     return (
+//         {console.log()}
+//         <p>I'm here though </p>
+//         )
 
-}
+// }
+
+const MyGuildProfile = ({match}) => console.log('match', match) (<p>hi</p>)
 
 function MyGuildProfileComponent({guild}){
     // function getDetails(){
@@ -79,8 +88,8 @@ function MyGuildProfileComponent({guild}){
                         <div class="row">
                             <div class="col-md-3">
                                    <div class="profile-img">
-                                   {/* <ChangeProfileImage guild={guild} /> */}
-                                    <img  className="userprofileimage" src={guild.avatar} alt={guild.name}  data-holder-rendered="true" />
+                                   <ChangeProfileImage guild={guild} />
+                                    <img  className="userprofileimage" src={guild.image.small_url} alt={guild.name}  data-holder-rendered="true" />
                                     {/* <div class="file btn btn-lg btn-primary" onClick={this.toggleModal}> */}
                                 </div>
                                 
@@ -94,7 +103,7 @@ function MyGuildProfileComponent({guild}){
                                         {guild.name}
                                     </h5>
                                     <h6>
-                                        {guild.purpose}
+                                        {guild.deck}
                                     </h6>
                                     <p class="proile-rating">RANKINGS : <span>8/10</span></p>
                                     <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
@@ -107,9 +116,6 @@ function MyGuildProfileComponent({guild}){
                                         </Tab>
                                         <Tab eventKey="contact" title="Contact" >
                                             <div dangerouslySetInnerHTML={{ __html: guild.description}}/>                                          
-                                        </Tab>
-                                        <Tab eventKey="contact" title="Tasks" >
-                                            {/* <div dangerouslySetInnerHTML={{ __html: guild.description}}/>                                           */}
                                         </Tab>
                                     </Tabs>
                                     {/* <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -184,25 +190,7 @@ class ChangeProfileImage extends Component {
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Avatar Editor</ModalHeader>
                     <ModalBody>
-                        {/* <Form onSubmit={this.handleLogin}>
-                            <FormGroup>
-                                <Label htmlFor="username">Username</Label>
-                                <Input type="text" id="username" name="username" innerRef={input => this.username = input} />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label htmlFor="password">Password</Label>
-                                <Input type="password" id="password" name="password" innerRef={input => this.password = input} />
-                            </FormGroup>
-                            <FormGroup check>
-                                <Label check>
-                                    <Input type="checkbox" name="remember"
-                                        innerRef={input => this.remember = input} />
-                                    Remember me
-                        </Label>
-                            </FormGroup>
-                            <Button type="Submit" value="submit" color="primary">Login</Button>
-                            <Button  value="submit" color="secondary" onClick = {this.toggleModal}>Cancel</Button>
-                        </Form> */}
+                
                         <MyEditor image={this.props.guild} />
                     </ModalBody>
                 </Modal>

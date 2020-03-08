@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Main from './components/MainComponent';
 import './App.css';
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConfigureStore } from './redux/configureStore';
 // import { PersistGate } from 'redux-persist/es/integration/react';
@@ -14,9 +14,10 @@ class App extends Component{
   render(){
     return(
       <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter >
           <div className="App">
-            <Main/>
+            {/* <Route exact  component={Main}/> */}
+             <Main/>
           </div>
         </BrowserRouter>
       </Provider>

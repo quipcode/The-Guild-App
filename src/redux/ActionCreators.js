@@ -185,12 +185,12 @@ export const specificMessageFailed = errMess => ({
 // })
 // const sman = 'sman'
 export const fetchSpecificyMessage = (sman) => dispatch => {
-    console.log("id is ", sman)
+    // console.log("id is ", sman)
     dispatch(specificMessageLoading());
     
     return(fetch(baseUrl + `messages/${sman}`))
         .then(response =>{
-            console.log("in the res before if res.ok", sman)
+            
             if(response.ok){
                 return response
             }else{
