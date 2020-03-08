@@ -67,9 +67,7 @@ class Main extends Component{
         }
         const MyGuildProfPageID = ({ match }) => {
             return(
-                
                 <MyGuildProfile guild={this.props.myGuilds.myGuilds.filter(g => g.id === +match.params.myGuildID)[0]}/>
-                
             )
         }
       
@@ -77,7 +75,6 @@ class Main extends Component{
        
         const UserProfPageID = ({ match }) => {
             return(
-                
                 <UserProfile user={this.props.users.users.filter(user => user.id === +match.params.userId)[0]}/>
             )
         }
@@ -85,22 +82,15 @@ class Main extends Component{
      
         const GuildProfPageID = ({ match }) => {
             return(
-                
                 <GuildProfile guild={this.props.allGuilds.allGuilds.filter(guild => guild.id === +match.params.guildId)[0]}/>
             )
         }
-        
-
-        
 
         return (
             <div>
                 <Header />
-                
                 <NavbarReactBootstrap/>
                 <Switch>
-                    
-
                     <Route exact path='/myguilds/:myGuildID'  component={MyGuildProfPageID}  />
                     {/* <Route exact path="/details/:id" render={(props) => <DetailsPage globalStore={globalStore} {...props} /> } /> */}
                     {/* <Route exact path="/myguilds/:myGUID" render={(props) => <MyGuildProfile guild={props.myGuilds} {...props} /> } /> */}
