@@ -27,7 +27,9 @@ function GuildGenerator({guild}){
                 <div class="myGuild-card-body">
                 <img src={guild.avatar} class="float-left rounded-circle" roundedCircle width="225px" height="225px" border-radius="50%"  margin="0 10px 0 0" float="left" display="block"/>
                 <div class="myGuild-message">
+                    <Link to={`/myguilds/${guild.id}`}>
                     <h5 class="card-title">{guild.name}</h5>
+                    </Link>
                     <h6 class="card-subtitle mb-2 text-muted">{guild.purpose}</h6>
                     <p class="card-text">Founded on {guild.foundedOn}, with a member size of {guild.membersCount}, and impacts the world at a {guild.impact} level</p>
                   

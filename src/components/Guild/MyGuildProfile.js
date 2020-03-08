@@ -9,7 +9,7 @@ import {Loading} from '../LoadingComponent';
 
 
 
-function GuildProfile(props){
+function MyGuildProfile(props){
     if(props.isLoading){
         return(
             <div className="container">
@@ -51,7 +51,7 @@ function GuildProfile(props){
                 </div>
                 <div className="row">
                 {/* <MyUserProfile user={props.user}/> */}
-                <GuildProfileComponent guild={props.guild}/>
+                <MyGuildProfileComponent guild={props.guild}/>
                     {/* <RenderCampsite campsite={props.campsite} />
                     <RenderComments
                         comments={props.comments}
@@ -64,11 +64,11 @@ function GuildProfile(props){
             </div>
         );
     }
-    return  <div />;
+return  <p>what up{props.guild}</p>;
 
 }
 
-function GuildProfileComponent({guild}){
+function MyGuildProfileComponent({guild}){
     // function getDetails(){
     //     return {_html: {user.description}}
     // }
@@ -79,8 +79,8 @@ function GuildProfileComponent({guild}){
                         <div class="row">
                             <div class="col-md-3">
                                    <div class="profile-img">
-                                   <ChangeProfileImage guild={guild} />
-                                    <img  className="userprofileimage" src={guild.image.small_url} alt={guild.name}  data-holder-rendered="true" />
+                                   {/* <ChangeProfileImage guild={guild} /> */}
+                                    <img  className="userprofileimage" src={guild.avatar} alt={guild.name}  data-holder-rendered="true" />
                                     {/* <div class="file btn btn-lg btn-primary" onClick={this.toggleModal}> */}
                                 </div>
                                 
@@ -94,7 +94,7 @@ function GuildProfileComponent({guild}){
                                         {guild.name}
                                     </h5>
                                     <h6>
-                                        {guild.deck}
+                                        {guild.purpose}
                                     </h6>
                                     <p class="proile-rating">RANKINGS : <span>8/10</span></p>
                                     <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
@@ -107,6 +107,9 @@ function GuildProfileComponent({guild}){
                                         </Tab>
                                         <Tab eventKey="contact" title="Contact" >
                                             <div dangerouslySetInnerHTML={{ __html: guild.description}}/>                                          
+                                        </Tab>
+                                        <Tab eventKey="contact" title="Tasks" >
+                                            {/* <div dangerouslySetInnerHTML={{ __html: guild.description}}/>                                           */}
                                         </Tab>
                                     </Tabs>
                                     {/* <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -209,4 +212,4 @@ class ChangeProfileImage extends Component {
 }
 
 
-export default GuildProfile;
+export default MyGuildProfile;

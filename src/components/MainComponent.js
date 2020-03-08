@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Home from './HomeComponent'
 import MyGuilds from './Guild/MyGuildsComponent'
 import GuildDirectory from './Guild/GuildDirectory'
+import MyGuildProfile from './Guild/MyGuildProfile'
 import Bio from './BioComponent'
 import Header from './HeaderComponent'
 import NavbarReactBootstrap from './NavbarComponent'
@@ -111,15 +112,23 @@ class Main extends Component{
                 <GuildProfile guild={this.props.allGuilds.allGuilds.filter(guild => guild.id === +match.params.guildId)[0]}/>
             )
         }
+        const MyGuildProfPageID = ({ match }) => {
+            return(
+                // <UserProfile/>
+                <MyGuildProfile guild={this.props.myGuilds.myGuilds.filter(guild => guild.id === +match.params.myguildId)[0]}/>
+            )
+        }
         return (
             <div>
                 <Header />
                 {/* <CpcNavigation  /> */}
                 <NavbarReactBootstrap/>
                 <Switch>
+                    
                     <Route path='/home' component={HomePage}/>
                     <Route path='/bio' component={BioPage}/>
                     <Route path='/messagingcenter' render ={() => < MessagingCenter  specificMessages={this.props.specificMessages} />}/> 
+                    <Route path='/myguilds/:myguildId' render ={({match}) => < MyGuildProfile  guild={this.props.myGuilds.myGuilds.filter(guild => guild.id === +match.params.myguildId)[0]} />}  />
                     <Route path='/myguilds' render ={() => <MyGuilds myGuilds={this.props.myGuilds}/> } />
                     {/* <Route path='/myprofile' component={MyUserProfPage} /> */}
                     <Route path='/myprofile' render={() => <MyUserProfile loggedInUser={this.props.loggedInUser}/>} />
@@ -128,8 +137,10 @@ class Main extends Component{
                     {/* <Route path='/userdirectory' render={() => <UserDirectory users={this.props.users} />} /> */}
                     <Route path='/userdirectory' render={() => <Directory  users={this.props.users}/>} />
                     <Route path='/guilddirectory' render={() => <GuildDirectory  allGuilds={this.props.allGuilds}/>} />
+
                     
-                    {/* <Route path='/guildprofile' render={() => <GuildProfile />}  /> */}
+
+                    <Route path='/guildprofile' render={() => <MyGuildProfile />}  />
                     
                     <Redirect to='/home' />
                 </Switch>
