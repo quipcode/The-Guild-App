@@ -14,9 +14,9 @@ const chatContacts = [{id: 0, id2:"bman", name:"Batman", fullName: "Bruce Wayne"
     
     {id:3, id2: 'sman', name:"Superman", fullName: "Clark Kent", status:"away", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11/117229/6777461-ce00l1hcatb21.jpg", testText:"Sup's Test", messages: [1]},
 
-    {id:3, id2:'wwoman', name:"Wonder Woman", fullName: "Diana Prince", status:"online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/10/103530/6444044-4130984370-aHR0cDovL3d3dy5uZXdzYXJhbWEuY29tL2ltYWdlcy9pLzAwMC8yMjcvMjY2L29yaWdpbmFsL0pMXzFfdmFyX01hcmtfQnJvb2tzX2IuanBn", testText:"Diana's Test", messages: [1]},
+    {id:4, id2:'wwoman', name:"Wonder Woman", fullName: "Diana Prince", status:"online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/10/103530/6444044-4130984370-aHR0cDovL3d3dy5uZXdzYXJhbWEuY29tL2ltYWdlcy9pLzAwMC8yMjcvMjY2L29yaWdpbmFsL0pMXzFfdmFyX01hcmtfQnJvb2tzX2IuanBn", testText:"Diana's Test", messages: [1]},
 
-    {id:3, name:"The Flash", fullName: "Barry Allen", status:"offline", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/10/100647/6772221-gplus1141127786.jpg", testText:"Barry's Test", messages: [1]},
+    {id:5, name:"The Flash", fullName: "Barry Allen", status:"offline", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/10/100647/6772221-gplus1141127786.jpg", testText:"Barry's Test", messages: [1]},
 ]
 
 // class TestingButtonContent extends Component
@@ -336,7 +336,7 @@ function RenderContactProfileChat({users, data}) {
                 <ul className=" chat_contacts">
                     {users.map(user => {
                             return(
-                            <li className="d-flex bd-highlight chat_contact_card " >
+                            <li className="d-flex bd-highlight chat_contact_card " key={user.id} >
                                 <div className="chat_user_image_and_cont" onClick={() => console.log(user.id2)} >
                                 {/* onClick={() => this.props.fetchSpecificyMessage(user.id2) */}
                                 {/* <div className="chat_user_image_and_cont" onClick={()=> {console.log(`hello there b man its , ${user.testText}`)}}>  onClick={loadMessageForUser("hi")}*/}
@@ -347,15 +347,15 @@ function RenderContactProfileChat({users, data}) {
                                         
                                         <span class={`online_icon ${user.status}`}></span>
                                     </div>
-                                    <Link to='/messagingcenter' onClick={fetchSpecificyMessage(user.id2)} > 
+                                    {/* <Link to='/messagingcenter' onClick={fetchSpecificyMessage(user.id2)} >  */}
                                     
-                                    <div className="chatuser_info" onClick={() => fetchSpecificyMessage(user.id2)}>
+                                        <div className="chatuser_info" onClick={() => console.log(user.id2)}>
                                         
                                             <span className="chatusername">{user.name}</span>
                                     
                                         <span className="chatuserfullname">{user.fullName} is {user.status}</span>
                                     </div>
-                                    </Link>
+                                    {/* </Link> */}
                                         
                                 
                                     </div>
