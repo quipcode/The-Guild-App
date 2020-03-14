@@ -75,12 +75,18 @@ import {Loading} from '../LoadingComponent';
 
 // }
 
-const MyGuildProfile = ({match}) => console.log('match', match) (<p>hi</p>)
+// const MyGuildProfile = ({match}) => (<console.log( match) p>hi</p>)
 
-function MyGuildProfileComponent({guild}){
+// function MyGuildProfile(props){
+//     console.log(props)
+//     return(<p>Hi there</p>)
+// }
+
+function MyGuildProfile({guild}){
     // function getDetails(){
     //     return {_html: {user.description}}
     // }
+    console.log("guild is", guild)
     return(
         <div class="container emp-profile">
                     <form method="post">
@@ -89,7 +95,7 @@ function MyGuildProfileComponent({guild}){
                             <div class="col-md-3">
                                    <div class="profile-img">
                                    <ChangeProfileImage guild={guild} />
-                                    <img  className="userprofileimage" src={guild.image.small_url} alt={guild.name}  data-holder-rendered="true" />
+                                    <img  className="userprofileimage" src={guild.avatar} alt={guild.name}  data-holder-rendered="true" />
                                     {/* <div class="file btn btn-lg btn-primary" onClick={this.toggleModal}> */}
                                 </div>
                                 

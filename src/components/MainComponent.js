@@ -67,7 +67,8 @@ class Main extends Component{
         }
         const MyGuildProfPageID = ({ match }) => {
             return(
-                <MyGuildProfile guild={this.props.myGuilds.myGuilds.filter(g => g.id === +match.params.myGuildID)[0]}/>
+                // <MyGuildProfile guild={this.props.myGuilds.myGuilds.filter(guild => guild.id === +match.params.myGuildID)[0]}/>
+                <MyGuildProfile guild={this.props.myGuilds.myGuilds.filter(guild => guild.id === +match.params.myGuildID)[0]}/>
             )
         }
       
