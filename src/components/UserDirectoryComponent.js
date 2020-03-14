@@ -12,7 +12,7 @@ import { Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem } 
 import { Link } from 'react-router-dom';
 import {Loading } from './LoadingComponent'
 // import { baseUrl } from '../shared/baseUrl';
-// import{Text} from 'react-bootstrap';
+// import{Text} from 'react-bootstrap'; 
 import Image from 'react-bootstrap/Image'
 
 // using basic superhero api
@@ -62,7 +62,7 @@ function RenderDirectoryItem({user}) {
     );
 }
 
-function Directory(props) {
+function UserDirectory(props) {
 
     const users = props.users.users.map(user => {
         return(          
@@ -115,7 +115,7 @@ function Directory(props) {
     );
 }
 
-export default Directory;
+export default UserDirectory;
 
 // function UserProfile2(props) {
 //     if (props.isLoading) {

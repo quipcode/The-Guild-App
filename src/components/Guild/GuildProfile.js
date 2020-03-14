@@ -1,16 +1,15 @@
 import React, { Component, useState } from 'react';
 import {Tabs, Tab} from 'react-bootstrap';
-import MyEditor from './AvatarEditor';
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
+import MyEditor from '../AvatarEditor';
+import { Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import AvatarEditor from 'react-avatar-editor';
-import {Loading} from './LoadingComponent';
-import {baseUrl} from '../shared/baseUrl';
-import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+
+import {Loading} from '../LoadingComponent';
 
 
 
-function UserProfile(props){
+
+function GuildProfile(props){
     if(props.isLoading){
         return(
             <div className="container">
@@ -35,7 +34,7 @@ function UserProfile(props){
         )
     }
 
-    if (props.user) {
+    if (props.guild) {
         return (
             
             <div className="container">
@@ -43,8 +42,8 @@ function UserProfile(props){
                     <div className="col">
                         <Breadcrumb>
                             <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
-                            <BreadcrumbItem><Link to="/userdirectory">User Directory</Link></BreadcrumbItem>
-                            <BreadcrumbItem active>{props.user.name}</BreadcrumbItem>
+                            <BreadcrumbItem><Link to="/guilddirectory">Guild Directory</Link></BreadcrumbItem>
+                            <BreadcrumbItem active>{props.guild.name}</BreadcrumbItem>
                         </Breadcrumb>
                         {/* <h2>{props.campsite.name}</h2> */}
                         <hr />
@@ -52,7 +51,7 @@ function UserProfile(props){
                 </div>
                 <div className="row">
                 {/* <MyUserProfile user={props.user}/> */}
-                <UserProfileComponent user={props.user}/>
+                <GuildProfileComponent guild={props.guild}/>
                     {/* <RenderCampsite campsite={props.campsite} />
                     <RenderComments
                         comments={props.comments}
@@ -60,15 +59,16 @@ function UserProfile(props){
                         postComment={props.postComment} 
                         campsiteId={props.campsite.id}
                     /> */}
+                    
                 </div>
             </div>
         );
     }
-    return <div />;
+    return  <div />;
 
 }
 
-function UserProfileComponent({user}){
+function GuildProfileComponent({guild}){
     // function getDetails(){
     //     return {_html: {user.description}}
     // }
@@ -79,8 +79,8 @@ function UserProfileComponent({user}){
                         <div class="row">
                             <div class="col-md-3">
                                    <div class="profile-img">
-                                   <ChangeProfileImage user={user} />
-                                    <img  className="userprofileimage" src={user.image.small_url} alt={user.name}  data-holder-rendered="true" />
+                                   <ChangeProfileImage guild={guild} />
+                                    <img  className="userprofileimage" src={guild.image.small_url} alt={guild.name}  data-holder-rendered="true" />
                                     {/* <div class="file btn btn-lg btn-primary" onClick={this.toggleModal}> */}
                                 </div>
                                 
@@ -91,22 +91,22 @@ function UserProfileComponent({user}){
                             <div class="col-md-6">
                                 <div class="profile-head">
                                     <h5>
-                                        {user.name}
+                                        {guild.name}
                                     </h5>
                                     <h6>
-                                        Web Developer and Designer
+                                        {guild.deck}
                                     </h6>
                                     <p class="proile-rating">RANKINGS : <span>8/10</span></p>
                                     <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
                                         <Tab eventKey="home" title="Home">
-                                            {user.deck}
+                                            {guild.deck}
                                         </Tab>
                                         <Tab eventKey="profile" title="Profile">
                                             
-                                            {user.aliases}
+                                            {guild.aliases}
                                         </Tab>
                                         <Tab eventKey="contact" title="Contact" >
-                                            <div dangerouslySetInnerHTML={{ __html: user.description}}/>                                          
+                                            <div dangerouslySetInnerHTML={{ __html: guild.description}}/>                                          
                                         </Tab>
                                     </Tabs>
                                     {/* <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -200,7 +200,7 @@ class ChangeProfileImage extends Component {
                             <Button type="Submit" value="submit" color="primary">Login</Button>
                             <Button  value="submit" color="secondary" onClick = {this.toggleModal}>Cancel</Button>
                         </Form> */}
-                        <MyEditor image={this.props.user} />
+                        <MyEditor image={this.props.guild} />
                     </ModalBody>
                 </Modal>
             </React.Fragment>
@@ -209,4 +209,4 @@ class ChangeProfileImage extends Component {
 }
 
 
-export default UserProfile;
+export default GuildProfile;

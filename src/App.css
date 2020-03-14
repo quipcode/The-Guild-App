@@ -575,3 +575,30 @@ margin-bottom: 15px !important;
     transform: translate(0%, -50%); */
   }
   
+/* MyGuilds page setting */
+
+.myGuild-card .myGuild-card-body .myGuild-card-message {
+    padding-left: 80px;
+}
+.myGuild-card .myGuild-card-body .myGuild-card-message::after {
+    clear: both;
+}
+.myGuild-card .myGuild-card-body .myGuild-actions {
+    margin-top: 5px;
+    
+}
+
+/* provides spacing between each 'guild card' */
+.myGuild-container{
+    /* margin-top: 20px;
+    background-color: #FAA61A;
+    border-radius: 70% */
+}
+.myGuild-ultra-container{
+    margin-top: 20px;
+    /* background-color: #FAA61A; */
+    /* border-radius: 30%; */
+    
+    /* border-radius: 15px 500px 300px 5px; */
+    /* border-radius: 1000000% 33% 8000% 1000000%; */
+}

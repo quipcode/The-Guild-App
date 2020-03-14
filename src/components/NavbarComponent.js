@@ -20,9 +20,9 @@ class NavbarReactBootstrap extends React.Component {
         return (
             <React.Fragment>
                 <Navbar className="navbar navbar-dark bg-dark navbar-expand-sm" expand="sm">
-                    <Navbar.Brand href="#home">
+                    <Navbar.Brand href="/home">
                         
-                            <a className="navbar-brand" href="#">
+                            <a className="navbar-brand" href="/home">
                                 <img src="/assets/images/transparent_shield.png" width="30" height="30" alt="logo" />
                                 {/* instead of <img src={"/images/resto.png"} /> you need to use <img src={require('/images/image-name.png')} /> */}
                                 {/* <img src={require("images/transparent_shield.png")} width="30" height="30" alt="logo" /> */}
@@ -71,7 +71,7 @@ class NavbarReactBootstrap extends React.Component {
                                 }
                                 id="basic-nav-dropdown"
                             >
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                                <NavDropdown.Item href="/myguilds">My Guilds</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                                 <NavDropdown.Divider />
@@ -107,9 +107,10 @@ class NavbarReactBootstrap extends React.Component {
                                 }
                                 id="basic-nav-dropdown"
                             >
-                                <NavDropdown.Item href="/userdirectory">Directory of Users</NavDropdown.Item>
+                                <NavDropdown.Item href="/userdirectory">User Directory</NavDropdown.Item>
                                 <NavDropdown.Item href="/userprofile">User Profile by Id</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                                <NavDropdown.Item href="/guilddirectory">Guild Directory</NavDropdown.Item>
+                                <NavDropdown.Item href="/guildprofile">Guild Profile</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                             </NavDropdown>
