@@ -118,7 +118,10 @@ function MyGuildProfile({guild}){
                                         </Tab>
                                         <Tab eventKey="profile" title="Profile">
                                             
-                                            {guild.aliases}
+                                            {guild.purpose}
+                                        </Tab>
+                                        <Tab eventKey="tasks" title="Tasks" >
+                                            {guild.tasks}                                          
                                         </Tab>
                                         <Tab eventKey="contact" title="Contact" >
                                             <div dangerouslySetInnerHTML={{ __html: guild.description}}/>                                          

@@ -54,10 +54,8 @@ class NavbarReactBootstrap extends React.Component {
                                 id="basic-nav-dropdown" 
                             >
                                 <NavDropdown.Item href="/myprofile">My Profile Page</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                                {/* <NavDropdown.Item href="/myproof">Proof Page</NavDropdown.Item> */}
+                               
                             </NavDropdown>
                             <NavDropdown eventKey={1}
                                 title={
@@ -72,10 +70,7 @@ class NavbarReactBootstrap extends React.Component {
                                 id="basic-nav-dropdown"
                             >
                                 <NavDropdown.Item href="/myguilds">My Guilds</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                              
                             </NavDropdown>
                             <NavDropdown eventKey={1}
                                 title={
@@ -90,10 +85,7 @@ class NavbarReactBootstrap extends React.Component {
                                 id="basic-nav-dropdown"
                             >
                                 <NavDropdown.Item href="/messagingcenter">Messaging Center</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                               
                             </NavDropdown>
                             <NavDropdown eventKey={1}
                                 title={
@@ -108,11 +100,11 @@ class NavbarReactBootstrap extends React.Component {
                                 id="basic-nav-dropdown"
                             >
                                 <NavDropdown.Item href="/userdirectory">User Directory</NavDropdown.Item>
-                                <NavDropdown.Item href="/userprofile">User Profile by Id</NavDropdown.Item>
-                                <NavDropdown.Item href="/guilddirectory">Guild Directory</NavDropdown.Item>
-                                <NavDropdown.Item href="/guildprofile">Guild Profile</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                                <NavDropdown.Item href="/guilddirectory">Guild Directory</NavDropdown.Item>
+                               
+                                
+                                
                             </NavDropdown>
                         </Nav>
                         <Form inline>

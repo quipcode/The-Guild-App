@@ -20,6 +20,7 @@ import {fetchMyGuilds, fetchAllGuilds} from '../redux/Guilds/actions'
 import {fetchUsers, fetchLoginUser, fetchMessages, fetchSpecificyMessage} from '../redux/ActionCreators'
 
 import GuildProfile from './Guild/GuildProfile'
+import MyProfilePage from './MyProfilePage'
 
 const mapDispatchToProps = {
     fetchUsers: () => (fetchUsers()),
@@ -46,8 +47,7 @@ const mapStateToProps = state => {
 
 
 class Main extends Component{
-   
-       
+          
     componentDidMount() {
         
         this.props.fetchUsers()
@@ -72,14 +72,12 @@ class Main extends Component{
             )
         }
       
-
-       
+      
         const UserProfPageID = ({ match }) => {
             return(
                 <UserProfile user={this.props.users.users.filter(user => user.id === +match.params.userId)[0]}/>
             )
         }
-
      
         const GuildProfPageID = ({ match }) => {
             return(
@@ -93,30 +91,16 @@ class Main extends Component{
                 <NavbarReactBootstrap/>
                 <Switch>
                     <Route exact path='/myguilds/:myGuildID'  component={MyGuildProfPageID}  />
-                    {/* <Route exact path="/details/:id" render={(props) => <DetailsPage globalStore={globalStore} {...props} /> } /> */}
-                    {/* <Route exact path="/myguilds/:myGUID" render={(props) => <MyGuildProfile guild={props.myGuilds} {...props} /> } /> */}
                     <Route path='/myguilds' render ={() => <MyGuilds myGuilds={this.props.myGuilds}/> } />
-
                     <Route path='/home' component={HomePage}/>
-                    
                     <Route path='/messagingcenter' render ={() => < MessagingCenter  specificMessages={this.props.specificMessages} />}/> 
-                    
-                    
-                    
-                    
                     <Route path='/myprofile' render={() => <MyUserProfile loggedInUser={this.props.loggedInUser}/>} />
-                    
-
                     <Route path='/userdirectory/:userId' component={UserProfPageID} />
                     <Route path='/userdirectory' render={() => <UserDirectory  users={this.props.users}/>} />
-                    
                     <Route path='/guilddirectory/:guildId' component={GuildProfPageID} />
                     <Route path='/guilddirectory' render={() => <GuildDirectory  allGuilds={this.props.allGuilds}/>} />
-
-                    
-
+                    <Route path='/myproof' render={() => <MyProfilePage/>}/>
                     <Route path='/guildprofile' render={() => <MyGuildProfile />}  />
-                    
                     <Redirect to='/home' />
                 </Switch>
             </div>
