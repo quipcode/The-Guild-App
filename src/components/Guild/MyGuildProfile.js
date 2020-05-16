@@ -7,9 +7,63 @@ import { Link } from 'react-router-dom';
 import {Loading} from '../LoadingComponent';
 
 
-function MyGuildProfile({guild}){
+function MyGuildProfile(props){
 
-    console.log("guild is", guild)
+    if(props.isLoading){
+        return(
+            <div className="container">
+            <div className="row">
+                <div className="col">
+                    <Loading />
+                </div>
+                
+            </div>
+        </div>
+        )
+    }
+    if(props.errMess){
+        return(
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        {props.errMess}
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    if (props.guild) {
+        return (
+            
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <Breadcrumb>
+                            <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                            <BreadcrumbItem><Link to="/myguilds"> My Guilds</Link></BreadcrumbItem>
+                            <BreadcrumbItem active>{props.guild.name}</BreadcrumbItem>
+                        </Breadcrumb>
+                        <hr />
+                    </div>
+                </div>
+                <div className="row">
+                <MyGuildProfileComponent guild={props.guild}/>
+                
+                </div>
+             
+            </div>
+            
+        );
+    }
+    return <p>{console.log("what is ", props.myguild)}</p>
+    return  <div />;
+    
+}
+
+
+function MyGuildProfileComponent({guild}){
+
     return(
         <div class="container emp-profile">
                     <form method="post">
@@ -19,9 +73,7 @@ function MyGuildProfile({guild}){
                                    <div class="profile-img">
                                    <ChangeProfileImage guild={guild} />
                                     <img  className="userprofileimage" src={guild.avatar} alt={guild.name}  data-holder-rendered="true" />
-                                </div>
-                                
-                                    
+                                </div>  
                             </div>
 
                             
@@ -33,7 +85,7 @@ function MyGuildProfile({guild}){
                                     <h6>
                                         {guild.deck}
                                     </h6>
-                                    
+
                                     <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
                                         <Tab eventKey="home" title="Home">
                                             {guild.deck}
@@ -49,7 +101,6 @@ function MyGuildProfile({guild}){
                                             <div dangerouslySetInnerHTML={{ __html: guild.description}}/>                                          
                                         </Tab>
                                     </Tabs>
-                                   
                                 </div>
                             </div>
                         </div>
