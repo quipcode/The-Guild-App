@@ -16,10 +16,7 @@ function GuildGenerator({guild}){
                     </Link>
                     <h6 class="card-subtitle mb-2 text-muted">{guild.purpose}</h6>
                     <p class="card-text">Founded on {guild.foundedOn}, with a member size of {guild.membersCount}, and impacts the world at a {guild.impact} level</p>
-                  
-              
 
-                    
                 </div>
                 <div class="myGuild-actions">
                     <a href="#" class="card-link">Like</a>
@@ -80,10 +77,7 @@ function MyGuilds(props){
             </div>
           
         </div>
-    );
-
-    
-   
+    ); 
 }
 
 export default MyGuilds

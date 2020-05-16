@@ -187,7 +187,7 @@ class MyEditor extends React.Component {
                             </FormGroup>
                            
                             <Button type="Submit" value="submit" color="primary">Save</Button>
-                            <Button  value="submit" color="secondary" onClick = {this.handleClose}>Cancel</Button>
+                            {/* <Button  value="submit" color="secondary" onClick = {this.handleClose}>Cancel</Button> */}
                             
                         </Form>
                 

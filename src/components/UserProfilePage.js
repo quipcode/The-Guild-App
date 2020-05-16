@@ -94,9 +94,9 @@ function UserProfileComponent({user}){
                                         {user.name}
                                     </h5>
                                     <h6>
-                                        Web Developer and Designer
+                                        {user.deck}
                                     </h6>
-                                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                                    <p class="proile-rating">ALIASES: <span>{user.aliases}</span></p>
                                     <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
                                         <Tab eventKey="home" title="Home">
                                             {user.deck}
@@ -105,7 +105,7 @@ function UserProfileComponent({user}){
                                             
                                             {user.aliases}
                                         </Tab>
-                                        <Tab eventKey="contact" title="Contact" >
+                                        <Tab eventKey="contact" title="Bio" >
                                             <div dangerouslySetInnerHTML={{ __html: user.description}}/>                                          
                                         </Tab>
                                     </Tabs>
@@ -119,12 +119,12 @@ function UserProfileComponent({user}){
                                     </ul> */}
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            {/* <div class="col-md-2">
                                 <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
-                            </div>
+                            </div> */}
                         </div>
                  
-                        <div class="row">
+                        {/* <div class="row">
                             <div class="col-md-4">
                                 <div class="profile-work">
                                     <p>WORK LINK</p>
@@ -141,9 +141,9 @@ function UserProfileComponent({user}){
                             </div>
                             <div class="col-md-8">
 
-                                {/* where meat of tabs was */}
+                                
                             </div>
-                        </div>
+                        </div> */}
                     </form>
                 </div>
 

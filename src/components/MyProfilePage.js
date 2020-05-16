@@ -38,7 +38,7 @@ class MyProfilePage extends Component{
                             <h6>
                                 Dark Knight of Gotham
                                     </h6>
-                            <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                            {/* <p class="proile-rating">RANKINGS : <span>8/10</span></p> */}
                             <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
                                 <Tab eventKey="home" title="Home">
                                     <p>Hi home</p>
@@ -69,7 +69,7 @@ class MyProfilePage extends Component{
                     </div>
                 </div>
 
-                <div class="row">
+                {/* <div class="row">
                     <div class="col-md-4">
                         <div class="profile-work">
                             <p>WORK LINK</p>
@@ -86,9 +86,9 @@ class MyProfilePage extends Component{
                     </div>
                     <div class="col-md-8">
 
-                        {/* where meat of tabs was */}
+                        where meat of tabs was
                     </div>
-                </div>
+                </div> */}
             </form>
         </div>
 
