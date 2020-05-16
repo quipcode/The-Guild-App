@@ -51,12 +51,12 @@ function MyGuildProfile(props){
                 <MyGuildProfileComponent guild={props.guild}/>
                 
                 </div>
-             
+                {console.log("what is ", props.guild)}
             </div>
             
         );
     }
-    return <p>{console.log("what is ", props.myguild)}</p>
+    return <p>{console.log("what is ", props.guild)}</p>
     return  <div />;
     
 }
@@ -88,15 +88,14 @@ function MyGuildProfileComponent({guild}){
 
                                     <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
                                         <Tab eventKey="home" title="Home">
-                                            {guild.deck}
+                                        <p class="card-text">Founded on {guild.foundedOn}, with a member size of {guild.membersCount}, and impacts the world at a {guild.impact} level</p>
+                                            {/* {guild.deck} */}
                                         </Tab>
                                         <Tab eventKey="profile" title="Profile">
                                             
                                             {guild.purpose}
                                         </Tab>
-                                        <Tab eventKey="tasks" title="Tasks" >
-                                            {guild.tasks}                                          
-                                        </Tab>
+                                        
                                         <Tab eventKey="contact" title="Bio" >
                                             <div dangerouslySetInnerHTML={{ __html: guild.description}}/>                                          
                                         </Tab>

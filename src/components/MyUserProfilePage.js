@@ -82,7 +82,7 @@ function MyUserProfileComponent({ user }) {
     return (
         <div class="container emp-profile">
             <form method="post">
-
+                {console.log(user)}
                 <div class="row">
                     <div class="col-md-3">
                         <div class="profile-img">

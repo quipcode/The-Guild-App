@@ -51,7 +51,9 @@ function GuildProfile(props){
                 <div className="row">
                 <GuildProfileComponent guild={props.guild}/>
                 </div>
+                {console.log(props.guild)}
             </div>
+           
         );
     }
     return  <div />;
