@@ -1,21 +1,26 @@
 // TODO: Activate caret active animation
-import React, { Component } from 'react';
-import {TweenLite, Bounce, Elastic} from 'gsap';
-import{Navbar, Nav, NavDropdown,Form, FormControl, Button, MenuItem} from 'react-bootstrap';
+import React from 'react';
 
-class NavbarReactBootstrap extends React.Component {
-    constructor(props) {
-        super(props);
+import{Navbar, Nav, NavDropdown,Form, FormControl, Button} from 'react-bootstrap';
+import {fetchSpecificyMessage} from '../redux/ActionCreators'
+import { connect } from 'react-redux';
+// import { browserHistory } from 'react-router'
 
-        this.state = {
-            jsxData: [],
-            submenu: [],
+
+// class NavbarReactBootstrap extends React.Component {
+//     constructor(props) {
+//         super(props);
+
+//         this.state = {
+//             jsxData: [],
+//             submenu: [],
          
-        };
-    }
+//         };
+//     }
 
-    render() {
-        return (
+//     render() {
+//         return (
+    const NavbarReactBootstrap = ({setMessage}) => 
             <React.Fragment>
                 <Navbar className="navbar navbar-dark bg-dark navbar-expand-sm" expand="sm">
                     <Navbar.Brand href="/home">
@@ -82,7 +87,7 @@ class NavbarReactBootstrap extends React.Component {
                                 }
                                 id="basic-nav-dropdown"
                             >
-                                <NavDropdown.Item href="/messagingcenter">Messaging Center</NavDropdown.Item>
+                                <NavDropdown.Item href="/messagingcenter" onClick={setMessage('bman')}>Messaging Center</NavDropdown.Item>
                                
                             </NavDropdown>
                             <NavDropdown eventKey={1}
@@ -112,9 +117,28 @@ class NavbarReactBootstrap extends React.Component {
                     </Navbar.Collapse>
                 </Navbar>
             </React.Fragment>
-        );
+//         );
+//     }
+// }
+
+
+const mapStateToProps = ({ specificMessages}) => ({
+    specificMessages,
+  });
+
+  const mapDispatchToProps = dispatch => ({
+    setMessage(id){
+       
+        return () => {
+            dispatch(fetchSpecificyMessage("bman"))
+            // browserHistory.push('/messagingcenter')
+            
+        }
     }
-}
+})
+
+// href="/messagingcenter" 
+export default connect(mapStateToProps, mapDispatchToProps)(NavbarReactBootstrap) ;
 
 // Navigation menu builder
-export default NavbarReactBootstrap;
+// export default NavbarReactBootstrap;

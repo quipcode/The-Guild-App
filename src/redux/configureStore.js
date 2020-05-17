@@ -8,7 +8,7 @@ import { SpecificMessage } from './specificmessage';
 import {MyGuilds} from './Guilds/index';
 import {AllGuilds} from './Guilds/allGuilds';
 import {ChatContacts} from './chatcontacts';
-
+import {NoteToSelf} from './notetoself'
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -21,6 +21,7 @@ export const ConfigureStore = () => {
             myGuilds: MyGuilds,
             allGuilds: AllGuilds,
             chatcontacts: ChatContacts,
+            noteToSelf: NoteToSelf
         }), applyMiddleware(thunk, logger)
     );
 

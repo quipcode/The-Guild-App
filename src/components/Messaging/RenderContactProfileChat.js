@@ -3,8 +3,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom'
-// import {setCharacter} from '../reducer/character'
+
 
 import {fetchSpecificyMessage} from '../../redux/ActionCreators'
 
@@ -14,19 +13,20 @@ const RenderContactProfileChat = ({users, data, setMessage}) =>
                     {users.map(user => {
                             return(
                             <li className="d-flex bd-highlight chat_contact_card " >
-                                <div className="chat_user_image_and_cont"  >
+                                <div className="chat_user_image_and_cont" onClick={setMessage(user.id2)} >
                                 {/* onClick={() => this.props.fetchSpecificyMessage(user.id2) */}
                                 {/* <div className="chat_user_image_and_cont" onClick={()=> {console.log(`hello there b man its , ${user.testText}`)}}>  onClick={loadMessageForUser("hi")}*/}
                                 
                                 
                                     <div className="img_chatuser_cont" >
-                                        <Link to="/myprofile"><img  className="rounded-circle chatuser_img" src={user.avatar}  /></Link>
+                                        <img  className="rounded-circle chatuser_img" alt={user.name} src={user.avatar}  />
+                                        {/* <Link to="/myprofile"><img  className="rounded-circle chatuser_img" src={user.avatar}  /></Link> */}
                                         
                                         <span class={`online_icon ${user.status}`}></span>
                                     </div>
                                     {/* <Link to='/messagingcenter' onClick={fetchSpecificyMessage(user.id2)} >  */}
                                     
-                                    <div className="chatuser_info" onClick={setMessage(user.id2)}>
+                                    <div className="chatuser_info" >
                                         
                                             <span className="chatusername">{user.name}</span>
                                     

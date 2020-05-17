@@ -1,6 +1,7 @@
 import * as ActionTypes from './ActionTypes';
 
 import { baseUrl } from '../shared/baseUrl';
+import { createBrowserHistory } from 'history';
 
 
 
@@ -92,27 +93,7 @@ export const addUsers = users => ({
 });
 
 
-export const fetchMessages = () => dispatch =>{
-    dispatch(messagesLoading());
-    return fetch(baseUrl + 'messages/' + 'bman')
-        .then(response => {
-          if(response.ok){
-              return response
-          }else {
-              const error = new Error(`Error ${response.status}: ${response.statusText}`);
-              error.response = response;
-              throw error
-          }
-        }, 
-            error => {
-                var errMess = new Error(error.message);
-                throw errMess;
-            }
-        )
-        .then(response => response.json())
-        .then(messages => dispatch(addMessages(messages)))
-        .catch(error => dispatch(messagesFailed(error.message)))
-}
+
 
 
 
@@ -185,7 +166,12 @@ export const fetchSpecificyMessage = (sman) => dispatch => {
             }
         )
         .then(response => response.json())
-        .then(specificMessages => dispatch(addSpecificMessages(specificMessages)))
+        .then(
+            specificMessages => 
+            dispatch(addSpecificMessages(specificMessages)
+            )
+            
+            )
         .catch(errMess => dispatch(specificMessageFailed(errMess.message)))
 }
 
@@ -302,6 +288,47 @@ export const fetchChatContacts = () => dispatch => {
         )
         .then(response => response.json())
         .then(chatContacts => dispatch(addchatContacts(chatContacts)))
+        
         .catch(error => dispatch(usersFailed(error.message)));
         
 };
+
+
+export const noteToSelfLoading = () => ({
+    type: ActionTypes.NOTETOSELF_LOADING
+});
+
+export const noteToSelfFailed = errMess => ({
+    type: ActionTypes.NOTETOSELF_LOADING,
+    payload: errMess
+});
+
+export const noteToSelf = chatContacts => ({
+    type: ActionTypes.NOTETOSELF,
+    payload: chatContacts
+});
+
+
+export const fetchnoteToSelf = () => dispatch => {
+    dispatch(noteToSelfLoading());
+    
+    return(fetch(baseUrl + `messages/bman`))
+        .then(response =>{
+            
+            if(response.ok){
+                return response
+            }else{
+                const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                error.response = response
+                throw error
+            }
+        },
+            error => {
+                var errMess = new Error(error.message)
+                throw errMess;
+            }
+        )
+        .then(response => response.json())
+        .then(notesToSelf => dispatch(noteToSelf(notesToSelf)))
+        .catch(errMess => dispatch(noteToSelfFailed(errMess.message)))
+}

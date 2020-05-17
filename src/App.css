@@ -221,6 +221,12 @@ img.userprofileimage{
     text-align: center;
 }
 
+.loading-spinner{
+    text-align: center;
+    
+    padding-top: 10em;
+}
+
 
 /* CSS for the messanger  */
 /* =====================================================================================================================================================================
