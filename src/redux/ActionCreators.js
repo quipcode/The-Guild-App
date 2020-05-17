@@ -141,27 +141,7 @@ export const loadMessageForUser = userId =>({
 })
 
 
-// export const fetchSpecificyMessage = () => dispatch =>{
-//     dispatch(messagesLoading());
-//     return fetch(baseUrl + 'messages/' + 'bman')
-//         .then(response => {
-//           if(response.ok){
-//               return response
-//           }else {
-//               const error = new Error(`Error ${response.status}: ${response.statusText}`);
-//               error.response = response;
-//               throw error
-//           }
-//         }, 
-//             error => {
-//                 var errMess = new Error(error.message);
-//                 throw errMess;
-//             }
-//         )
-//         .then(response => response.json())
-//         .then(userId => dispatch(loadMessageForUser(userId)))
-//         .catch(error => dispatch(messagesFailed(error.message)))
-// }
+
 
 
 export const addSpecificMessages = specificMessages => ({
@@ -289,17 +269,39 @@ export const fetchMyGuilds = () => dispatch => {
 
 
 
+export const chatContactsLoading = () => ({
+    type: ActionTypes.CHATCONTACTS_LOADING
+});
 
-// export const usersLoading = () => ({
-//     type: ActionTypes.USERS_LOADING
-// });
+export const chatContactsFailed = errMess => ({
+    type: ActionTypes.CHATCONTACTS_FAILED,
+    payload: errMess
+});
 
-// export const usersFailed = errMess => ({
-//     type: ActionTypes.USERS_FAILED,
-//     payload: errMess
-// });
+export const addchatContacts = chatContacts => ({
+    type: ActionTypes.CHATCONTACTS,
+    payload: chatContacts
+});
 
-// export const addUsers = users => ({
-//     type: ActionTypes.ADD_USERS,
-//     payload: users
-// });
+export const fetchChatContacts = () => dispatch => {
+    dispatch(chatContactsLoading());
+    return fetch(baseUrl + 'chatcontacts')
+   
+        .then(response => {
+            if (response.ok) {
+                return response;
+            } else {
+                const error = new Error(`Error ${response.status}: ${response.statusText}`); error.response = response;
+                throw error;
+            }
+        },
+            error => {
+                var errMess = new Error(error.message);
+                throw errMess;
+            }
+        )
+        .then(response => response.json())
+        .then(chatContacts => dispatch(addchatContacts(chatContacts)))
+        .catch(error => dispatch(usersFailed(error.message)));
+        
+};

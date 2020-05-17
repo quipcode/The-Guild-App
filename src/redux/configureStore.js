@@ -1,16 +1,3 @@
-// import { createStore, applyMiddleware } from 'redux';
-// import thunkMiddleware from 'redux-thunk';
-// import {createLogger} from 'redux-logger';
-// import { Reducer, initialState } from './reducer';
-
-
-// import { Comments } from './comments';
-// import { Partners } from './partners';
-// import { Promotions } from './promotions';
-
-// import { createForms } from 'react-redux-form';
-// import { InitialFeedback } from './forms';
-
 import { createStore, combineReducers, applyMiddleware} from 'redux';
 import { Users } from './users';
 import {LoggedInUser} from './loggedUser'
@@ -20,15 +7,8 @@ import { Messages } from './messages';
 import { SpecificMessage } from './specificmessage';
 import {MyGuilds} from './Guilds/index';
 import {AllGuilds} from './Guilds/allGuilds';
+import {ChatContacts} from './chatcontacts';
 
-// import { persistStore, persistCombineReducers } from 'redux-persist';
-// import storage from 'redux-persist/es/storage';
-
-// const config = {
-//     key: 'root',
-//     storage,
-//     debug: true
-// }
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -40,12 +20,7 @@ export const ConfigureStore = () => {
             getMyMessagesForUser: "bman",
             myGuilds: MyGuilds,
             allGuilds: AllGuilds,
-            // comments: Comments,
-            // partners: Partners,
-            // promotions: Promotions,
-            // ...createForms({
-            //     feedbackForm: InitialFeedback
-            // })
+            chatcontacts: ChatContacts,
         }), applyMiddleware(thunk, logger)
     );
 
@@ -54,24 +29,3 @@ export const ConfigureStore = () => {
 
 
 
-// const store = createStore(
-//     reducer, /* preloadedState, */
- 
-//   );
-
-// export const ConfigureStore = () => {
-//     const store = createStore(
-//         persistCombineReducers(config, {
-//             Users,
-//             // comments,
-//             // partners,
-//             // promotions,
-//             // favorites
-//         }),
-//         applyMiddleware(thunk, logger)
-//     );
-
-//     const persistor = persistStore(store);
-
-//     return { persistor, store };
-// };

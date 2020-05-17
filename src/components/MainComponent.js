@@ -13,11 +13,12 @@ import UserDirectory from './UserDirectoryComponent';
 import MyUserProfile from './MyUserProfilePage';
 import MessagingCenter from './Messaging/MessagingCenter';
 
+
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 import {fetchMyGuilds, fetchAllGuilds} from '../redux/Guilds/actions'
-import {fetchUsers, fetchLoginUser, fetchMessages, fetchSpecificyMessage} from '../redux/ActionCreators'
+import {fetchUsers, fetchLoginUser, fetchMessages, fetchSpecificyMessage, fetchChatContacts} from '../redux/ActionCreators'
 
 import GuildProfile from './Guild/GuildProfile'
 import MyProfilePage from './MyProfilePage'
@@ -28,7 +29,8 @@ const mapDispatchToProps = {
     fetchMessages: () => (fetchMessages()),
     fetchSpecificyMessage: (userid) => (fetchSpecificyMessage(userid)),
     fetchMyGuilds: () => (fetchMyGuilds()),
-    fetchAllGuilds: () => (fetchAllGuilds())
+    fetchAllGuilds: () => (fetchAllGuilds()),
+    fetchChatContacts: () => (fetchChatContacts())
     
 };
 
@@ -39,7 +41,8 @@ const mapStateToProps = state => {
         messages: state.messages,
         specificMessages: state.specificMessages,
         myGuilds: state.myGuilds,
-        allGuilds: state.allGuilds
+        allGuilds: state.allGuilds,
+        chatcontacts: state.chatcontacts
         
     };
 };
@@ -56,6 +59,7 @@ class Main extends Component{
         this.props.fetchSpecificyMessage()
         this.props.fetchMyGuilds()
         this.props.fetchAllGuilds()
+        this.props.fetchChatContacts()
     }
    
     render(){
@@ -93,7 +97,7 @@ class Main extends Component{
                     <Route exact path='/myguilds/:myGuildID'  component={MyGuildProfPageID}  />
                     <Route path='/myguilds' render ={() => <MyGuilds myGuilds={this.props.myGuilds}/> } />
                     <Route path='/home' component={HomePage}/>
-                    <Route path='/messagingcenter' render ={() => < MessagingCenter  specificMessages={this.props.specificMessages} />}/> 
+                    <Route path='/messagingcenter' render ={() => < MessagingCenter  specificMessages={this.props.specificMessages} chatcontacts={this.props.chatcontacts} />}/> 
                     <Route path='/myprofile' render={() => <MyUserProfile loggedInUser={this.props.loggedInUser}/>} />
                     <Route path='/userdirectory/:userId' component={UserProfPageID} />
                     <Route path='/userdirectory' render={() => <UserDirectory  users={this.props.users}/>} />

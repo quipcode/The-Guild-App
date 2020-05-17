@@ -14,8 +14,6 @@ class NavbarReactBootstrap extends React.Component {
         };
     }
 
-   
-
     render() {
         return (
             <React.Fragment>
@@ -28,7 +26,7 @@ class NavbarReactBootstrap extends React.Component {
                                 {/* <img src={require("images/transparent_shield.png")} width="30" height="30" alt="logo" /> */}
                                 {/* <img src="http://localhost:3001/images/transparent_shield.png" width="30" height="30" alt="logo" /> */}
                                 
-                                <span> The Guild App</span>
+                                <span> Guild App</span>
                             </a>
                         
                         
@@ -119,12 +117,4 @@ class NavbarReactBootstrap extends React.Component {
 }
 
 // Navigation menu builder
-
-
-
 export default NavbarReactBootstrap;
-
-// ReactDOM.render(
-//     <CpcNavigation menu={menu} />,
-//     document.querySelector('#app')
-// );

@@ -71,6 +71,7 @@ function MyGuilds(props){
             </div>
             <div className="col" class="emp-profile">
                 <h2 class="centered-header">My Guilds</h2>
+                <hr/>
                 <div className="row">
                     {myGuilds}
                 </div>

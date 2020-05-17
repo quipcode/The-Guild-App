@@ -10,24 +10,15 @@ import {fetchSpecificyMessage, fetchSpecificMessageWithSam} from '../../redux/Ac
 import {connect} from 'react-redux'
 import RenderContactProfileChat from './RenderContactProfileChat'
 
-const chatContacts = [{id: 0, id2:"bman", name:"Batman", fullName: "Bruce Wayne", status: "online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6733777-4.jpg", testText: "Bruce Bruce's test", messages: [1,2,3]},
-    {id: 1, name: "CatWoman", fullName: "Selina Kyle", status:"online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11125/111253436/6784476-catwoman_vol_5_1_textless_variant.jpg", testText: "Selina's test", messages: [1,2,3,4,5,6,7]}, 
-    {id: 2, name: "Harley Quin", fullName: "Harleen Frances Quinzel", status: "offline", avatar: "https://comicvine1.cbsistatic.com/uploads/scale_medium/11118/111185556/5296059-harley%20quinn%20by%20stanley%20lau.jpg", testText: "Harley's test", messages: [1,2]}, 
-    
-    {id:3, id2: 'sman', name:"Superman", fullName: "Clark Kent", status:"away", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/11/117229/6777461-ce00l1hcatb21.jpg", testText:"Sup's Test", messages: [1]},
-
-    {id:3, id2:'wwoman', name:"Wonder Woman", fullName: "Diana Prince", status:"online", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/10/103530/6444044-4130984370-aHR0cDovL3d3dy5uZXdzYXJhbWEuY29tL2ltYWdlcy9pLzAwMC8yMjcvMjY2L29yaWdpbmFsL0pMXzFfdmFyX01hcmtfQnJvb2tzX2IuanBn", testText:"Diana's Test", messages: [1]},
-
-    {id:3, name:"The Flash", fullName: "Barry Allen", status:"offline", avatar:"https://comicvine1.cbsistatic.com/uploads/scale_medium/10/100647/6772221-gplus1141127786.jpg", testText:"Barry's Test", messages: [1]},
-]
 
 
 
-function TestingButtonContent({props}){
+function ChatBox({props}){
 
     const mymesser = props.specificMessages.specificMessages.messages_4_loggedInUserId ? props.specificMessages.specificMessages.messages_4_loggedInUserId.map(message =>{
         return <GenerateChatAllLeftSide messages={message}/>
     }) : []
+    console.log("mymesser is ", props.chatcontacts.chatcontacts)
 
     // render(){
         return(
@@ -47,7 +38,7 @@ function TestingButtonContent({props}){
                             </div>
                             
                                 
-                                <RenderContactProfileChat users={chatContacts}/>
+                                <RenderContactProfileChat users={props.chatcontacts.chatcontacts}/>
                                 
                             <div class="card-footer"></div>
                         </div></div>
@@ -259,7 +250,7 @@ function MessagingCenter(props){
                 </div>
             </div>
                 </div>
-                <TestingButtonContent props={ props}/>
+                <ChatBox props={ props}/>
             </React.Fragment>
         )
 }
